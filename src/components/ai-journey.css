@@ -154,10 +154,15 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .ai-journey {
+    min-height: auto !important;
+  }
+
   .ai-journey__inner {
     width: min(100% - 32px, 540px);
     min-height: auto;
+    padding: 80px 0 !important;
   }
 
   .ai-journey h2 {
@@ -169,13 +174,18 @@
   }
 
   .ai-journey__actions {
-    align-items: stretch;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+    margin-top: 32px;
   }
 
   .ai-journey__button,
   .ai-journey__button--copy {
     width: 100%;
+    min-width: 0;
     flex-basis: auto;
+    padding: 0 16px;
   }
 }

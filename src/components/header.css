@@ -26,11 +26,11 @@
 }
 
 .header-container {
-  width: 85%;
+  width: 90%;
   max-width: 1720px;
 
   margin: 0 auto;
-  padding: 0 70px;
+  padding: 0 clamp(24px, 4vw, 70px);
 
   display: flex;
   align-items: center;
@@ -50,10 +50,11 @@
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: clamp(16px, 1.8vw, 30px);
 
   flex: 1;
   justify-content: center;
+  margin: 0 clamp(20px, 2.5vw, 40px);
 }
 
 .header-nav a {

@@ -37,14 +37,14 @@ const Header = ({ onNavigate, currentPage }) => {
         <nav className="header-nav">
           <a
             href="#"
-            className={currentPage === "home" ? "active" : ""}
+            className={currentPage === "home" ? "active" : "text-foreground/60"}
             onClick={handleHomeClick}
           >
             Home
           </a>
           <a
             href="#"
-            className={currentPage === "courses" ? "active" : ""}
+            className={currentPage === "courses" ? "active" : "text-foreground/60"}
             onClick={(e) => {
               e.preventDefault();
               if (onNavigate) onNavigate('courses');
@@ -54,7 +54,7 @@ const Header = ({ onNavigate, currentPage }) => {
           </a>
           <a
             href="#"
-            className={currentPage === "programmes" ? "active" : ""}
+            className={currentPage === "programmes" ? "active" : "text-foreground/60"}
             onClick={(e) => {
               e.preventDefault();
               if (onNavigate) onNavigate('programmes');
@@ -64,7 +64,7 @@ const Header = ({ onNavigate, currentPage }) => {
           </a>
           <a
             href="#"
-            className={currentPage === "webinars" ? "active" : ""}
+            className={currentPage === "webinars" ? "active" : "text-foreground/60"}
             onClick={(e) => {
               e.preventDefault();
               if (onNavigate) onNavigate('webinars');
@@ -74,7 +74,7 @@ const Header = ({ onNavigate, currentPage }) => {
           </a>
           <a
             href="#"
-            className={currentPage === "blog" ? "active" : ""}
+            className={currentPage === "blog" ? "active" : "text-foreground/60"}
             onClick={(e) => {
               e.preventDefault();
               if (onNavigate) onNavigate('blog');
@@ -84,7 +84,7 @@ const Header = ({ onNavigate, currentPage }) => {
           </a>
           <a
             href="#"
-            className={currentPage === "about" ? "active" : ""}
+            className={currentPage === "about" ? "active" : "text-foreground/60"}
             onClick={(e) => {
               e.preventDefault();
               if (onNavigate) onNavigate('about');
@@ -94,7 +94,7 @@ const Header = ({ onNavigate, currentPage }) => {
           </a>
           <a
             href="#"
-            className={currentPage === "contact" ? "active" : ""}
+            className={currentPage === "contact" ? "active" : "text-foreground/60"}
             onClick={(e) => {
               e.preventDefault();
               if (onNavigate) onNavigate('contact');

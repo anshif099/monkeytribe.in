@@ -62,11 +62,28 @@
   text-decoration: none;
   color: #2f1d13;
 
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
   font-family: var(--font-sans);
 
   transition: 0.3s ease;
+}
+
+.text-foreground\/60 {
+  color: hsl(var(--foreground) / .6) !important;
+}
+
+.promptx-page .header:not(.header--scrolled),
+.growthx-page .header:not(.header--scrolled),
+.brandx-page .header:not(.header--scrolled),
+.copycraft-page .header:not(.header--scrolled),
+.courses-page .header:not(.header--scrolled),
+.contact-page .header:not(.header--scrolled),
+.programmes-page .header:not(.header--scrolled),
+.webinars-page .header:not(.header--scrolled),
+.about-page .header:not(.header--scrolled),
+.register-page .header:not(.header--scrolled) {
+  --foreground: 0 0% 100%;
 }
 
 .header--scrolled .header-nav a {
@@ -74,17 +91,17 @@
 }
 
 .header-nav a:hover {
-  color: #000;
+  color: #000 !important;
 }
 
 .header-nav a.active {
-  color: #000;
+  color: #000 !important;
   font-weight: 700;
 }
 
 .header--scrolled .header-nav a:hover,
 .header--scrolled .header-nav a.active {
-  color: #000;
+  color: #000 !important;
 }
 
 .header-nav a::after {
@@ -347,7 +364,7 @@
 .about-page .header:not(.header--scrolled) .header-nav a.active,
 .register-page .header:not(.header--scrolled) .header-nav a:hover,
 .register-page .header:not(.header--scrolled) .header-nav a.active {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .promptx-page .header:not(.header--scrolled) .explore-btn,

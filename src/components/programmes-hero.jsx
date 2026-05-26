@@ -26,7 +26,14 @@ function ProgrammesHero() {
 
         {/* CTA buttons */}
         <div className="programmes-hero__ctas">
-          <a href="#" className="programmes-hero__btn-primary">
+          <a
+            href="#"
+            className="programmes-hero__btn-primary"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('our-programmes')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
             View Programmes
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
@@ -34,7 +41,14 @@ function ProgrammesHero() {
             </svg>
           </a>
 
-          <a href="#" className="programmes-hero__btn-secondary">
+          <a
+            href="#"
+            className="programmes-hero__btn-secondary"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('programmes-waitlist')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
             {/* Bell icon */}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />

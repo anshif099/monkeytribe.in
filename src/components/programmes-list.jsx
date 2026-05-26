@@ -121,7 +121,7 @@ const PROGRAMMES = [
 
 function ProgrammesList() {
   return (
-    <section className="prog-list" aria-label="Our Programmes">
+    <section id="our-programmes" className="prog-list" aria-label="Our Programmes">
       <div className="prog-list__container">
 
         {/* Section header */}

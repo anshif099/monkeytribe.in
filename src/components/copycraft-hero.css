@@ -260,6 +260,7 @@
 
 @media (max-width: 768px) {
   .copycraft-hero {
+    height: auto !important;
     min-height: auto;
   }
 

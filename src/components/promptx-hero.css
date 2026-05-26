@@ -241,6 +241,7 @@
 
 @media (max-width: 768px) {
   .promptx-hero {
+    height: auto !important;
     min-height: auto;
   }
 

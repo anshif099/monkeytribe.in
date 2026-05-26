@@ -250,6 +250,7 @@
 
 @media (max-width: 768px) {
   .growthx-hero {
+    height: auto !important;
     min-height: auto;
   }
 

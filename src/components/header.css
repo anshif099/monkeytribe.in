@@ -167,9 +167,17 @@
   }
 }
 
+.header-hamburger {
+  display: none;
+}
+
 @media (max-width: 992px) {
   .header-nav {
     display: none;
+  }
+
+  .header-actions {
+    display: none !important;
   }
 
   .header {
@@ -180,13 +188,128 @@
     width: 90px;
   }
 
-  .register-btn {
-    padding: 14px 22px;
-    font-size: 15px;
+  .header-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    position: relative;
+    outline: none;
   }
 
-  .explore-btn {
-    font-size: 15px;
+  .hamburger-line {
+    width: 100%;
+    height: 2.5px;
+    background: #2f1d13;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Hamburger line white when transparent header on dark pages */
+  .promptx-page .header:not(.header--scrolled) .hamburger-line,
+  .growthx-page .header:not(.header--scrolled) .hamburger-line,
+  .brandx-page .header:not(.header--scrolled) .hamburger-line,
+  .copycraft-page .header:not(.header--scrolled) .hamburger-line,
+  .courses-page .header:not(.header--scrolled) .hamburger-line,
+  .contact-page .header:not(.header--scrolled) .hamburger-line,
+  .programmes-page .header:not(.header--scrolled) .hamburger-line,
+  .webinars-page .header:not(.header--scrolled) .hamburger-line,
+  .about-page .header:not(.header--scrolled) .hamburger-line,
+  .register-page .header:not(.header--scrolled) .hamburger-line {
+    background: #ffffff;
+  }
+
+  /* Scrolled state adapts back to dark */
+  .header--scrolled .hamburger-line {
+    background: #2f1d13;
+  }
+
+  /* Cross X animations */
+  .header-hamburger.is-active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background: #ffffff !important;
+  }
+
+  .header-hamburger.is-active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header-hamburger.is-active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background: #ffffff !important;
+  }
+
+  /* Mobile overlay menu */
+  .mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 17, 21, 0.98);
+    backdrop-filter: blur(16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    animation: mobileMenuFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes mobileMenuFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(1.02);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    width: 100%;
+    padding: 0 40px;
+    text-align: center;
+  }
+
+  .mobile-nav-links a {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-nav-links a:hover,
+  .mobile-nav-links a.active {
+    color: #f8cb12;
+    transform: scale(1.05);
+  }
+
+  .mobile-nav-actions {
+    margin-top: 24px;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .mobile-nav-actions .register-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    font-size: 17px;
   }
 }
 

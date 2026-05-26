@@ -5,6 +5,7 @@ import logo from "../assets/logo.png";
 
 const Header = ({ onNavigate, currentPage }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -119,7 +120,42 @@ const Header = ({ onNavigate, currentPage }) => {
             Register Now
           </button>
         </div>
+
+        {/* Mobile Hamburger toggle */}
+        <button 
+          className={`header-hamburger ${isMobileOpen ? "is-active" : ""}`}
+          onClick={() => setIsMobileOpen(!isMobileOpen)}
+          aria-label="Toggle Navigation Menu"
+        >
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+        </button>
       </div>
+
+      {/* Mobile overlay menu drawer */}
+      {isMobileOpen && (
+        <nav className="mobile-nav-overlay" role="navigation" aria-label="Mobile Navigation Menu">
+          <div className="mobile-nav-links">
+            <a href="#" className={currentPage === "home" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('home'); }}>Home</a>
+            <a href="#" className={currentPage === "courses" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('courses'); }}>Courses</a>
+            <a href="#" className={currentPage === "programmes" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('programmes'); }}>Programmes</a>
+            <a href="#" className={currentPage === "webinars" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('webinars'); }}>Webinars</a>
+            <a href="#" className={currentPage === "blog" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('blog'); }}>Blog</a>
+            <a href="#" className={currentPage === "about" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('about'); }}>About</a>
+            <a href="#" className={currentPage === "contact" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('contact'); }}>Contact</a>
+            
+            <div className="mobile-nav-actions">
+              <button 
+                onClick={() => { setIsMobileOpen(false); if (onNavigate) onNavigate('register'); }} 
+                className="register-btn"
+              >
+                Register Now
+              </button>
+            </div>
+          </div>
+        </nav>
+      )}
     </header>
   );
 };

@@ -2,6 +2,13 @@ import "./footer.css";
 import logo from "../assets/logo.png";
 
 const Footer = () => {
+  const navigateTo = (page) => (e) => {
+    e.preventDefault();
+    if (window.__navigate) {
+      window.__navigate(page);
+    }
+  };
+
   return (
     <footer className="footer">
       {/* ── TOP SECTION ── */}
@@ -84,11 +91,13 @@ const Footer = () => {
           <nav className="footer-col" aria-label="Navigate">
             <h4 className="footer-col-heading">NAVIGATE</h4>
             <ul className="footer-col-list">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Courses</a></li>
-              <li><a href="#">Programmes</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#" onClick={navigateTo('home')}>Home</a></li>
+              <li><a href="#" onClick={navigateTo('courses')}>Courses</a></li>
+              <li><a href="#" onClick={navigateTo('programmes')}>Programmes</a></li>
+              <li><a href="#" onClick={navigateTo('webinars')}>Webinars</a></li>
+              <li><a href="#" onClick={navigateTo('blog')}>Blog</a></li>
+              <li><a href="#" onClick={navigateTo('about')}>About</a></li>
+              <li><a href="#" onClick={navigateTo('contact')}>Contact</a></li>
             </ul>
           </nav>
 
@@ -96,8 +105,10 @@ const Footer = () => {
           <nav className="footer-col" aria-label="Courses">
             <h4 className="footer-col-heading">COURSES</h4>
             <ul className="footer-col-list">
-              <li><a href="#">PromptX — AI Prompt Engineering</a></li>
-              <li><a href="#">GrowthX — AI Digital Marketing</a></li>
+              <li><a href="#" onClick={navigateTo('promptx')}>PromptX — AI Prompt Engineering</a></li>
+              <li><a href="#" onClick={navigateTo('growthx')}>GrowthX — AI Digital Marketing</a></li>
+              <li><a href="#" onClick={navigateTo('brandx')}>BrandX — Brand Builder Pro</a></li>
+              <li><a href="#" onClick={navigateTo('copycraft')}>CopyCraft — CopyCraft Mastery</a></li>
             </ul>
           </nav>
 

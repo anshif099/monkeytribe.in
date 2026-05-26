@@ -20,6 +20,9 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
+  // Expose routing globally to avoid prop drilling in deeply nested footer/header elements
+  window.__navigate = handleNavigate;
+
   if (currentPage === 'promptx') {
     return <PromptX onNavigate={handleNavigate} />
   }

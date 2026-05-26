@@ -1,0 +1,168 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap";
+
+/* =========================================================
+   ABOUT HERO SECTION
+   ========================================================= */
+
+.about-hero {
+  position: relative;
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(8, 9, 14, 0.74) 0%,
+      rgba(8, 9, 14, 0.84) 100%
+    ),
+    url('../assets/Course-Hero.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Subtle grid overlay */
+.about-hero__grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.about-hero__container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 140px 24px 100px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ── Left copy ── */
+.about-hero__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-hero__eyebrow {
+  display: inline-flex;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #f8cb12;
+  margin-bottom: 22px;
+}
+
+.about-hero__heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(38px, 4.6vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0 0 22px;
+  color: #ffffff;
+}
+
+.about-hero__heading-accent {
+  color: #f8cb12;
+}
+
+.about-hero__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(14.5px, 1.1vw, 16px);
+  line-height: 1.72;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 0;
+  max-width: 480px;
+}
+
+/* ── Right side: stats card grid ── */
+.about-hero__right {
+  width: 100%;
+}
+
+.about-hero__stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Single glassmorphic stats card */
+.about-hero__stat-card {
+  background: rgba(22, 24, 36, 0.52);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px 28px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Micro-interaction on card hover */
+.about-hero__stat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(248, 203, 18, 0.32);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 16px 36px rgba(0, 0, 0, 0.28),
+    0 2px 8px rgba(248, 203, 18, 0.05);
+}
+
+.about-hero__stat-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(34px, 3.8vw, 48px);
+  font-weight: 800;
+  color: #f8cb12;
+  line-height: 1;
+}
+
+.about-hero__stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.4;
+}
+
+/* =========================================================
+   RESPONSIVE LAYOUTS
+   ========================================================= */
+
+@media (max-width: 992px) {
+  .about-hero__container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding-top: 150px;
+    padding-bottom: 80px;
+  }
+
+  .about-hero__desc {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .about-hero__stats-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .about-hero__stat-card {
+    padding: 26px 22px;
+  }
+}

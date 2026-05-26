@@ -1,0 +1,267 @@
+@import"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.header {
+  width: 100%;
+  height: 112px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+
+  background: transparent;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    height 0.25s ease;
+}
+
+.header--scrolled {
+  position: fixed;
+  height: 100px;
+  background: #f7efec;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.header-container {
+  width: 85%;
+  max-width: 1720px;
+
+  margin: 0 auto;
+  padding: 0 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ================= LOGO ================= */
+
+.header-logo img {
+  width: 115px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* ================= NAVIGATION ================= */
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  flex: 1;
+  justify-content: center;
+}
+
+.header-nav a {
+  position: relative;
+
+  text-decoration: none;
+  color: #2f1d13;
+
+  font-size: 17px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+
+  transition: 0.3s ease;
+}
+
+.header--scrolled .header-nav a {
+  color: #68615e;
+}
+
+.header-nav a:hover {
+  color: #000;
+}
+
+.header-nav a.active {
+  color: #000;
+  font-weight: 700;
+}
+
+.header--scrolled .header-nav a:hover,
+.header--scrolled .header-nav a.active {
+  color: #000;
+}
+
+.header-nav a::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+
+  width: 0%;
+  height: 3px;
+
+  background: #f8cb12;
+  border-radius: 20px;
+
+  transition: 0.35s ease;
+}
+
+.header-nav a:hover::after,
+.header-nav a.active::after {
+  width: 100%;
+}
+
+/* ================= RIGHT BUTTONS ================= */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.explore-btn {
+  border: none;
+  background: transparent;
+
+  color: #2d1a11;
+
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+
+  padding: 0;
+}
+
+.header--scrolled .explore-btn {
+  color: #4f4a47;
+}
+
+.register-btn {
+  border: none;
+
+  background: #f8cb12;
+  color: #000;
+
+  padding: 16px 28px;
+
+  border-radius: 14px;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.register-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1200px) {
+  .header-nav {
+    gap: 28px;
+  }
+
+  .header-container {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .header-nav {
+    display: none;
+  }
+
+  .header {
+    height: 90px;
+  }
+
+  .header-logo img {
+    width: 90px;
+  }
+
+  .register-btn {
+    padding: 14px 22px;
+    font-size: 15px;
+  }
+
+  .explore-btn {
+    font-size: 15px;
+  }
+}
+
+/* Light header text and logo styling for dark background hero pages when header is not scrolled */
+.promptx-page .header:not(.header--scrolled) .header-nav a,
+.growthx-page .header:not(.header--scrolled) .header-nav a,
+.brandx-page .header:not(.header--scrolled) .header-nav a,
+.copycraft-page .header:not(.header--scrolled) .header-nav a,
+.courses-page .header:not(.header--scrolled) .header-nav a,
+.contact-page .header:not(.header--scrolled) .header-nav a,
+.programmes-page .header:not(.header--scrolled) .header-nav a,
+.webinars-page .header:not(.header--scrolled) .header-nav a,
+.about-page .header:not(.header--scrolled) .header-nav a,
+.register-page .header:not(.header--scrolled) .header-nav a {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.promptx-page .header:not(.header--scrolled) .header-nav a:hover,
+.promptx-page .header:not(.header--scrolled) .header-nav a.active,
+.growthx-page .header:not(.header--scrolled) .header-nav a:hover,
+.growthx-page .header:not(.header--scrolled) .header-nav a.active,
+.brandx-page .header:not(.header--scrolled) .header-nav a:hover,
+.brandx-page .header:not(.header--scrolled) .header-nav a.active,
+.copycraft-page .header:not(.header--scrolled) .header-nav a:hover,
+.copycraft-page .header:not(.header--scrolled) .header-nav a.active,
+.courses-page .header:not(.header--scrolled) .header-nav a:hover,
+.courses-page .header:not(.header--scrolled) .header-nav a.active,
+.contact-page .header:not(.header--scrolled) .header-nav a:hover,
+.contact-page .header:not(.header--scrolled) .header-nav a.active,
+.programmes-page .header:not(.header--scrolled) .header-nav a:hover,
+.programmes-page .header:not(.header--scrolled) .header-nav a.active,
+.webinars-page .header:not(.header--scrolled) .header-nav a:hover,
+.webinars-page .header:not(.header--scrolled) .header-nav a.active,
+.about-page .header:not(.header--scrolled) .header-nav a:hover,
+.about-page .header:not(.header--scrolled) .header-nav a.active,
+.register-page .header:not(.header--scrolled) .header-nav a:hover,
+.register-page .header:not(.header--scrolled) .header-nav a.active {
+  color: #ffffff;
+}
+
+.promptx-page .header:not(.header--scrolled) .explore-btn,
+.growthx-page .header:not(.header--scrolled) .explore-btn,
+.brandx-page .header:not(.header--scrolled) .explore-btn,
+.copycraft-page .header:not(.header--scrolled) .explore-btn,
+.courses-page .header:not(.header--scrolled) .explore-btn,
+.contact-page .header:not(.header--scrolled) .explore-btn,
+.programmes-page .header:not(.header--scrolled) .explore-btn,
+.webinars-page .header:not(.header--scrolled) .explore-btn,
+.about-page .header:not(.header--scrolled) .explore-btn,
+.register-page .header:not(.header--scrolled) .explore-btn {
+  color: #ffffff;
+}
+
+.promptx-page .header:not(.header--scrolled) .explore-btn:hover,
+.growthx-page .header:not(.header--scrolled) .explore-btn:hover,
+.brandx-page .header:not(.header--scrolled) .explore-btn:hover,
+.copycraft-page .header:not(.header--scrolled) .explore-btn:hover,
+.courses-page .header:not(.header--scrolled) .explore-btn:hover,
+.contact-page .header:not(.header--scrolled) .explore-btn:hover,
+.programmes-page .header:not(.header--scrolled) .explore-btn:hover,
+.webinars-page .header:not(.header--scrolled) .explore-btn:hover,
+.about-page .header:not(.header--scrolled) .explore-btn:hover,
+.register-page .header:not(.header--scrolled) .explore-btn:hover {
+  color: #f8cb12;
+}
+
+.promptx-page .header:not(.header--scrolled) .header-logo img,
+.growthx-page .header:not(.header--scrolled) .header-logo img,
+.brandx-page .header:not(.header--scrolled) .header-logo img,
+.copycraft-page .header:not(.header--scrolled) .header-logo img,
+.courses-page .header:not(.header--scrolled) .header-logo img,
+.contact-page .header:not(.header--scrolled) .header-logo img,
+.programmes-page .header:not(.header--scrolled) .header-logo img,
+.webinars-page .header:not(.header--scrolled) .header-logo img,
+.about-page .header:not(.header--scrolled) .header-logo img,
+.register-page .header:not(.header--scrolled) .header-logo img {
+  filter: brightness(0) invert(1);
+}

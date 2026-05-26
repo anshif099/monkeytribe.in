@@ -1,0 +1,197 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.brandx-marketing {
+  background: #f8f9fa;
+  padding: 80px 0 100px;
+  border-top: 1px solid rgba(15, 17, 23, 0.05);
+}
+
+.brandx-marketing__container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.brandx-marketing__eyebrow {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #8b8680;
+  letter-spacing: 0.12em;
+  margin-bottom: 36px;
+  font-family: 'Inter', sans-serif;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.brandx-marketing__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+/* Card Styling */
+.brandx-marketing__card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 17, 23, 0.06);
+  border-radius: 16px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+  transition: 
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.brandx-marketing__card-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.brandx-marketing__icon-wrapper {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #f8f9fa;
+  border: 1px solid rgba(15, 17, 23, 0.04);
+}
+
+/* Custom icon colors */
+.brandx-marketing__card-icon--prompt {
+  color: #6366f1; /* PromptX indigo star */
+}
+
+.brandx-marketing__card-icon--growth {
+  color: #10b981; /* GrowthX emerald arrow */
+}
+
+.brandx-marketing__card-icon--copy {
+  color: #f59e0b; /* CopyCraft yellow/orange pen */
+}
+
+.brandx-marketing__card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brandx-marketing__card-text h4 {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #0f1117;
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.brandx-marketing__card-text span {
+  font-size: 13px;
+  color: #7b7875;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Arrow indicator */
+.brandx-marketing__arrow-wrapper {
+  color: #b0aca8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.brandx-marketing__card-arrow {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Interactive Hover States */
+.brandx-marketing__card:hover {
+  border-color: rgba(249, 115, 22, 0.2);
+  box-shadow: 0 12px 28px rgba(249, 115, 22, 0.04);
+  transform: translateY(-2px);
+}
+
+.brandx-marketing__card:hover .brandx-marketing__arrow-wrapper {
+  color: #f97316;
+}
+
+.brandx-marketing__card:hover .brandx-marketing__card-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* =========================================================
+   SCROLL REVEAL ACTIVE STATES
+   ========================================================= */
+
+.brandx-marketing.is-visible .brandx-marketing__eyebrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brandx-marketing.is-visible .brandx-marketing__grid {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 992px) {
+  .brandx-marketing {
+    padding: 60px 0 80px;
+  }
+  
+  .brandx-marketing__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .brandx-marketing__card {
+    padding: 20px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brandx-marketing__eyebrow {
+    margin-bottom: 24px;
+  }
+  
+  .brandx-marketing__card {
+    padding: 16px 20px;
+  }
+  
+  .brandx-marketing__icon-wrapper {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .brandx-marketing__card-text h4 {
+    font-size: 15px;
+  }
+  
+  .brandx-marketing__card-text span {
+    font-size: 12px;
+  }
+}

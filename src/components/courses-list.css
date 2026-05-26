@@ -1,0 +1,292 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;700&display=swap";
+
+.courses-list-section {
+  background: #ffffff;
+  padding: 100px 0 120px;
+}
+
+.courses-list-section__container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* Premium Card Design */
+.courses-list-card {
+  border-radius: 24px;
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1.3fr 1.1fr 0.9fr;
+  gap: 0;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.courses-list-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Themed Colors from Mockup */
+.courses-list-card--promptx {
+  background: linear-gradient(135deg, #2b1f9c 0%, #1c146e 100%);
+}
+
+.courses-list-card--growthx {
+  background: linear-gradient(135deg, #055c3c 0%, #033f28 100%);
+}
+
+.courses-list-card--brandx {
+  background: linear-gradient(135deg, #823415 0%, #4c1b07 100%);
+}
+
+.courses-list-card--copycraft {
+  background: linear-gradient(135deg, #5122b1 0%, #300f73 100%);
+}
+
+/* Col 1: Brand details */
+.courses-list-card__col--brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 48px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.courses-list-card__icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.courses-list-card__icon-box svg {
+  width: 24px;
+  height: 24px;
+}
+
+.courses-list-card__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 12px;
+  font-family: 'Inter', sans-serif;
+}
+
+.courses-list-card__title {
+  font-size: clamp(24px, 2.2vw, 30px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.courses-list-card__desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 32px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* High fidelity Button */
+.courses-list-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.courses-list-card__btn:hover {
+  background: #ffffff;
+  color: #0f1115;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.courses-list-card__arrow {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+
+.courses-list-card__btn:hover .courses-list-card__arrow {
+  transform: translateX(4px);
+}
+
+/* Col 2: What You'll Learn */
+.courses-list-card__col--learn {
+  display: flex;
+  flex-direction: column;
+  padding: 0 48px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.courses-list-card__section-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 24px;
+  font-family: 'Inter', sans-serif;
+}
+
+.courses-list-card__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.courses-list-card__bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Inter', sans-serif;
+}
+
+.courses-list-card__checkmark {
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Col 3: Course Details */
+.courses-list-card__col--details {
+  display: flex;
+  flex-direction: column;
+  padding-left: 48px;
+}
+
+.courses-list-card__meta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.courses-list-card__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.courses-list-card__meta-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Inter', sans-serif;
+}
+
+.courses-list-card__meta-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .courses-list-card {
+    grid-template-columns: 1.2fr 1fr;
+    padding: 36px;
+  }
+
+  .courses-list-card__col--brand {
+    padding-right: 32px;
+  }
+
+  .courses-list-card__col--learn {
+    padding: 0 0 0 32px;
+    border-right: none;
+  }
+
+  .courses-list-card__col--details {
+    grid-column: span 2;
+    padding-left: 0;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .courses-list-card__meta-group {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 32px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-list-section {
+    padding: 60px 0 80px;
+  }
+
+  .courses-list-card {
+    grid-template-columns: 1fr;
+    padding: 32px;
+  }
+
+  .courses-list-card__col--brand {
+    padding-right: 0;
+    border-right: none;
+  }
+
+  .courses-list-card__col--learn {
+    padding: 0;
+    border-right: none;
+  }
+
+  .courses-list-card__col--details {
+    grid-column: span 1;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .courses-list-card__meta-group {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

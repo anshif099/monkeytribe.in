@@ -1,0 +1,1174 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap";
+
+.register-form-section {
+  background: #ffffff;
+  padding: 80px 0 120px;
+  position: relative;
+}
+
+.register-form-section__container {
+  width: 90%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =========================================================
+   STEP INDICATORS
+   ========================================================= */
+.step-indicator {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 56px;
+  width: 100%;
+}
+
+.step-indicator__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #949aab;
+  width: 120px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.step-indicator__icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #eef0f3;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #949aab;
+  transition: all 0.3s ease;
+}
+
+.step-icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2px;
+}
+
+.step-indicator__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.step-indicator__line {
+  flex-grow: 1;
+  max-width: 120px;
+  height: 2px;
+  background: #eef0f3;
+  border-radius: 1px;
+  margin-top: 20px; /* Aligns line exactly with center of 40px icon-wrapper */
+}
+
+/* Active State */
+.step-indicator__item.active {
+  color: #0f1115;
+}
+
+.step-indicator__item.active .step-indicator__icon-wrapper {
+  border-color: #f8cb12;
+  background: #f8cb12;
+  color: #000000;
+}
+
+.step-indicator__item.active .step-icon {
+  stroke: #000000;
+}
+
+/* Completed State */
+.step-indicator__item.completed .step-indicator__icon-wrapper {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.step-indicator__item.completed .step-icon {
+  stroke: #10b981;
+}
+
+@media (max-width: 680px) {
+  .step-indicator {
+    gap: 0;
+  }
+  .step-indicator__label {
+    display: none;
+  }
+  .step-indicator__line {
+    max-width: 60px;
+  }
+}
+
+/* =========================================================
+   WIZARD BOX WRAPPER
+   ========================================================= */
+.register-box {
+  background: #ffffff;
+  border: 1px solid #eef0f3;
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 768px) {
+  .register-box {
+    padding: 32px 24px;
+  }
+}
+
+/* =========================================================
+   STEP 1: HIERARCHICAL COURSE SELECTOR LIST
+   ========================================================= */
+.wizard-step__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f1115;
+  margin: 0 0 8px;
+}
+
+.wizard-step__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #5b6271;
+  margin: 0 0 40px;
+}
+
+.wizard-step__courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* List Card */
+.wizard-step__list-card {
+  background: #ffffff;
+  border: 1.5px solid #eef0f3;
+  border-radius: 18px;
+  padding: 24px 32px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 28px;
+  align-items: center;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wizard-step__list-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--course-accent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+}
+
+.wizard-step__list-card.selected {
+  border: 2px solid var(--course-accent);
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+}
+
+/* Column 1: Icon container */
+.wizard-step__card-icon-container {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.course-icon-svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Column 2: Text details */
+.wizard-step__card-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wizard-step__card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+
+.wizard-step__card-badge-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f1115;
+  margin: 0;
+}
+
+.wizard-step__popular-badge {
+  background: rgba(49, 39, 178, 0.08);
+  color: #3127b2;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wizard-step__card-subtitle-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #555c6e;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.wizard-step__card-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+.wizard-step__feature-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #555c6e;
+  font-weight: 500;
+}
+
+.check-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* Column 3: Side Column (Pricing & Radio Button) */
+.wizard-step__card-action-container {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.wizard-step__card-price-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.wizard-step__price-primary {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f1115;
+  line-height: 1.1;
+}
+
+.wizard-step__price-secondary {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #949aab;
+  text-decoration: line-through;
+  margin-top: 3px;
+}
+
+/* Custom Radio Dot */
+.wizard-step__radio-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #dcdfe6;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.wizard-step__list-card.selected .wizard-step__radio-circle {
+  border-color: #0f1115;
+  border-width: 2px;
+}
+
+.wizard-step__radio-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0f1115;
+}
+
+/* Footer continue button step 1 */
+.wizard-actions__btn-continue-full {
+  background: #161824;
+  border: none;
+  color: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 24px rgba(22, 24, 36, 0.1);
+}
+
+.wizard-actions__btn-continue-full:hover {
+  background: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .wizard-step__list-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px;
+  }
+  .wizard-step__card-icon-container {
+    align-self: flex-start;
+  }
+  .wizard-step__card-price-block {
+    align-items: flex-start;
+  }
+  .wizard-step__card-action-container {
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   STEP 2: FORM DETAILS & SELECTED COURSE BANNER
+   ========================================================= */
+.selected-course-bar {
+  background: rgba(124, 58, 237, 0.04);
+  border: 1px solid rgba(124, 58, 237, 0.14);
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.selected-course-bar__left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.selected-course-bar__icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.selected-course-bar__icon-wrapper svg {
+  width: 20px;
+  height: 20px;
+}
+
+.selected-course-bar__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.selected-course-bar__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #7c3aed;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.selected-course-bar__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f1115;
+}
+
+.selected-course-bar__right {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.selected-course-bar__price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f1115;
+}
+
+.selected-course-bar__change-link {
+  background: transparent;
+  border: none;
+  color: #7c3aed;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s ease;
+}
+
+.selected-course-bar__change-link:hover {
+  opacity: 0.8;
+}
+
+/* Two column Form Rows */
+.wizard-step__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wizard-step__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 680px) {
+  .wizard-step__form-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.register-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.register-form-group label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #5b6271;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.register-form-group label .required {
+  color: #dc2626;
+  margin-left: 2px;
+}
+
+.register-form-group input,
+.register-form-group select {
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1.5px solid #dcdfe6;
+  background: #ffffff;
+  color: #0f1115;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+.register-form-group input:focus,
+.register-form-group select:focus {
+  border-color: #0f1115;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(15, 17, 21, 0.05);
+}
+
+.register-form-group input.error,
+.register-form-group select.error {
+  border-color: #dc2626;
+}
+
+.error-text {
+  font-family: 'Inter', sans-serif;
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Country Phone Code Prefix box */
+.phone-input-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.phone-prefix {
+  background: #f1f3f5;
+  border: 1.5px solid #dcdfe6;
+  border-right: none;
+  padding: 14px 16px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-input-wrapper input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Custom dropdown arrows */
+.register-form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234F5562' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 15px 15px;
+  padding-right: 48px;
+}
+
+/* =========================================================
+   STEP 3: UPI CHECKOUT & TABS GATEWAYS
+   ========================================================= */
+
+/* Dark Midnight order summary banner */
+.selected-course-bar--dark {
+  background: #161824;
+  border: none;
+  color: #ffffff;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 32px;
+}
+
+.selected-course-bar--dark .selected-course-bar__top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 24px;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.selected-course-bar--dark .selected-course-bar__label {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.selected-course-bar--dark .selected-course-bar__title {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.selected-course-bar--dark .selected-course-bar__meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.selected-course-bar--dark .selected-course-bar__price {
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.selected-course-bar--dark .selected-course-bar__price-secondary {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: line-through;
+  text-align: right;
+  display: block;
+}
+
+/* Student metadata inside dark order summary banner */
+.selected-course-bar__student-meta {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 680px) {
+  .selected-course-bar__student-meta {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+.student-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.student-meta-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.student-meta-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  word-break: break-all;
+}
+
+/* UPI Selection tabs */
+.payment-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 600px) {
+  .payment-tabs {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.payment-tabs__item {
+  border: 1.5px solid #eef0f3;
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #555c6e;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.payment-tabs__item:hover {
+  border-color: #0f1115;
+  color: #0f1115;
+}
+
+.payment-tabs__item.active {
+  border-color: #0f1115;
+  background: #f1f3f5;
+  color: #0f1115;
+}
+
+.payment-tabs__bullet-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.payment-tabs__svg-icon {
+  width: 16px;
+  height: 16px;
+  color: #555c6e;
+}
+
+.payment-tabs__item.active .payment-tabs__svg-icon {
+  color: #0f1115;
+}
+
+/* Pay Box Wrapper content */
+.payment-box-wrapper {
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 32px;
+  border: 1.5px solid #eef0f3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.payment-upi-details-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border: 1.5px solid #eef0f3;
+  border-radius: 12px;
+  padding: 18px 24px;
+}
+
+.payment-upi-id-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.payment-upi-id-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  color: #949aab;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.payment-upi-id-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f1115;
+}
+
+.payment-copy-btn {
+  background: transparent;
+  border: 1.5px solid #dcdfe6;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #555c6e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.payment-copy-btn:hover {
+  background: #0f1115;
+  border-color: #0f1115;
+  color: #ffffff;
+}
+
+/* Gold Amount box */
+.payment-amount-block {
+  background: #fdfae7;
+  border: 1px solid rgba(248, 203, 18, 0.25);
+  border-radius: 12px;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-amount-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(15, 17, 21, 0.7);
+}
+
+.payment-amount-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f1115;
+}
+
+/* Step-by-step instructions */
+.payment-instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px dashed #eef0f3;
+  padding-top: 20px;
+}
+
+.instruction-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.instruction-number {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #0f1115;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.instruction-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555c6e;
+}
+
+.instruction-text strong {
+  color: #0f1115;
+}
+
+/* Secure Payments Lock button */
+.wizard-actions__btn-pay-secure {
+  background: #161824;
+  border: none;
+  color: #ffffff;
+  padding: 18px 36px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(22, 24, 36, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wizard-actions__btn-pay-secure:hover {
+  background: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+.btn-lock-icon {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5px;
+}
+
+/* =========================================================
+   WIZARD BOTTOM ACTION BUTTONS
+   ========================================================= */
+.wizard-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 40px;
+  border-top: 1.5px solid #eef0f3;
+  padding-top: 28px;
+}
+
+.wizard-actions__btn-back {
+  background: transparent;
+  border: 1.5px solid #dcdfe6;
+  color: #555c6e;
+  padding: 15px 28px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wizard-actions__btn-back:hover {
+  background: #eef0f3;
+  border-color: #c0c4cc;
+  color: #0f1115;
+}
+
+.wizard-actions__btn-next {
+  background: #161824;
+  border: none;
+  color: #ffffff;
+  padding: 16px 36px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(22, 24, 36, 0.1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wizard-actions__btn-next:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   REGISTRATION SUCCESS WINDOW
+   ========================================================= */
+.register-box__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.register-box__success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.register-box__success-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.register-box__success-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f1115;
+  margin: 0 0 10px;
+}
+
+.register-box__success-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #555c6e;
+  line-height: 1.6;
+  max-width: 540px;
+  margin: 0 0 32px;
+}
+
+.register-box__success-text strong {
+  color: #0f1115;
+}
+
+/* Success Receipt */
+.register-box__receipt {
+  background: #ffffff;
+  border: 1px solid #eef0f3;
+  border-radius: 16px;
+  padding: 24px 32px;
+  width: 100%;
+  max-width: 580px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.01);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.register-box__receipt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  color: #555c6e;
+}
+
+.register-box__receipt-row strong {
+  color: #0f1115;
+  text-align: right;
+  max-width: 60%;
+}
+
+.receipt-price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  color: #0f1115 !important;
+}
+
+.receipt-status-badge {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.register-box__success-footer {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #949aab;
+  max-width: 500px;
+  margin: 0;
+}
+
+/* =========================================================
+   UPI CHECKOUT DETAILS & TRANSACTION VERIFICATION STYLING
+   ========================================================= */
+.payment-tabs__sphere {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #10b981, #047857);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);
+  flex-shrink: 0;
+}
+
+.copy-btn-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.payment-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-action-btn-blue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #1a73e8;
+  color: #ffffff;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(26, 115, 232, 0.25);
+  margin-top: 12px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.payment-action-btn-blue:hover {
+  background: #1557b0;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(26, 115, 232, 0.35);
+}
+
+.payment-action-btn-arrow {
+  font-size: 18px;
+  margin-left: 2px;
+  line-height: 1;
+}
+
+/* UPI Transaction verification row */
+.upi-transaction-input-section {
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1.5px solid #eef0f3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upi-transaction-label {
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #5b6271;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.upi-label-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+  color: #5b6271;
+}
+
+.upi-transaction-input-section input {
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1.5px solid #dcdfe6;
+  width: 100%;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s ease;
+  color: #0f1115;
+}
+
+.upi-transaction-input-section input::placeholder {
+  color: #949aab;
+}
+
+.upi-transaction-input-section input:focus {
+  border-color: #0f1115;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(15, 17, 21, 0.05);
+}
+
+.upi-transaction-input-section input.error {
+  border-color: #dc2626;
+  background: #fff8f8;
+}
+
+.upi-helper-text {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #949aab;
+  font-weight: 500;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* Trust indicators footer block */
+.payment-trust-badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+  border-top: 1px solid #eef0f3;
+  padding-top: 24px;
+}
+
+.trust-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #7c8ba1;
+}
+
+.trust-badge-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}

@@ -1,0 +1,177 @@
+@import"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.promptx-curriculum {
+  background: #f7f8fa;
+  padding: 100px 0 120px;
+  overflow: hidden;
+}
+
+.promptx-curriculum__container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Eyebrow and Title styles */
+.promptx-curriculum__eyebrow {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #8b8680;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.promptx-curriculum__title {
+  color: #0f1117;
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 700;
+  margin: 0 0 56px;
+  letter-spacing: -0.01em;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.08s, transform 0.7s ease 0.08s;
+}
+
+/* Grid Layout */
+.promptx-curriculum__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Module Cards */
+.promptx-curriculum__card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 17, 23, 0.06);
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+  transition: 
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Numbers */
+.promptx-curriculum__card-number {
+  font-size: 26px;
+  font-weight: 800;
+  color: #8f83ff; /* Lavender blue accent */
+  line-height: 1;
+  margin-top: 2px;
+  width: 32px;
+  flex-shrink: 0;
+}
+
+.promptx-curriculum__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.promptx-curriculum__card-title {
+  color: #0f1117;
+  font-size: 17.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.promptx-curriculum__card-desc {
+  color: #555250;
+  font-size: 14.5px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Hover highlights */
+.promptx-curriculum__card:hover {
+  border-color: rgba(143, 131, 255, 0.25);
+  box-shadow: 0 16px 36px rgba(143, 131, 255, 0.05);
+  transform: translateY(-3px) scale(1.005);
+}
+
+/* =========================================================
+   REVEAL ON SCROLL ACTIVE STATES
+   ========================================================= */
+
+.promptx-curriculum.is-visible .promptx-curriculum__eyebrow,
+.promptx-curriculum.is-visible .promptx-curriculum__title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.promptx-curriculum.is-visible .promptx-curriculum__card {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--card-index) * 0.1s + 0.15s);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 992px) {
+  .promptx-curriculum {
+    padding: 80px 0 90px;
+  }
+  
+  .promptx-curriculum__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .promptx-curriculum__title {
+    margin-bottom: 44px;
+  }
+  
+  .promptx-curriculum__card {
+    padding: 24px 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .promptx-curriculum {
+    padding: 60px 0 70px;
+  }
+  
+  .promptx-curriculum__title {
+    margin-bottom: 32px;
+  }
+  
+  .promptx-curriculum__card {
+    padding: 20px 24px;
+    gap: 16px;
+  }
+  
+  .promptx-curriculum__card-number {
+    font-size: 22px;
+    width: 26px;
+  }
+  
+  .promptx-curriculum__card-title {
+    font-size: 16px;
+  }
+  
+  .promptx-curriculum__card-desc {
+    font-size: 13.5px;
+  }
+}

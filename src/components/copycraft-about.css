@@ -1,0 +1,96 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.copycraft-about {
+  background: #ffffff;
+  padding: 120px 0 60px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.copycraft-about__container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.copycraft-about__eyebrow {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #8b8680;
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+  font-family: 'Inter', sans-serif;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.copycraft-about__title {
+  color: #0f1117;
+  font-size: clamp(32px, 3.8vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+  font-family: 'Space Grotesk', sans-serif;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.08s, transform 0.7s ease 0.08s;
+}
+
+.copycraft-about__desc {
+  color: #555250;
+  font-size: clamp(15.5px, 1.2vw, 17px);
+  line-height: 1.65;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  max-width: 720px;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.16s, transform 0.7s ease 0.16s;
+}
+
+/* =========================================================
+   SCROLL REVEAL ACTIVE STATES
+   ========================================================= */
+
+.copycraft-about.is-visible .copycraft-about__eyebrow,
+.copycraft-about.is-visible .copycraft-about__title,
+.copycraft-about.is-visible .copycraft-about__desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .copycraft-about {
+    padding: 100px 0 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .copycraft-about {
+    padding: 80px 0 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .copycraft-about {
+    padding: 60px 0 30px;
+  }
+}

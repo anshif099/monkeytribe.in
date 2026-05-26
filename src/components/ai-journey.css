@@ -1,0 +1,181 @@
+@import"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.ai-journey {
+  position: relative;
+  overflow: hidden;
+  min-height: 486px;
+  color: #111225;
+  background: #f7c611;
+}
+
+.ai-journey__inner {
+  position: relative;
+  z-index: 1;
+  width: min(1520px, calc(100% - 48px));
+  min-height: 486px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: 62px;
+}
+
+.ai-journey h2 {
+  margin: 0;
+  max-width: 600px;
+  color: #111225;
+  font-size: clamp(52px, 3.6vw, 64px);
+  font-weight: 900;
+  line-height: 0.96;
+  letter-spacing: 0;
+}
+
+.ai-journey h2 span {
+  display: block;
+}
+
+.ai-journey__content {
+  max-width: 780px;
+  align-self: center;
+  padding-top: 12px;
+}
+
+.ai-journey__content p {
+  max-width: 755px;
+  margin: 0;
+  color: rgba(17, 18, 37, 0.72);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.ai-journey__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  width: min(590px, 100%);
+  margin-top: 42px;
+}
+
+.ai-journey__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 176px;
+  height: 57px;
+  padding: 0 24px;
+  border: 1px solid rgba(17, 18, 37, 0.16);
+  border-radius: 8px;
+  color: #111225;
+  background: rgba(17, 18, 37, 0.04);
+  font-size: 18px;
+  font-weight: 900;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.ai-journey__button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(17, 18, 37, 0.28);
+  background: rgba(17, 18, 37, 0.08);
+}
+
+.ai-journey__button--prompt {
+  color: #ffffff;
+  background: #111225;
+  border-color: #111225;
+}
+
+.ai-journey__button--prompt:hover {
+  background: #17182d;
+}
+
+.ai-journey__button--copy {
+  flex-basis: 190px;
+}
+
+.ai-journey__button svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ai-journey__button--prompt svg:first-child {
+  fill: currentColor;
+  stroke: none;
+}
+
+.ai-journey__arrow {
+  margin-left: 2px;
+}
+
+.ai-journey__target {
+  position: absolute;
+  right: 6.8%;
+  top: 20px;
+  width: 434px;
+  height: 434px;
+  opacity: 0.16;
+  border: 1px solid #111225;
+  border-radius: 50%;
+  background:
+    linear-gradient(#111225, #111225) center / 1px 100% no-repeat,
+    linear-gradient(90deg, #111225, #111225) center / 100% 1px no-repeat,
+    radial-gradient(circle, transparent 0 16.5%, #111225 16.7% 17%, transparent 17.2%),
+    radial-gradient(circle, transparent 0 33.2%, #111225 33.4% 33.7%, transparent 33.9%),
+    radial-gradient(circle, transparent 0 49.8%, #111225 50% 50.3%, transparent 50.5%);
+}
+
+@media (max-width: 1120px) {
+  .ai-journey__inner {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 34px;
+    padding: 72px 0;
+  }
+
+  .ai-journey__content {
+    padding-top: 0;
+  }
+
+  .ai-journey__target {
+    right: -120px;
+    top: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ai-journey__inner {
+    width: min(100% - 32px, 540px);
+    min-height: auto;
+  }
+
+  .ai-journey h2 {
+    font-size: 42px;
+  }
+
+  .ai-journey__content p {
+    font-size: 19px;
+  }
+
+  .ai-journey__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ai-journey__button,
+  .ai-journey__button--copy {
+    width: 100%;
+    flex-basis: auto;
+  }
+}

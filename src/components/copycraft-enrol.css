@@ -1,0 +1,369 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.copycraft-enrol {
+  position: relative;
+  background: #12051d; /* Deep dark purple background matching mockup */
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* Premium Violet Grid Pattern Backdrop */
+.copycraft-enrol__grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(168, 85, 247, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.025) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.copycraft-enrol__container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Left Column Info */
+.copycraft-enrol__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.copycraft-enrol__eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #a855f7; /* Violet Eyebrow */
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+.copycraft-enrol__info h2 {
+  color: #ffffff;
+  font-size: clamp(34px, 3.8vw, 48px);
+  line-height: 1.15;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: -0.01em;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.copycraft-enrol__info h2 .accent {
+  color: #a855f7; /* Lilac accent */
+  text-shadow: 0 0 40px rgba(168, 85, 247, 0.2);
+}
+
+.copycraft-enrol__desc {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 24px 0 36px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Bullets list */
+.copycraft-enrol__bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.copycraft-enrol__bullet {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+.copycraft-enrol__bullet-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1.5px solid rgba(168, 85, 247, 0.4);
+  color: #a855f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.copycraft-enrol__bullet-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* Right Column Card Form */
+.copycraft-enrol__card-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.copycraft-enrol__card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 44px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.copycraft-enrol__card h3 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Two-column Input Row */
+.copycraft-enrol__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Input Fields */
+.copycraft-enrol__field {
+  width: 100%;
+}
+
+.copycraft-enrol__field input,
+.copycraft-enrol__field textarea {
+  width: 100%;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.copycraft-enrol__field textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.copycraft-enrol__field input::placeholder,
+.copycraft-enrol__field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.copycraft-enrol__field input:focus,
+.copycraft-enrol__field textarea:focus {
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.06);
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.15);
+}
+
+/* Submit Button */
+.copycraft-enrol__submit-btn {
+  width: 100%;
+  padding: 16px 24px;
+  background: #7c3aed; /* Cohesive Violet Background */
+  color: #ffffff;
+  font-size: 15.5px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+}
+
+.copycraft-enrol__submit-btn:hover {
+  background: #6d28d9;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(124, 58, 237, 0.45);
+}
+
+.copycraft-enrol__submit-btn:active {
+  transform: translateY(-1px);
+}
+
+.copycraft-enrol__arrow {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+
+.copycraft-enrol__submit-btn:hover .copycraft-enrol__arrow {
+  transform: translateX(4px);
+}
+
+/* Success State styles */
+.copycraft-enrol__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 10px;
+  animation: copycraftEnrolFadeIn 0.4s ease;
+}
+
+.copycraft-enrol__success svg {
+  width: 48px;
+  height: 48px;
+  color: #a855f7;
+  background: rgba(168, 85, 247, 0.1);
+  border-radius: 50%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.copycraft-enrol__success h4 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.copycraft-enrol__success p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+@keyframes copycraftEnrolFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   SCROLL REVEAL ACTIVE STATES
+   ========================================================= */
+
+.copycraft-enrol.is-visible .copycraft-enrol__info {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.copycraft-enrol.is-visible .copycraft-enrol__card-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .copycraft-enrol {
+    padding: 100px 0;
+  }
+  
+  .copycraft-enrol__container {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .copycraft-enrol {
+    padding: 80px 0;
+  }
+  
+  .copycraft-enrol__container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .copycraft-enrol__info {
+    align-items: center;
+    text-align: center;
+    transform: translateY(-20px);
+  }
+  
+  .copycraft-enrol__desc {
+    max-width: 580px;
+  }
+  
+  .copycraft-enrol__bullets {
+    align-items: flex-start;
+  }
+  
+  .copycraft-enrol__card-wrapper {
+    justify-content: center;
+  }
+  
+  .copycraft-enrol__card {
+    max-width: 540px;
+    padding: 36px;
+  }
+}
+
+@media (max-width: 560px) {
+  .copycraft-enrol__row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .copycraft-enrol {
+    padding: 60px 0;
+  }
+  
+  .copycraft-enrol__card {
+    padding: 24px;
+  }
+  
+  .copycraft-enrol__card h3 {
+    font-size: 19px;
+  }
+}

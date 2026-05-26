@@ -1,0 +1,163 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap";
+
+/* =========================================================
+   WEBINARS EXPECT SECTION
+   ========================================================= */
+
+.webinars-expect {
+  background: #ffffff;
+  padding: 110px 0 130px;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #f2f3f5;
+}
+
+.webinars-expect__container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Section Header ── */
+.webinars-expect__header {
+  margin-bottom: 56px;
+  max-width: 600px;
+}
+
+.webinars-expect__eyebrow {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8c94a5;
+  margin-bottom: 12px;
+}
+
+.webinars-expect__heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 3.8vw, 44px);
+  font-weight: 800;
+  color: #0f1115;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+/* ── 3x2 Grid ── */
+.webinars-expect__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* ── Card Styling ── */
+.webinars-expect__card {
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 16px;
+  padding: 40px 36px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* Card Hover micro-interactions */
+.webinars-expect__card:hover {
+  transform: translateY(-6px);
+  border-color: #f8cb12;
+  box-shadow: 
+    0 16px 36px rgba(15, 17, 21, 0.05),
+    0 4px 12px rgba(248, 203, 18, 0.08);
+}
+
+/* Icon Wrapper */
+.webinars-expect__icon-wrapper {
+  color: #0f1115;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 24px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.webinars-expect__icon-wrapper svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.8;
+}
+
+/* Rotate or lift icon on card hover */
+.webinars-expect__card:hover .webinars-expect__icon-wrapper {
+  color: #f8cb12;
+  transform: scale(1.1) translateY(-2px);
+}
+
+/* Card Title */
+.webinars-expect__card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f1115;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+
+/* Card Description */
+.webinars-expect__card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #5b6271;
+  margin: 0;
+}
+
+/* =========================================================
+   RESPONSIVE LAYOUTS
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .webinars-expect {
+    padding: 90px 0 110px;
+  }
+  
+  .webinars-expect__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  
+  .webinars-expect__card {
+    padding: 36px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .webinars-expect__header {
+    margin-bottom: 40px;
+  }
+  
+  .webinars-expect__heading {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .webinars-expect {
+    padding: 70px 0 85px;
+  }
+
+  .webinars-expect__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .webinars-expect__card {
+    padding: 32px 28px;
+  }
+}

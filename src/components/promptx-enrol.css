@@ -1,0 +1,280 @@
+@import"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.promptx-enrol {
+  position: relative;
+  background: #0e0c21;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* Subtle AI Grid Pattern Backdrop */
+.promptx-enrol__grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.promptx-enrol__container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Left Column Info */
+.promptx-enrol__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.promptx-enrol__info h2 {
+  color: #ffffff;
+  font-size: clamp(34px, 3.8vw, 48px);
+  line-height: 1.15;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: -0.01em;
+}
+
+.promptx-enrol__info h2 .accent {
+  color: #8f83ff; /* Lavender blue accent */
+  text-shadow: 0 0 40px rgba(143, 131, 255, 0.2);
+}
+
+.promptx-enrol__info p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 24px 0 0 0;
+}
+
+/* Right Column Card Form */
+.promptx-enrol__card-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.promptx-enrol__card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 44px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.promptx-enrol__card h3 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+/* Input Fields */
+.promptx-enrol__field {
+  width: 100%;
+}
+
+.promptx-enrol__field input {
+  width: 100%;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.promptx-enrol__field input::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.promptx-enrol__field input:focus {
+  border-color: #8f83ff;
+  background: rgba(143, 131, 255, 0.08);
+  box-shadow: 0 0 16px rgba(143, 131, 255, 0.15);
+}
+
+/* Submit Button */
+.promptx-enrol__submit-btn {
+  width: 100%;
+  padding: 16px 24px;
+  background: #4132c4;
+  color: #ffffff;
+  font-size: 15.5px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(65, 50, 196, 0.3);
+}
+
+.promptx-enrol__submit-btn:hover {
+  background: #5142d6;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(65, 50, 196, 0.45);
+}
+
+.promptx-enrol__submit-btn:active {
+  transform: translateY(-1px);
+}
+
+.promptx-enrol__disclaimer {
+  display: block;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Success State styles */
+.promptx-enrol__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 10px;
+  animation: fadeIn 0.4s ease;
+}
+
+.promptx-enrol__success svg {
+  width: 48px;
+  height: 48px;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 50%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.promptx-enrol__success h4 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.promptx-enrol__success p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   SCROLL REVEAL ACTIVE STATES
+   ========================================================= */
+
+.promptx-enrol.is-visible .promptx-enrol__info {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.promptx-enrol.is-visible .promptx-enrol__card-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .promptx-enrol {
+    padding: 100px 0;
+  }
+  
+  .promptx-enrol__container {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .promptx-enrol {
+    padding: 80px 0;
+  }
+  
+  .promptx-enrol__container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .promptx-enrol__info {
+    align-items: center;
+    text-align: center;
+    transform: translateY(-20px);
+  }
+  
+  .promptx-enrol__info p {
+    max-width: 580px;
+  }
+  
+  .promptx-enrol__card-wrapper {
+    justify-content: center;
+  }
+  
+  .promptx-enrol__card {
+    max-width: 540px;
+    padding: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .promptx-enrol {
+    padding: 60px 0;
+  }
+  
+  .promptx-enrol__card {
+    padding: 24px;
+  }
+  
+  .promptx-enrol__card h3 {
+    font-size: 19px;
+  }
+}

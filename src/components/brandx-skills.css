@@ -1,0 +1,195 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.brandx-skills {
+  background: #ffffff;
+  padding: 100px 0 120px;
+  overflow: hidden;
+}
+
+.brandx-skills__container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Eyebrow and Title styles */
+.brandx-skills__eyebrow {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #8b8680;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+  font-family: 'Inter', sans-serif;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.brandx-skills__title {
+  color: #0f1117;
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 700;
+  margin: 0 0 56px;
+  letter-spacing: -0.01em;
+  font-family: 'Space Grotesk', sans-serif;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.08s, transform 0.7s ease 0.08s;
+}
+
+/* Grid Layout */
+.brandx-skills__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Skill Cards */
+.brandx-skills__card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 17, 23, 0.08);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+  transition: 
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Icons inside Card */
+.brandx-skills__card-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(249, 115, 22, 0.07); /* Subtle warm orange background */
+  color: #f97316; /* Premium Warm Orange */
+  flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.brandx-skills__card-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.brandx-skills__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Card Title */
+.brandx-skills__card-title {
+  color: #0f1117;
+  font-size: 18.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Card Text */
+.brandx-skills__card-desc {
+  color: #555250;
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.55;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hover effects */
+.brandx-skills__card:hover {
+  border-color: rgba(249, 115, 22, 0.2);
+  box-shadow: 0 16px 36px rgba(249, 115, 22, 0.06);
+  transform: translateY(-3px) scale(1.01);
+}
+
+.brandx-skills__card:hover .brandx-skills__card-icon {
+  transform: scale(1.08) rotate(3deg);
+  background: rgba(249, 115, 22, 0.12);
+}
+
+/* =========================================================
+   REVEAL ON SCROLL ACTIVE STATES
+   ========================================================= */
+
+.brandx-skills.is-visible .brandx-skills__eyebrow,
+.brandx-skills.is-visible .brandx-skills__title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brandx-skills.is-visible .brandx-skills__card {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--card-index) * 0.12s + 0.15s);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .brandx-skills {
+    padding: 80px 0 90px;
+  }
+  
+  .brandx-skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .brandx-skills__title {
+    margin-bottom: 44px;
+  }
+}
+
+@media (max-width: 640px) {
+  .brandx-skills {
+    padding: 60px 0 70px;
+  }
+  
+  .brandx-skills__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .brandx-skills__title {
+    margin-bottom: 32px;
+  }
+  
+  .brandx-skills__card {
+    padding: 24px;
+    gap: 16px;
+  }
+  
+  .brandx-skills__card-title {
+    font-size: 17px;
+  }
+  
+  .brandx-skills__card-desc {
+    font-size: 13.5px;
+  }
+}

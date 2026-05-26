@@ -1,0 +1,369 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.brandx-enrol {
+  position: relative;
+  background: #1a0d05;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* Premium Grid Pattern Backdrop */
+.brandx-enrol__grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(249, 115, 22, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(249, 115, 22, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.brandx-enrol__container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Left Column Info */
+.brandx-enrol__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brandx-enrol__eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #f97316;
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+.brandx-enrol__info h2 {
+  color: #ffffff;
+  font-size: clamp(34px, 3.8vw, 48px);
+  line-height: 1.15;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: -0.01em;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.brandx-enrol__info h2 .accent {
+  color: #f97316;
+  text-shadow: 0 0 40px rgba(249, 115, 22, 0.2);
+}
+
+.brandx-enrol__desc {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 24px 0 36px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Bullets list */
+.brandx-enrol__bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.brandx-enrol__bullet {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+.brandx-enrol__bullet-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(249, 115, 22, 0.1);
+  border: 1.5px solid rgba(249, 115, 22, 0.4);
+  color: #f97316;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brandx-enrol__bullet-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* Right Column Card Form */
+.brandx-enrol__card-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.brandx-enrol__card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 44px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brandx-enrol__card h3 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Two-column Input Row */
+.brandx-enrol__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Input Fields */
+.brandx-enrol__field {
+  width: 100%;
+}
+
+.brandx-enrol__field input,
+.brandx-enrol__field textarea {
+  width: 100%;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.brandx-enrol__field textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.brandx-enrol__field input::placeholder,
+.brandx-enrol__field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.brandx-enrol__field input:focus,
+.brandx-enrol__field textarea:focus {
+  border-color: #f97316;
+  background: rgba(249, 115, 22, 0.06);
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.15);
+}
+
+/* Submit Button */
+.brandx-enrol__submit-btn {
+  width: 100%;
+  padding: 16px 24px;
+  background: #f97316;
+  color: #ffffff;
+  font-size: 15.5px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
+}
+
+.brandx-enrol__submit-btn:hover {
+  background: #ea580c;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(249, 115, 22, 0.45);
+}
+
+.brandx-enrol__submit-btn:active {
+  transform: translateY(-1px);
+}
+
+.brandx-enrol__arrow {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+
+.brandx-enrol__submit-btn:hover .brandx-enrol__arrow {
+  transform: translateX(4px);
+}
+
+/* Success State styles */
+.brandx-enrol__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 10px;
+  animation: brandxEnrolFadeIn 0.4s ease;
+}
+
+.brandx-enrol__success svg {
+  width: 48px;
+  height: 48px;
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.1);
+  border-radius: 50%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.brandx-enrol__success h4 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.brandx-enrol__success p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+@keyframes brandxEnrolFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   SCROLL REVEAL ACTIVE STATES
+   ========================================================= */
+
+.brandx-enrol.is-visible .brandx-enrol__info {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.brandx-enrol.is-visible .brandx-enrol__card-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .brandx-enrol {
+    padding: 100px 0;
+  }
+  
+  .brandx-enrol__container {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .brandx-enrol {
+    padding: 80px 0;
+  }
+  
+  .brandx-enrol__container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .brandx-enrol__info {
+    align-items: center;
+    text-align: center;
+    transform: translateY(-20px);
+  }
+  
+  .brandx-enrol__desc {
+    max-width: 580px;
+  }
+  
+  .brandx-enrol__bullets {
+    align-items: flex-start;
+  }
+  
+  .brandx-enrol__card-wrapper {
+    justify-content: center;
+  }
+  
+  .brandx-enrol__card {
+    max-width: 540px;
+    padding: 36px;
+  }
+}
+
+@media (max-width: 560px) {
+  .brandx-enrol__row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brandx-enrol {
+    padding: 60px 0;
+  }
+  
+  .brandx-enrol__card {
+    padding: 24px;
+  }
+  
+  .brandx-enrol__card h3 {
+    font-size: 19px;
+  }
+}

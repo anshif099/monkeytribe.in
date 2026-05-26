@@ -1,0 +1,158 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap";
+
+.our-story {
+  background: #ffffff;
+  padding: 120px 0;
+  position: relative;
+}
+
+.our-story__container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ── LEFT MEDIA COLUMN ── */
+.our-story__media-column {
+  position: relative;
+  width: 100%;
+}
+
+.our-story__image-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.our-story__image {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  display: block;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
+}
+
+/* Yellow Badge Overlapping Bottom Right */
+.our-story__badge {
+  position: absolute;
+  bottom: -24px;
+  right: 28px;
+  background: #f8cb12;
+  color: #000000;
+  padding: 18px 24px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  box-shadow: 
+    0 12px 32px rgba(248, 203, 18, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.our-story__image-wrapper:hover .our-story__badge {
+  transform: translateY(-4px);
+}
+
+.our-story__badge-est {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #0f1115;
+  opacity: 0.9;
+}
+
+.our-story__badge-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f1115;
+  line-height: 1.1;
+}
+
+/* ── RIGHT CONTENT COLUMN ── */
+.our-story__content-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.our-story__eyebrow {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #949aab;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.our-story__heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #0f1115;
+  margin: 0 0 28px;
+  letter-spacing: -0.025em;
+}
+
+.our-story__text p {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(14.5px, 1.1vw, 16px);
+  line-height: 1.72;
+  color: #555c6e;
+  margin: 0 0 22px;
+}
+
+.our-story__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── RESPONSIVE DESIGN ── */
+@media (max-width: 1024px) {
+  .our-story {
+    padding: 80px 0 100px;
+  }
+
+  .our-story__container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .our-story__media-column {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .our-story__badge {
+    right: 20px;
+    bottom: -16px;
+    padding: 14px 20px;
+  }
+}
+
+@media (max-width: 580px) {
+  .our-story {
+    padding: 60px 0 80px;
+  }
+  
+  .our-story__badge {
+    padding: 12px 18px;
+    border-radius: 12px;
+    bottom: -12px;
+    right: 12px;
+  }
+  
+  .our-story__badge-brand {
+    font-size: 13px;
+  }
+}

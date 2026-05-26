@@ -1,0 +1,220 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap";
+
+.our-parent {
+  background: #ffffff;
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.our-parent__container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ── LEFT COLUMN ── */
+.our-parent__content-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.our-parent__eyebrow {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #949aab;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.our-parent__heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #0f1115;
+  margin: 0 0 28px;
+  letter-spacing: -0.025em;
+}
+
+.our-parent__text p {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(14.5px, 1.1vw, 16px);
+  line-height: 1.72;
+  color: #555c6e;
+  margin: 0 0 22px;
+}
+
+.our-parent__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── RIGHT COLUMN: PREMIUM CAPABILITIES CARD ── */
+.our-parent__card-column {
+  width: 100%;
+}
+
+.our-parent__card {
+  position: relative;
+  background: #161824; /* Deep premium midnight */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 56px 48px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.our-parent__card:hover {
+  transform: translateY(-4px);
+}
+
+/* Concentric circles background graphic in card top-right */
+.our-parent__card-decor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 250px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.our-parent__decor-circle {
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  position: absolute;
+}
+
+.our-parent__decor-circle--inner {
+  width: 150px;
+  height: 150px;
+  top: -30px;
+  right: -30px;
+}
+
+.our-parent__decor-circle--outer {
+  width: 230px;
+  height: 230px;
+  top: -70px;
+  right: -70px;
+}
+
+/* Card Content details */
+.our-parent__card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.our-parent__card-accent-line {
+  width: 44px;
+  height: 3.5px;
+  background: #f8cb12;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
+.our-parent__card-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.our-parent__card-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.our-parent__card-subheading {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 4px;
+}
+
+.our-parent__capabilities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.our-parent__capability-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.our-parent__bullet {
+  color: #f8cb12;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ── RESPONSIVE DESIGN ── */
+@media (max-width: 1024px) {
+  .our-parent {
+    padding: 80px 0 100px;
+  }
+
+  .our-parent__container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .our-parent__card-column {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 580px) {
+  .our-parent {
+    padding: 60px 0 80px;
+  }
+
+  .our-parent__card {
+    padding: 40px 32px;
+    border-radius: 20px;
+  }
+
+  .our-parent__card-heading {
+    font-size: 22px;
+    margin-bottom: 28px;
+  }
+
+  .our-parent__card-subheading {
+    font-size: 13.5px;
+  }
+
+  .our-parent__capability-item {
+    font-size: 14px;
+  }
+}

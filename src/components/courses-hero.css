@@ -1,0 +1,83 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;700&display=swap";
+
+/* Shorter Hero Section (Course-Hero matching) */
+.courses-hero {
+  position: relative;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(11, 12, 16, 0.5) 0%,
+    rgba(11, 12, 16, 0.65) 100%
+  ), url('../assets/Course-Hero.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 170px 0 100px;
+  overflow: hidden;
+  text-align: left;
+}
+
+/* Subtle Geometric Grid Backdrop */
+.courses-hero__grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.courses-hero__container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.courses-hero__eyebrow {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #eab308; /* Yellow/gold eyebrow */
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+  font-family: 'Inter', sans-serif;
+}
+
+.courses-hero__title {
+  color: #ffffff;
+  font-size: clamp(36px, 4.2vw, 54px);
+  font-weight: 700;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.courses-hero__desc {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(15.5px, 1.2vw, 17px);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .courses-hero {
+    padding: 110px 0 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .courses-hero {
+    padding: 100px 0 60px;
+  }
+}

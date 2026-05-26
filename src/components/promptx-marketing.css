@@ -1,0 +1,142 @@
+@import"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.promptx-marketing {
+  background: #ffffff;
+  border-top: 1px solid rgba(15, 17, 23, 0.08);
+  border-bottom: 4px solid #f8cb12; /* Brand yellow bottom highlight */
+  padding: 44px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.promptx-marketing__container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+/* Left Content Column */
+.promptx-marketing__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.promptx-marketing__eyebrow {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #8b8680;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.promptx-marketing__title {
+  color: #0f1117;
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Right Action Column */
+.promptx-marketing__action {
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.promptx-marketing__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: #057466; /* Premium GrowthX Green */
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 18px rgba(5, 116, 102, 0.18);
+  white-space: nowrap;
+}
+
+.promptx-marketing__btn:hover {
+  background: #068374;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(5, 116, 102, 0.28);
+}
+
+.promptx-marketing__btn:active {
+  transform: translateY(-1px);
+}
+
+.promptx-marketing__arrow {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+
+.promptx-marketing__btn:hover .promptx-marketing__arrow {
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   SCROLL REVEAL ACTIVE STATES
+   ========================================================= */
+
+.promptx-marketing.is-visible .promptx-marketing__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.promptx-marketing.is-visible .promptx-marketing__action {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .promptx-marketing {
+    padding: 36px 0;
+  }
+  
+  .promptx-marketing__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .promptx-marketing__content {
+    align-items: center;
+  }
+  
+  .promptx-marketing__btn {
+    width: 100%;
+    padding: 15px 32px;
+  }
+}

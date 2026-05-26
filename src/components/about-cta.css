@@ -1,0 +1,180 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap";
+
+.about-cta {
+  background: #f8cb12; /* Solid Brand Yellow */
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Concentric rings background graphic on the right */
+.about-cta__decor {
+  position: absolute;
+  top: 50%;
+  right: -50px;
+  transform: translateY(-50%);
+  width: 500px;
+  height: 500px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.08; /* Subtle black concentric lines */
+}
+
+.about-cta__decor-ring {
+  border: 1px solid #000000;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.about-cta__decor-ring--1 {
+  width: 160px;
+  height: 160px;
+}
+
+.about-cta__decor-ring--2 {
+  width: 320px;
+  height: 320px;
+}
+
+.about-cta__decor-ring--3 {
+  width: 480px;
+  height: 480px;
+}
+
+.about-cta__container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── LEFT COLUMN ── */
+.about-cta__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-cta__heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 3.8vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #0f1115;
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+
+/* ── RIGHT COLUMN ── */
+.about-cta__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-cta__text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15.5px, 1.2vw, 18px);
+  line-height: 1.6;
+  color: rgba(15, 17, 21, 0.85);
+  margin: 0 0 32px;
+  font-weight: 500;
+  max-width: 580px;
+}
+
+.about-cta__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ── BUTTONS ── */
+.about-cta__btn {
+  border: none;
+  padding: 18px 32px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-cta__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.15);
+}
+
+.about-cta__btn-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* PromptX (Deep Indigo) */
+.about-cta__btn--promptx {
+  background: #3127b2;
+  color: #ffffff;
+}
+
+.about-cta__btn--promptx:hover {
+  background: #231b8a;
+}
+
+/* GrowthX (Deep Teal Green) */
+.about-cta__btn--growthx {
+  background: #035a41;
+  color: #ffffff;
+}
+
+.about-cta__btn--growthx:hover {
+  background: #023f2d;
+}
+
+/* ── RESPONSIVE DESIGN ── */
+@media (max-width: 992px) {
+  .about-cta {
+    padding: 80px 0;
+  }
+
+  .about-cta__container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-cta__decor {
+    right: -100px;
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 580px) {
+  .about-cta {
+    padding: 60px 0;
+  }
+
+  .about-cta__btn {
+    padding: 16px 28px;
+    font-size: 15px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .about-cta__actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+  }
+}

@@ -1,0 +1,246 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap";
+
+/* =========================================================
+   PROGRAMMES HERO
+   ========================================================= */
+
+.programmes-hero {
+  position: relative;
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(10, 14, 10, 0.58) 0%,
+      rgba(10, 14, 10, 0.72) 100%
+    ),
+    url('../assets/Programmes-Hero.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+/* ── Main content wrapper ── */
+.programmes-hero__body {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  padding-bottom: 80px;
+  padding-top: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ── Eyebrow badge ── */
+.programmes-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px 6px 10px;
+  background: rgba(248, 203, 18, 0.18);
+  border: 1px solid rgba(248, 203, 18, 0.4);
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+
+.programmes-hero__badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f8cb12;
+  flex-shrink: 0;
+}
+
+.programmes-hero__badge-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #f8cb12;
+}
+
+/* ── Heading ── */
+.programmes-hero__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
+  color: #ffffff;
+}
+
+.programmes-hero__title-accent {
+  color: #f8cb12;
+}
+
+/* ── Description ── */
+.programmes-hero__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 500px;
+  margin: 0 0 44px;
+}
+
+/* ── CTA Buttons ── */
+.programmes-hero__ctas {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.programmes-hero__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 30px;
+  background: #f8cb12;
+  color: #0f1115;
+  font-family: 'Inter', sans-serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  border-radius: 12px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(248, 203, 18, 0.25);
+}
+
+.programmes-hero__btn-primary:hover {
+  background: #ffd93d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(248, 203, 18, 0.35);
+}
+
+.programmes-hero__btn-primary svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.programmes-hero__btn-primary:hover svg {
+  transform: translateX(4px);
+}
+
+.programmes-hero__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 28px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15.5px;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+}
+
+.programmes-hero__btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.programmes-hero__btn-secondary svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ── Feature strip at bottom ── */
+.programmes-hero__strip {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 14, 10, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 22px 0;
+}
+
+.programmes-hero__strip-inner {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.programmes-hero__feature {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.programmes-hero__feature svg {
+  width: 17px;
+  height: 17px;
+  color: #f8cb12;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.programmes-hero__feature-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .programmes-hero__body {
+    padding-bottom: 56px;
+  }
+
+  .programmes-hero__title {
+    font-size: clamp(36px, 8vw, 52px);
+  }
+
+  .programmes-hero__strip-inner {
+    gap: 24px;
+  }
+
+  .programmes-hero__feature-text {
+    font-size: 12.5px;
+  }
+}
+
+@media (max-width: 520px) {
+  .programmes-hero__ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .programmes-hero__btn-primary,
+  .programmes-hero__btn-secondary {
+    justify-content: center;
+  }
+
+  .programmes-hero__strip-inner {
+    gap: 18px;
+  }
+}

@@ -1,0 +1,82 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;700&display=swap";
+
+.courses-advisor-section {
+  background: #f8f9fa;
+  padding: 90px 24px 100px;
+  text-align: center;
+  border-bottom: 5px solid #facc15; /* High fidelity yellow separation accent */
+}
+
+.courses-advisor-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.courses-advisor__title {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #0f1115;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 700;
+  margin: 0 0 16px;
+  letter-spacing: -0.015em;
+}
+
+.courses-advisor__desc {
+  font-family: 'Inter', sans-serif;
+  color: #5b6271;
+  font-size: clamp(15px, 1.1vw, 16px);
+  line-height: 1.65;
+  margin: 0 0 36px;
+}
+
+.courses-advisor__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: #111322;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(17, 19, 34, 0.1);
+}
+
+.courses-advisor__btn:hover {
+  background: #1d1f33;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(17, 19, 34, 0.2);
+}
+
+.courses-advisor__btn:active {
+  transform: translateY(-1px);
+}
+
+.courses-advisor__arrow {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+
+.courses-advisor__btn:hover .courses-advisor__arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 480px) {
+  .courses-advisor-section {
+    padding: 70px 20px 80px;
+  }
+
+  .courses-advisor__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

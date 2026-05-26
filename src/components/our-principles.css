@@ -1,0 +1,161 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap";
+
+.our-principles {
+  background: #f8f9fa; /* Sleek Off-white background */
+  padding: 120px 0;
+  position: relative;
+}
+
+.our-principles__container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── HEADER ── */
+.our-principles__header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 56px;
+}
+
+.our-principles__eyebrow {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #949aab;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.our-principles__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
+  color: #0f1115;
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+
+/* ── GRID ── */
+.our-principles__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* ── CARD ── */
+.our-principles__card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  padding: 44px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.015);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.our-principles__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.04),
+    0 1px 3px rgba(0, 0, 0, 0.01);
+  border-color: rgba(248, 203, 18, 0.25);
+}
+
+.our-principles__card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f1115;
+  margin-bottom: 28px;
+  transition: all 0.3s ease;
+}
+
+.our-principles__card:hover .our-principles__card-icon {
+  background: #f8cb12; /* Brand yellow background shift on card hover */
+  color: #000000;
+}
+
+.our-principles__card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.our-principles__card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f1115;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+
+.our-principles__card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555c6e;
+  margin: 0;
+}
+
+/* ── RESPONSIVE DESIGN ── */
+@media (max-width: 992px) {
+  .our-principles {
+    padding: 80px 0 100px;
+  }
+
+  .our-principles__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .our-principles__card {
+    padding: 36px;
+  }
+}
+
+@media (max-width: 580px) {
+  .our-principles {
+    padding: 60px 0 80px;
+  }
+
+  .our-principles__header {
+    margin-bottom: 40px;
+  }
+
+  .our-principles__card {
+    padding: 28px;
+    border-radius: 16px;
+  }
+
+  .our-principles__card-icon {
+    margin-bottom: 20px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .our-principles__card-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .our-principles__card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .our-principles__card-desc {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}

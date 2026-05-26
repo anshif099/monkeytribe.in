@@ -1,0 +1,244 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap";
+
+/* =========================================================
+   WEBINARS TOPICS (SESSIONS WE'RE BUILDING) SECTION
+   ========================================================= */
+
+.webinars-topics {
+  background: #f2f3f5;
+  padding: 110px 0 130px;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #eef0f3;
+}
+
+.webinars-topics__container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Section Header ── */
+.webinars-topics__header {
+  margin-bottom: 56px;
+  max-width: 650px;
+}
+
+.webinars-topics__eyebrow {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8c94a5;
+  margin-bottom: 12px;
+}
+
+.webinars-topics__heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 3.8vw, 44px);
+  font-weight: 800;
+  color: #0f1115;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+
+.webinars-topics__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.62;
+  color: #5b6271;
+  margin: 0;
+}
+
+/* ── 3x2 Grid ── */
+.webinars-topics__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* ── Card Styling ── */
+.webinars-topics__card {
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 16px;
+  padding: 40px 36px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.015);
+}
+
+/* Card Hover micro-interactions */
+.webinars-topics__card:hover {
+  transform: translateY(-6px);
+  border-color: #f8cb12;
+  box-shadow: 
+    0 16px 36px rgba(15, 17, 21, 0.05),
+    0 4px 12px rgba(248, 203, 18, 0.08);
+}
+
+/* Card Header row */
+.webinars-topics__card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+/* Icon Wrapper */
+.webinars-topics__icon-wrapper {
+  color: #0f1115;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.webinars-topics__icon-wrapper svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.8;
+}
+
+/* Lift icon on card hover */
+.webinars-topics__card:hover .webinars-topics__icon-wrapper {
+  color: #f8cb12;
+  transform: scale(1.1) translateY(-2px);
+}
+
+/* ── Badges based on series ── */
+.webinars-topics__badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 6px 14px;
+  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PromptX badge */
+.webinars-topics__badge--promptx {
+  background: #e0e7ff;
+  color: #4f46e5;
+}
+
+/* GrowthX badge */
+.webinars-topics__badge--growthx {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+/* Strategy badge */
+.webinars-topics__badge--strategy {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+/* Industry badge */
+.webinars-topics__badge--industry {
+  background: #f3e8ff;
+  color: #9333ea;
+}
+
+/* Card Title */
+.webinars-topics__card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f1115;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.32;
+}
+
+/* Card Description */
+.webinars-topics__card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #5b6271;
+  margin: 0 0 24px;
+  flex-grow: 1; /* Pushes the footer to the very bottom */
+}
+
+/* Card Footer */
+.webinars-topics__card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid #f0f2f5;
+  padding-top: 20px;
+  margin-top: auto;
+}
+
+.webinars-topics__footer-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d97706;
+  flex-shrink: 0;
+}
+
+.webinars-topics__footer-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #d97706;
+  letter-spacing: 0.02em;
+}
+
+/* =========================================================
+   RESPONSIVE LAYOUTS
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .webinars-topics {
+    padding: 90px 0 110px;
+  }
+  
+  .webinars-topics__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  
+  .webinars-topics__card {
+    padding: 36px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .webinars-topics__header {
+    margin-bottom: 40px;
+  }
+  
+  .webinars-topics__heading {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .webinars-topics {
+    padding: 70px 0 85px;
+  }
+
+  .webinars-topics__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .webinars-topics__card {
+    padding: 32px 28px;
+  }
+}

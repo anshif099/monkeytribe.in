@@ -1,0 +1,298 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap";
+
+/* =========================================================
+   PROGRAMMES WAITLIST SECTION
+   ========================================================= */
+
+.prog-waitlist {
+  background: #0f1117;
+  padding: 96px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grid texture overlay */
+.prog-waitlist::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.prog-waitlist__container {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ── Left column ── */
+.prog-waitlist__left {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Pill badge */
+.prog-waitlist__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1.5px solid rgba(248, 203, 18, 0.4);
+  border-radius: 100px;
+  margin-bottom: 28px;
+  align-self: flex-start;
+}
+
+.prog-waitlist__badge svg {
+  width: 14px;
+  height: 14px;
+  color: #f8cb12;
+  flex-shrink: 0;
+}
+
+.prog-waitlist__badge-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #f8cb12;
+}
+
+/* Heading */
+.prog-waitlist__heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0 0 22px;
+  color: #ffffff;
+}
+
+.prog-waitlist__heading-accent {
+  color: #f8cb12;
+}
+
+/* Description */
+.prog-waitlist__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.72;
+  color: rgba(255, 255, 255, 0.52);
+  margin: 0;
+  max-width: 400px;
+}
+
+/* ── Right column: form card ── */
+.prog-waitlist__card {
+  background: #1a1d27;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 36px 36px 28px;
+}
+
+.prog-waitlist__card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 24px;
+}
+
+/* Form layout */
+.prog-waitlist__form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prog-waitlist__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Inputs, selects, textarea */
+.prog-waitlist__form input,
+.prog-waitlist__form select,
+.prog-waitlist__form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: #23273a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  transition: border-color 0.25s ease, background 0.25s ease;
+  box-sizing: border-box;
+}
+
+.prog-waitlist__form input::placeholder,
+.prog-waitlist__form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.32);
+}
+
+.prog-waitlist__form input:focus,
+.prog-waitlist__form select:focus,
+.prog-waitlist__form textarea:focus {
+  outline: none;
+  border-color: rgba(248, 203, 18, 0.5);
+  background: #272b3e;
+}
+
+/* Select styling */
+.prog-waitlist__form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23949aab' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+/* Select placeholder / unselected state */
+.prog-waitlist__form select:invalid,
+.prog-waitlist__form select option[value=""] {
+  color: rgba(255, 255, 255, 0.32);
+}
+
+.prog-waitlist__form select option {
+  background: #1a1d27;
+  color: #ffffff;
+}
+
+/* Textarea */
+.prog-waitlist__form textarea {
+  resize: none;
+  min-height: 96px;
+  line-height: 1.6;
+}
+
+/* Submit button */
+.prog-waitlist__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  margin-top: 4px;
+  background: #f8cb12;
+  color: #0f1115;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(248, 203, 18, 0.2);
+}
+
+.prog-waitlist__submit:hover {
+  background: #ffd93d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(248, 203, 18, 0.32);
+}
+
+.prog-waitlist__submit svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.prog-waitlist__submit-arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.prog-waitlist__submit:hover .prog-waitlist__submit-arrow {
+  transform: translateX(4px);
+}
+
+/* Disclaimer */
+.prog-waitlist__disclaimer {
+  display: block;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.28);
+  margin-top: 14px;
+}
+
+/* Success state */
+.prog-waitlist__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 0;
+  gap: 12px;
+}
+
+.prog-waitlist__success-icon {
+  width: 56px;
+  height: 56px;
+  color: #22c55e;
+}
+
+.prog-waitlist__success h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.prog-waitlist__success p {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 960px) {
+  .prog-waitlist__container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .prog-waitlist__desc {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .prog-waitlist {
+    padding: 64px 0 72px;
+  }
+
+  .prog-waitlist__card {
+    padding: 28px 22px 22px;
+  }
+
+  .prog-waitlist__row {
+    grid-template-columns: 1fr;
+  }
+}

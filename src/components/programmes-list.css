@@ -1,0 +1,352 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap";
+
+/* =========================================================
+   PROGRAMMES LIST SECTION
+   ========================================================= */
+
+.prog-list {
+  background: #ffffff;
+  padding: 96px 0 120px;
+}
+
+.prog-list__container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Section header ── */
+.prog-list__header {
+  margin-bottom: 56px;
+}
+
+.prog-list__eyebrow {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #949aab;
+  margin-bottom: 16px;
+}
+
+.prog-list__heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(30px, 3.2vw, 42px);
+  font-weight: 800;
+  color: #0f1115;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* ── Programme rows stack ── */
+.prog-list__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Individual row: 3-col grid ── */
+.prog-row {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1.05fr;
+  border: 1px solid #e8eaef;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.prog-row:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ── Col 1: Programme card (light grey) ── */
+.prog-row__card {
+  background: #f7f8fa;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e8eaef;
+}
+
+/* Badge */
+.prog-row__badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+
+.prog-row__badge--flagship {
+  background: #f8cb12;
+  color: #0f1115;
+}
+
+.prog-row__badge--executive {
+  background: #0f1115;
+  color: #ffffff;
+}
+
+.prog-row__badge--corporate {
+  background: #0f1115;
+  color: #ffffff;
+}
+
+/* Title & subtitle */
+.prog-row__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(20px, 1.8vw, 24px);
+  font-weight: 800;
+  color: #0f1115;
+  margin: 0 0 6px;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.prog-row__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #949aab;
+  margin: 0 0 20px;
+}
+
+/* Description */
+.prog-row__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #5b6271;
+  margin: 0;
+  flex: 1;
+}
+
+/* Status tag at the bottom */
+.prog-row__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 28px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #5b6271;
+  align-self: flex-start;
+}
+
+.prog-row__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.prog-row__status-dot--yellow {
+  background: #f8cb12;
+}
+
+.prog-row__status-dot--green {
+  background: #22c55e;
+}
+
+/* ── Col 2: Programme Details ── */
+.prog-row__details {
+  padding: 40px 36px;
+  border-right: 1px solid #e8eaef;
+  display: flex;
+  flex-direction: column;
+}
+
+.prog-row__col-heading {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #949aab;
+  margin-bottom: 28px;
+}
+
+.prog-row__detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  flex: 1;
+}
+
+.prog-row__detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.prog-row__detail-icon {
+  width: 18px;
+  height: 18px;
+  color: #949aab;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.prog-row__detail-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.prog-row__detail-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.prog-row__detail-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b0b7c8;
+}
+
+.prog-row__detail-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f1115;
+  line-height: 1.3;
+}
+
+/* ── Col 3: What's Included ── */
+.prog-row__included {
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.prog-row__included-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  flex: 1;
+}
+
+.prog-row__included-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2e3344;
+  line-height: 1.45;
+}
+
+.prog-row__included-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f8cb12;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* CTA Button */
+.prog-row__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  padding: 14px 24px;
+  background: #0f1115;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  align-self: flex-start;
+  box-shadow: 0 4px 12px rgba(15, 17, 21, 0.12);
+}
+
+.prog-row__cta:hover {
+  background: #1d2030;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 17, 21, 0.2);
+}
+
+.prog-row__cta svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.3s ease;
+}
+
+.prog-row__cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .prog-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .prog-row__card {
+    grid-column: 1 / -1;
+    border-right: none;
+    border-bottom: 1px solid #e8eaef;
+  }
+
+  .prog-row__details {
+    border-right: 1px solid #e8eaef;
+  }
+}
+
+@media (max-width: 680px) {
+  .prog-list {
+    padding: 64px 0 80px;
+  }
+
+  .prog-row {
+    grid-template-columns: 1fr;
+  }
+
+  .prog-row__card {
+    grid-column: 1;
+    border-right: none;
+    border-bottom: 1px solid #e8eaef;
+  }
+
+  .prog-row__details {
+    border-right: none;
+    border-bottom: 1px solid #e8eaef;
+  }
+
+  .prog-row__cta {
+    width: 100%;
+    justify-content: center;
+  }
+}

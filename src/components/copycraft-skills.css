@@ -1,0 +1,193 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.copycraft-skills {
+  background: #f7f8fa; /* Premium light grey background matching mockup */
+  padding: 100px 0 120px;
+  overflow: hidden;
+}
+
+.copycraft-skills__container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Eyebrow and Title styles */
+.copycraft-skills__eyebrow {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #8b8680;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+  font-family: 'Inter', sans-serif;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.copycraft-skills__title {
+  color: #0f1117;
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 700;
+  margin: 0 0 56px;
+  letter-spacing: -0.01em;
+  font-family: 'Space Grotesk', sans-serif;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.08s, transform 0.7s ease 0.08s;
+}
+
+/* Grid Layout */
+.copycraft-skills__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+/* Skill Cards */
+.copycraft-skills__card {
+  background: #ffffff; /* Crisp white cards pop on grey background */
+  border: 1px solid rgba(15, 17, 23, 0.06);
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Icons inside Card */
+.copycraft-skills__card-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(124, 58, 237, 0.07); /* Light violet */
+  color: #7c3aed; /* Violet icon color */
+  flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.copycraft-skills__card-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Card Content styling */
+.copycraft-skills__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.copycraft-skills__card-title {
+  color: #0f1117;
+  font-size: 17.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.copycraft-skills__card-desc {
+  color: #555250;
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hover effects */
+.copycraft-skills__card:hover {
+  border-color: rgba(124, 58, 237, 0.25);
+  box-shadow: 0 16px 36px rgba(124, 58, 237, 0.06);
+  transform: translateY(-3px) scale(1.005);
+}
+
+.copycraft-skills__card:hover .copycraft-skills__card-icon {
+  transform: scale(1.08) rotate(3deg);
+  background: rgba(124, 58, 237, 0.12);
+}
+
+/* =========================================================
+   SCROLL REVEAL ACTIVE STATES
+   ========================================================= */
+
+.copycraft-skills.is-visible .copycraft-skills__eyebrow,
+.copycraft-skills.is-visible .copycraft-skills__title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.copycraft-skills.is-visible .copycraft-skills__grid {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .copycraft-skills {
+    padding: 80px 0 100px;
+  }
+  
+  .copycraft-skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .copycraft-skills__title {
+    margin-bottom: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  .copycraft-skills {
+    padding: 60px 0 80px;
+  }
+  
+  .copycraft-skills__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .copycraft-skills__title {
+    margin-bottom: 36px;
+  }
+  
+  .copycraft-skills__card {
+    padding: 24px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .copycraft-skills {
+    padding: 50px 0 60px;
+  }
+  
+  .copycraft-skills__card {
+    padding: 20px 24px;
+    gap: 16px;
+  }
+}

@@ -1,0 +1,19 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap";
+
+/* =========================================================
+   ABOUT PAGE CONTAINER
+   ========================================================= */
+
+.about-page {
+  background: #08090e;
+  min-height: 100vh;
+}
+
+/* Yellow accent line above footer — same as contact page */
+.about-footer-accent {
+  width: 100%;
+  height: 5px;
+  background-color: #f8cb12;
+  position: relative;
+  z-index: 10;
+}

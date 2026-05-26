@@ -1,0 +1,211 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.growthx-curriculum {
+  background: #f7f8fa;
+  padding: 100px 0 120px;
+  overflow: hidden;
+}
+
+.growthx-curriculum__container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Eyebrow and Title styles */
+.growthx-curriculum__eyebrow {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #8b8680;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+  font-family: 'Inter', sans-serif;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.growthx-curriculum__title {
+  color: #0f1117;
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 700;
+  margin: 0 0 56px;
+  letter-spacing: -0.01em;
+  font-family: 'Space Grotesk', sans-serif;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.08s, transform 0.7s ease 0.08s;
+}
+
+/* Grid Layout */
+.growthx-curriculum__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Module Cards */
+.growthx-curriculum__card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 17, 23, 0.06);
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+  transition: 
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+  
+  /* Animation states */
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Numbers */
+.growthx-curriculum__card-number {
+  font-size: 26px;
+  font-weight: 800;
+  color: #c1d3c9; /* Premium subtle Sage Green numbers */
+  line-height: 1;
+  margin-top: 2px;
+  width: 32px;
+  flex-shrink: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.growthx-curriculum__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.growthx-curriculum__card-title {
+  color: #0f1117;
+  font-size: 17.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.growthx-curriculum__card-desc {
+  color: #555250;
+  font-size: 14.5px;
+  line-height: 1.55;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hover highlights */
+.growthx-curriculum__card:hover {
+  border-color: rgba(16, 185, 129, 0.2);
+  box-shadow: 0 16px 36px rgba(16, 185, 129, 0.04);
+  transform: translateY(-3px) scale(1.005);
+}
+
+.growthx-curriculum__card:hover .growthx-curriculum__card-number {
+  color: #8fae9e;
+}
+
+/* =========================================================
+   SPECIAL MODULE 10 HIGHLIGHT
+   ========================================================= */
+
+.growthx-curriculum__card--highlight {
+  border-color: rgba(16, 185, 129, 0.35); /* Subtle emerald green border */
+  background: rgba(16, 185, 129, 0.015); /* Light green tint background */
+}
+
+.growthx-curriculum__card--highlight .growthx-curriculum__card-number {
+  color: #10b981; /* Accent green number 10 */
+}
+
+.growthx-curriculum__card--highlight:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 16px 36px rgba(16, 185, 129, 0.08);
+  background: rgba(16, 185, 129, 0.03);
+}
+
+.growthx-curriculum__card--highlight:hover .growthx-curriculum__card-number {
+  color: #059669; /* Darker green on hover */
+}
+
+/* =========================================================
+   REVEAL ON SCROLL ACTIVE STATES
+   ========================================================= */
+
+.growthx-curriculum.is-visible .growthx-curriculum__eyebrow,
+.growthx-curriculum.is-visible .growthx-curriculum__title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.growthx-curriculum.is-visible .growthx-curriculum__card {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--card-index) * 0.1s + 0.15s);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 992px) {
+  .growthx-curriculum {
+    padding: 80px 0 90px;
+  }
+  
+  .growthx-curriculum__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .growthx-curriculum__title {
+    margin-bottom: 44px;
+  }
+  
+  .growthx-curriculum__card {
+    padding: 24px 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .growthx-curriculum {
+    padding: 60px 0 70px;
+  }
+  
+  .growthx-curriculum__title {
+    margin-bottom: 32px;
+  }
+  
+  .growthx-curriculum__card {
+    padding: 20px 24px;
+    gap: 16px;
+  }
+  
+  .growthx-curriculum__card-number {
+    font-size: 22px;
+    width: 26px;
+  }
+  
+  .growthx-curriculum__card-title {
+    font-size: 16px;
+  }
+  
+  .growthx-curriculum__card-desc {
+    font-size: 13.5px;
+  }
+}

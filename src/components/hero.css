@@ -1,0 +1,304 @@
+@import"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap";
+
+.hero-section {
+  position: relative;
+  height: 100svh;
+  min-height: 760px;
+  overflow: hidden;
+  background-image: url('../assets/hero-bg.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+.hero-section__face {
+  position: absolute;
+  z-index: 1;
+  left: max(18px, calc(50% - 932px));
+  top: 136px;
+  width: clamp(600px, 40vw, 760px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.hero-section__copy {
+  position: absolute;
+  z-index: 2;
+  left: max(32px, calc(58% - 421px));
+  top: 231px;
+  width: min(790px, calc(100% - 64px));
+}
+
+.hero-section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 34px;
+  padding: 0 17px;
+  border: 1px solid rgba(255, 196, 0, 0.54);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.hero-section__eyebrow span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffc400;
+}
+
+.hero-section h1 {
+  margin: 43px 0 24px;
+  color: #ffffff;
+  font-size: 4.5rem;
+  line-height: 1.04;
+  font-weight: 900;
+}
+
+.hero-section h1 span,
+.hero-section h1 strong {
+  display: block;
+}
+
+.hero-section h1 strong {
+  color: #ffc400;
+  font-size: clamp(70px, 4.95vw, 95px);
+  font-weight: 900;
+}
+
+.hero-section p {
+  max-width: 700px;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(22px, 1.45vw, 28px);
+  line-height: 1.28;
+  font-weight: 400;
+}
+
+.hero-section__tracks {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 53px;
+}
+
+.hero-track {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 160px;
+  height: 45px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 15px 28px rgba(103, 37, 10, 0.18);
+}
+
+.hero-track svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-track--prompt svg:first-child {
+  fill: currentColor;
+  stroke: none;
+}
+
+.hero-track--prompt {
+  background: #4132c4;
+}
+
+.hero-track--growth {
+  background: #057466;
+}
+
+.hero-track--brand {
+  background: #8c3a12;
+}
+
+.hero-track--copy {
+  background: #5228af;
+}
+
+.hero-track__arrow {
+  margin-left: 2px;
+}
+
+.hero-section__marks {
+  position: absolute;
+  z-index: 2;
+  right: max(122px, calc(50% - 832px));
+  top: 271px;
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.hero-section__creative,
+.hero-section__logo2 {
+  display: block;
+  object-fit: cover;
+  object-position: 50% 56%;
+}
+
+.hero-section__creative {
+  width: 174px;
+  height: 154px;
+  mix-blend-mode: screen;
+}
+
+.hero-section__logo2 {
+  width: 151px;
+  height: 181px;
+  mix-blend-mode: multiply;
+}
+
+.hero-section__scroll {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 100px;
+  width: 1px;
+  height: 68px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hero-section__scroll span {
+  position: absolute;
+  left: 50%;
+  top: -28px;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1400px) {
+  .hero-section__face {
+    left: 18px;
+    top: 136px;
+    width: 560px;
+  }
+
+  .hero-section__copy {
+    left: 425px;
+    top: 231px;
+    width: calc(100% - 680px);
+  }
+
+  .hero-section__marks {
+    right: 52px;
+    top: 271px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .hero-section {
+    min-height: 960px;
+  }
+
+  .hero-section__face {
+    left: 50%;
+    top: 118px;
+    width: min(420px, 82vw);
+    transform: translateX(-50%);
+    opacity: 0.36;
+  }
+
+  .hero-section__copy {
+    left: 50%;
+    top: 230px;
+    width: min(720px, calc(100% - 40px));
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .hero-section__tracks {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-section__marks {
+    right: 50%;
+    top: auto;
+    bottom: 70px;
+    width: min(360px, 100% - 40px);
+    transform: translateX(50%);
+    flex-direction: row;
+    justify-content: center;
+    gap: 22px;
+  }
+
+  .hero-section__creative {
+    width: 142px;
+    height: 130px;
+  }
+
+  .hero-section__logo2 {
+    width: 122px;
+    height: 146px;
+  }
+
+  .hero-section__scroll {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: 920px;
+  }
+
+  .hero-section__copy {
+    top: 205px;
+  }
+
+  .hero-section__eyebrow {
+    max-width: 100%;
+    height: auto;
+    min-height: 34px;
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+
+  .hero-section h1 {
+    margin-top: 32px;
+    font-size: 48px;
+  }
+
+  .hero-section h1 strong {
+    font-size: 54px;
+  }
+
+  .hero-section p {
+    font-size: 18px;
+  }
+
+  .hero-section__tracks {
+    margin-top: 36px;
+    gap: 10px;
+  }
+
+  .hero-track {
+    min-width: 148px;
+    height: 50px;
+    font-size: 15px;
+  }
+}

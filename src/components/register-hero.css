@@ -1,0 +1,98 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap";
+
+.register-hero {
+  position: relative;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(11, 12, 16, 0.6) 0%,
+    rgba(11, 12, 16, 0.75) 100%
+  ), url('../assets/Course-Hero.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding: 210px 0 130px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.register-hero__grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.register-hero__container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-hero__eyebrow-wrapper {
+  margin-bottom: 26px;
+}
+
+.register-hero__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(248, 203, 18, 0.08);
+  border: 1px solid rgba(248, 203, 18, 0.28);
+  padding: 8px 18px;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(248, 203, 18, 0.04);
+}
+
+.register-hero__bullet {
+  color: #f8cb12;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.register-hero__pill-text {
+  color: #f8cb12;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.register-hero__title {
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(36px, 4.4vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+
+.register-hero__desc {
+  color: rgba(255, 255, 255, 0.72);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.62;
+  max-width: 620px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .register-hero {
+    padding: 170px 0 100px;
+  }
+}

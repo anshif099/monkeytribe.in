@@ -1,0 +1,209 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap";
+
+/* =========================================================
+   BLOG CONTENT SECTION
+   ========================================================= */
+
+.blog-page {
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+.blog-content {
+  background: #ffffff;
+  padding: 60px 0 120px;
+}
+
+.blog-content__container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── 3-Column Grid ── */
+.blog-content__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* ── Card Styling ── */
+.blog-content__card {
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 16px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Card Hover Interactions */
+.blog-content__card:hover {
+  transform: translateY(-6px);
+  border-color: #f8cb12;
+  box-shadow: 
+    0 16px 36px rgba(15, 17, 21, 0.05),
+    0 4px 12px rgba(248, 203, 18, 0.08);
+}
+
+/* Card Meta info */
+.blog-content__card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.blog-content__card-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* Dynamic colors for categories */
+.blog-content__card-tag--ai-prompting {
+  background: #e0e7ff;
+  color: #4f46e5;
+}
+
+.blog-content__card-tag--marketing {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.blog-content__card-tag--copywriting {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.blog-content__card-readtime {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  color: #8c94a5;
+  font-weight: 500;
+}
+
+/* Card Titles */
+.blog-content__card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f1115;
+  line-height: 1.35;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+
+/* Card Excerpts */
+.blog-content__card-excerpt {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: #5b6271;
+  margin: 0 0 24px;
+  flex-grow: 1; /* Pushes the footer to the bottom */
+}
+
+/* Card Divider */
+.blog-content__card-divider {
+  border: none;
+  border-top: 1px solid #f0f2f5;
+  margin: 0 0 20px;
+}
+
+/* Card Footer Row */
+.blog-content__card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.blog-content__card-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.blog-content__card-author {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f1115;
+}
+
+.blog-content__card-date {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  color: #8c94a5;
+}
+
+/* Read Article action link */
+.blog-content__card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0f1115;
+  transition: color 0.3s ease;
+}
+
+.blog-content__card-action svg {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2.5;
+  transition: transform 0.3s ease;
+}
+
+/* Card hover updates action link state */
+.blog-content__card:hover .blog-content__card-action {
+  color: #d97706;
+}
+
+.blog-content__card:hover .blog-content__card-action svg {
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .blog-content {
+    padding: 50px 0 100px;
+  }
+  
+  .blog-content__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  
+  .blog-content__card {
+    padding: 32px 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-content {
+    padding: 40px 0 80px;
+  }
+  
+  .blog-content__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .blog-content__card {
+    padding: 30px 24px;
+  }
+}

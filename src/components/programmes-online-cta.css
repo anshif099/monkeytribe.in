@@ -1,0 +1,101 @@
+@import "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;800&family=Inter:wght@400;500;600;700&display=swap";
+
+/* =========================================================
+   PROGRAMMES ONLINE CTA BANNER
+   ========================================================= */
+
+.prog-online-cta {
+  background: #ffffff;
+  border-top: 1px solid #e3e5ea;
+  border-bottom: 5px solid #f8cb12;
+  padding: 28px 0;
+}
+
+.prog-online-cta__container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+/* ── Left copy ── */
+.prog-online-cta__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.prog-online-cta__eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #949aab;
+}
+
+.prog-online-cta__text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(16px, 1.4vw, 19px);
+  font-weight: 700;
+  color: #0f1115;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* ── Right button ── */
+.prog-online-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  background: #0f1115;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(15, 17, 21, 0.12);
+}
+
+.prog-online-cta__btn:hover {
+  background: #1d2030;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 17, 21, 0.2);
+}
+
+.prog-online-cta__btn svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.3s ease;
+}
+
+.prog-online-cta__btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .prog-online-cta__container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .prog-online-cta__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

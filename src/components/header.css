@@ -173,17 +173,7 @@
   transform: translateY(-2px);
 }
 
-/* ================= RESPONSIVE ================= */
 
-@media (max-width: 1200px) {
-  .header-nav {
-    gap: 28px;
-  }
-
-  .header-container {
-    padding: 0 40px;
-  }
-}
 
 .header-hamburger {
   display: none;

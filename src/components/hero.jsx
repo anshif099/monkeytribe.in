@@ -50,7 +50,7 @@ const tracks = [
 function Hero({ onNavigate }) {
   return (
     <section className="hero-section" id="home">
-      <img className="hero-section__face" src={face} alt="" aria-hidden="true" width="400" height="369" fetchpriority="high" loading="eager" />
+      <img className="hero-section__face" src={face} alt="" aria-hidden="true" width="420" height="387" fetchpriority="high" loading="eager" decoding="sync" />
 
       <div className="hero-section__copy">
         <div className="hero-section__eyebrow">

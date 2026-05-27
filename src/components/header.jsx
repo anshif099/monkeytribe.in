@@ -8,8 +8,15 @@ const Header = ({ onNavigate, currentPage }) => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 24);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 24);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     handleScroll();

@@ -66,19 +66,27 @@ function cmsApiPlugin() {
 function inlineCssPlugin() {
   return {
     name: 'inline-css-plugin',
+    enforce: 'post',
     transformIndexHtml(html, ctx) {
       if (!ctx || !ctx.bundle) return html
       let newHtml = html
+      let allCss = ''
+
+      // Collect all CSS assets (index + vendor chunks)
       for (const [key, value] of Object.entries(ctx.bundle)) {
-        if (key.endsWith('.css') && value.type === 'asset' && key.startsWith('assets/index')) {
-          const cssContent = value.source
+        if (key.endsWith('.css') && value.type === 'asset') {
+          allCss += value.source
           // Remove the link tag for this CSS file
-          const linkRegex = new RegExp(`<link[^>]*href=["']?/?${key}["']?[^>]*>`, 'g')
+          const escapedKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+          const linkRegex = new RegExp(`<link[^>]*href=["']?/?${escapedKey}["']?[^>]*>`, 'g')
           newHtml = newHtml.replace(linkRegex, '')
-          // Insert style tag
-          newHtml = newHtml.replace('</head>', `<style>${cssContent}</style></head>`)
-          console.log(`Inlined ${key} successfully into index.html!`)
         }
+      }
+
+      if (allCss) {
+        // Insert combined style tag right before </head>
+        newHtml = newHtml.replace('</head>', `<style>${allCss}</style></head>`)
+        console.log(`Inlined ${allCss.length} bytes of CSS into index.html`)
       }
       return newHtml
     }
@@ -89,10 +97,14 @@ function inlineCssPlugin() {
 export default defineConfig({
   plugins: [react(), cmsApiPlugin(), inlineCssPlugin()],
   build: {
+    cssCodeSplit: false,
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
+              return 'react-vendor'
+            }
             return 'vendor'
           }
         }
@@ -100,3 +112,4 @@ export default defineConfig({
     }
   }
 })
+

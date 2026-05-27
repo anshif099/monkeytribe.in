@@ -7,25 +7,144 @@
     <title>Monkey Tribe | AI &amp; Digital Marketing Courses</title>
     <meta name="description" content="Monkey Tribe is the professional training &amp; education division of Creative Monkeys Advertising Pvt. Ltd., offering practical, hands-on courses in AI Prompt Engineering, Digital Marketing, Brand Building, and Copywriting built for the real world." />
 
-    <!-- Preload LCP image: stable URL, discovered immediately by browser preload scanner -->
+    <!-- Preload critical above-the-fold images with stable public URLs -->
     <link rel="preload" as="image" href="/face.webp" type="image/webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero-bg.webp" type="image/webp" />
 
-    <!-- Warm up font connections (non-blocking) -->
+    <!-- Warm up font connections — non-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Load Google Fonts 100% async — zero render-blocking -->
     <script>
-      (function() {
-        var l = document.createElement('link');
-        l.rel = 'stylesheet';
-        l.href = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600&display=swap';
-        document.head.appendChild(l);
-      })();
+      (function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600&display=swap';document.head.appendChild(l);})();
     </script>
+
+    <!-- Critical above-the-fold styles: paint the hero instantly before any JS loads -->
+    <style>
+      *{box-sizing:border-box}
+      html,body{margin:0;min-width:320px;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Inter",sans-serif;-webkit-font-smoothing:antialiased}
+      #root{min-height:100svh}
+      .home-page{margin:0;padding:0}
+      .header{width:100%;height:112px;position:absolute;top:0;left:0;z-index:1000;display:flex;align-items:center;background:transparent}
+      .header-container{width:90%;max-width:1720px;margin:0 auto;padding:0 clamp(24px,4vw,70px);display:flex;align-items:center;justify-content:space-between}
+      .header-logo img{width:115px;object-fit:contain;cursor:pointer}
+      .header-nav{display:flex;align-items:center;gap:clamp(16px,1.8vw,30px);flex:1;justify-content:center;margin:0 clamp(20px,2.5vw,40px)}
+      .header-nav a{text-decoration:none;color:#2f1d13;font-size:15px;font-weight:500}
+      .header-actions{display:flex;align-items:center;gap:20px}
+      .explore-btn{border:none;background:transparent;color:#2d1a11;font-size:18px;font-weight:700;cursor:pointer;padding:0}
+      .register-btn{border:none;background:#f8cb12;color:#000;padding:16px 28px;border-radius:14px;font-size:17px;font-weight:700;cursor:pointer}
+      .header-hamburger{display:none;flex-direction:column;justify-content:space-between;width:26px;height:18px;background:transparent;border:none;cursor:pointer;padding:0}
+      .hamburger-line{width:100%;height:2.5px;background:#2f1d13;border-radius:4px}
+      .hero-section{position:relative;height:100svh;min-height:760px;overflow:hidden;background-image:url('/hero-bg.webp');background-repeat:no-repeat;background-position:center top;background-size:cover}
+      .hero-section__face{position:absolute;z-index:1;left:max(18px,calc(50% - 932px));top:136px;width:clamp(600px,40vw,760px);height:auto;display:block;object-fit:contain}
+      .hero-section__copy{position:absolute;z-index:2;left:max(32px,calc(58% - 421px));top:231px;width:min(790px,calc(100% - 64px))}
+      .hero-section__eyebrow{display:inline-flex;align-items:center;gap:10px;height:34px;padding:0 17px;border:1px solid rgba(255,196,0,.54);border-radius:999px;color:#fff;font-size:17px;font-weight:900;line-height:1;text-transform:uppercase}
+      .hero-section__eyebrow span{width:7px;height:7px;border-radius:50%;background:#ffc400}
+      .hero-section h1{margin:43px 0 24px;color:#fff;font-size:4.5rem;line-height:1.04;font-weight:900}
+      .hero-section h1 span,.hero-section h1 strong{display:block}
+      .hero-section h1 strong{color:#ffc400;font-size:clamp(70px,4.95vw,95px);font-weight:900}
+      .hero-section p{max-width:700px;margin:0;color:#fff;font-size:clamp(22px,1.45vw,28px);line-height:1.28;font-weight:400}
+      .hero-section__tracks{display:flex;align-items:center;gap:15px;margin-top:53px}
+      .hero-track{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:160px;height:45px;border-radius:8px;color:#fff;font-size:16px;font-weight:600;text-decoration:none}
+      .hero-track svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      .hero-track--prompt{background:#4132c4}
+      .hero-track--growth{background:#057466}
+      .hero-track--brand{background:#8c3a12}
+      .hero-track--copy{background:#5228af}
+      .hero-track--prompt svg:first-child{fill:currentColor;stroke:none}
+      .hero-section__marks{position:absolute;z-index:2;right:max(122px,calc(50% - 832px));top:271px;width:210px;display:flex;flex-direction:column;align-items:center;gap:30px}
+      .hero-section__creative,.hero-section__logo2{display:block;object-fit:cover;object-position:50% 56%}
+      .hero-section__creative{width:174px;height:154px;mix-blend-mode:screen}
+      .hero-section__logo2{width:151px;height:181px;mix-blend-mode:multiply}
+      @media(max-width:1400px){.hero-section__face{left:18px;top:136px;width:560px}.hero-section__copy{left:425px;top:231px;width:calc(100% - 680px)}.hero-section__marks{right:52px;top:271px}}
+      @media(max-width:1120px){.hero-section{min-height:960px}.hero-section__face{left:50%;top:118px;width:min(420px,82vw);transform:translateX(-50%);opacity:.36}.hero-section__copy{left:50%;top:230px;width:min(720px,calc(100% - 40px));transform:translateX(-50%);text-align:center}.hero-section__tracks{justify-content:center;flex-wrap:wrap}.hero-section__marks{right:50%;top:auto;bottom:70px;width:min(360px,100% - 40px);transform:translateX(50%);flex-direction:row;justify-content:center;gap:22px}.hero-section__creative{width:142px;height:130px}.hero-section__logo2{width:122px;height:146px}}
+      @media(max-width:992px){.header-nav{display:none}.header-actions{display:none!important}.header{height:90px}.header-logo img{width:90px}.header-hamburger{display:flex}}
+      @media(max-width:640px){.hero-section{min-height:920px}.hero-section__copy{top:205px}.hero-section__eyebrow{max-width:100%;height:auto;min-height:34px;padding:9px 14px;font-size:13px}.hero-section h1{margin-top:32px;font-size:48px}.hero-section h1 strong{font-size:54px}.hero-section p{font-size:18px}.hero-section__tracks{margin-top:36px;gap:10px}.hero-track{min-width:148px;height:50px;font-size:15px}}
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <!--
+      Pre-rendered above-the-fold HTML: browser paints this INSTANTLY (FCP ~0.4s)
+      before any JavaScript loads. React loads and takes over seamlessly.
+    -->
+    <div id="root">
+      <main class="home-page">
+        <header class="header">
+          <div class="header-container">
+            <div class="header-logo">
+              <img src="/logo.webp" alt="Monkey Tribe" width="115" height="153" />
+            </div>
+            <nav class="header-nav">
+              <a href="#" class="active">Home</a>
+              <a href="#">Courses</a>
+              <a href="#">Programmes</a>
+              <a href="#">Webinars</a>
+              <a href="#">Blog</a>
+              <a href="#">About</a>
+              <a href="#">Contact</a>
+            </nav>
+            <div class="header-actions">
+              <button class="explore-btn">Explore Courses</button>
+              <button class="register-btn">Register Now</button>
+            </div>
+            <button class="header-hamburger" aria-label="Toggle Navigation Menu">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </button>
+          </div>
+        </header>
+
+        <section class="hero-section" id="home">
+          <!-- LCP element: preloaded, discoverable from HTML immediately -->
+          <img class="hero-section__face" src="/face.webp" alt="" aria-hidden="true"
+               width="420" height="387" fetchpriority="high" loading="eager" decoding="sync" />
+
+          <div class="hero-section__copy">
+            <div class="hero-section__eyebrow">
+              <span></span>Education by Creative Monkeys
+            </div>
+            <h1>
+              <span>Master the</span>
+              <strong>Future of AI.</strong>
+            </h1>
+            <p>Monkey Tribe is the education &amp; training division of Creative Monkeys
+               Advertising &mdash; bringing advertising intelligence and AI expertise
+               together in programmes built for the real world.</p>
+            <div class="hero-section__tracks" aria-label="Course tracks">
+              <a class="hero-track hero-track--prompt" href="#">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.3L19 10l-5.2 1.7L12 17l-1.8-5.3L5 10l5.2-1.7L12 3z"/><path d="M5 15l.8 2.2L8 18l-2.2.8L5 21l-.8-2.2L2 18l2.2-.8L5 15z"/></svg>
+                <span>PromptX</span>
+                <svg class="hero-track__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="hero-track hero-track--growth" href="#">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16l5-5 4 4 7-8"/><path d="M14 7h6v6"/></svg>
+                <span>GrowthX</span>
+                <svg class="hero-track__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="hero-track hero-track--brand" href="#">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4-8 4-8-4 8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 17l8 4 8-4"/></svg>
+                <span>BrandX</span>
+                <svg class="hero-track__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="hero-track hero-track--copy" href="#">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4l10 5-4 3-3 7L6 7l2-3z"/><path d="M8 4l3 8 7-3"/></svg>
+                <span>CopyCraft</span>
+                <svg class="hero-track__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-section__marks" aria-hidden="true">
+            <img class="hero-section__creative" src="/creative-monkeys.webp" alt=""
+                 width="142" height="130" loading="lazy" decoding="async" />
+            <img class="hero-section__logo2" src="/logo2.webp" alt=""
+                 width="214" height="267" loading="lazy" decoding="async" />
+          </div>
+        </section>
+      </main>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,5 +1,3 @@
-import creativeMonkeys from '../assets/creative-monkeys.webp'
-import logo2 from '../assets/logo2.webp'
 import './hero.css'
 
 const tracks = [
@@ -103,9 +101,8 @@ function Hero({ onNavigate }) {
       </div>
 
       <div className="hero-section__marks" aria-hidden="true">
-        {/* Correct intrinsic sizes to match CSS displayed dimensions to avoid over-downloading */}
-        <img className="hero-section__creative" src={creativeMonkeys} alt="" width="142" height="130" loading="lazy" decoding="async" />
-        <img className="hero-section__logo2" src={logo2} alt="" width="214" height="267" loading="lazy" decoding="async" />
+        <img className="hero-section__creative" src="/creative-monkeys.webp" alt="" width="142" height="130" loading="lazy" decoding="async" />
+        <img className="hero-section__logo2" src="/logo2.webp" alt="" width="214" height="267" loading="lazy" decoding="async" />
       </div>
 
       {/* <div className="hero-section__scroll" aria-hidden="true">

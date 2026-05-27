@@ -30,7 +30,7 @@ const Header = ({ onNavigate, currentPage }) => {
       <div className="header-container">
         {/* Left */}
         <div className="header-logo" onClick={handleHomeClick}>
-          <img src={logo} alt="Monkey Tribe" width="300" height="399" />
+          <img src={logo} alt="Monkey Tribe" width="200" height="266" />
         </div>
 
         {/* Center */}

@@ -50,7 +50,7 @@ const tracks = [
 function Hero({ onNavigate }) {
   return (
     <section className="hero-section" id="home">
-      <img className="hero-section__face" src={face} alt="" aria-hidden="true" width="520" height="480" fetchpriority="high" loading="eager" />
+      <img className="hero-section__face" src={face} alt="" aria-hidden="true" width="400" height="369" fetchpriority="high" loading="eager" />
 
       <div className="hero-section__copy">
         <div className="hero-section__eyebrow">
@@ -103,8 +103,8 @@ function Hero({ onNavigate }) {
       </div>
 
       <div className="hero-section__marks" aria-hidden="true">
-        <img className="hero-section__creative" src={creativeMonkeys} alt="" width="300" height="399" loading="lazy" />
-        <img className="hero-section__logo2" src={logo2} alt="" width="600" height="750" loading="lazy" />
+        <img className="hero-section__creative" src={creativeMonkeys} alt="" width="200" height="266" loading="lazy" />
+        <img className="hero-section__logo2" src={logo2} alt="" width="300" height="375" loading="lazy" />
       </div>
 
       {/* <div className="hero-section__scroll" aria-hidden="true">

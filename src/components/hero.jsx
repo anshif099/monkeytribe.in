@@ -1,5 +1,4 @@
 import creativeMonkeys from '../assets/creative-monkeys.webp'
-import face from '../assets/face.webp'
 import logo2 from '../assets/logo2.webp'
 import './hero.css'
 
@@ -50,7 +49,8 @@ const tracks = [
 function Hero({ onNavigate }) {
   return (
     <section className="hero-section" id="home">
-      <img className="hero-section__face" src={face} alt="" aria-hidden="true" width="420" height="387" fetchpriority="high" loading="eager" decoding="sync" />
+      {/* LCP image: stable public URL matches <link rel="preload"> in index.html */}
+      <img className="hero-section__face" src="/face.webp" alt="" aria-hidden="true" width="420" height="387" fetchpriority="high" loading="eager" decoding="sync" />
 
       <div className="hero-section__copy">
         <div className="hero-section__eyebrow">
@@ -103,8 +103,9 @@ function Hero({ onNavigate }) {
       </div>
 
       <div className="hero-section__marks" aria-hidden="true">
-        <img className="hero-section__creative" src={creativeMonkeys} alt="" width="200" height="266" loading="lazy" />
-        <img className="hero-section__logo2" src={logo2} alt="" width="300" height="375" loading="lazy" />
+        {/* Correct intrinsic sizes to match CSS displayed dimensions to avoid over-downloading */}
+        <img className="hero-section__creative" src={creativeMonkeys} alt="" width="142" height="130" loading="lazy" decoding="async" />
+        <img className="hero-section__logo2" src={logo2} alt="" width="214" height="267" loading="lazy" decoding="async" />
       </div>
 
       {/* <div className="hero-section__scroll" aria-hidden="true">

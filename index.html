@@ -4,16 +4,25 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/webp" href="/logo.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monkey Tribe | AI & Digital Marketing Courses</title>
+    <title>Monkey Tribe | AI &amp; Digital Marketing Courses</title>
     <meta name="description" content="Monkey Tribe is the professional training &amp; education division of Creative Monkeys Advertising Pvt. Ltd., offering practical, hands-on courses in AI Prompt Engineering, Digital Marketing, Brand Building, and Copywriting built for the real world." />
-    <!-- DNS prefetch -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <!-- Preconnect to Google Fonts -->
+
+    <!-- Preload LCP image: stable URL, discovered immediately by browser preload scanner -->
+    <link rel="preload" as="image" href="/face.webp" type="image/webp" fetchpriority="high" />
+
+    <!-- Warm up font connections (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Minimal font load: only 2 families, critical weights, display=optional avoids render-block -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600&display=optional" />
+
+    <!-- Load Google Fonts 100% async — zero render-blocking -->
+    <script>
+      (function() {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600&display=swap';
+        document.head.appendChild(l);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

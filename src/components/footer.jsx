@@ -20,9 +20,14 @@ const Footer = () => {
             <img src={logo} alt="Monkey Tribe" className="footer-logo" width="200" height="266" />
             <p className="footer-tagline">
               The education &amp; training division of{" "}
-              <span className="footer-tagline--highlight">
+              <a
+                href="https://creativemonkeys.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-tagline--highlight"
+              >
                 Creative Monkeys Advertising Pvt. Ltd.
-              </span>{" "}
+              </a>{" "}
               — empowering the next generation of AI-fluent professionals.
             </p>
 
@@ -134,7 +139,14 @@ const Footer = () => {
               </li>
               <li className="footer-division">
                 A division of{" "}
-                <strong>Creative Monkeys Advertising Pvt. Ltd.</strong>
+                <a
+                  href="https://creativemonkeys.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-cm-link"
+                >
+                  <strong>Creative Monkeys Advertising Pvt. Ltd.</strong>
+                </a>
               </li>
             </ul>
           </div>

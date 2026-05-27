@@ -96,6 +96,9 @@ function inlineCssPlugin() {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), cmsApiPlugin(), inlineCssPlugin()],
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-dom/client']
+  },
   build: {
     cssCodeSplit: false,
     rollupOptions: {

@@ -55,6 +55,8 @@
       .hero-track--prompt svg:first-child{fill:currentColor;stroke:none}
       .hero-section__marks{position:absolute;z-index:2;right:max(122px,calc(50% - 832px));top:271px;width:210px;display:flex;flex-direction:column;align-items:center;gap:30px}
       .hero-section__creative,.hero-section__logo2{display:block;object-fit:cover;object-position:50% 56%}
+      .hero-section__creative-link{display:block;transition:opacity 0.2s ease,transform 0.2s ease;cursor:pointer}
+      .hero-section__creative-link:hover{opacity:0.8;transform:scale(1.03)}
       .hero-section__creative{width:174px;height:154px;mix-blend-mode:screen}
       .hero-section__logo2{width:151px;height:181px;mix-blend-mode:multiply}
       @media(max-width:1400px){.hero-section__face{left:18px;top:136px;width:560px}.hero-section__copy{left:425px;top:231px;width:calc(100% - 680px)}.hero-section__marks{right:52px;top:271px}}
@@ -102,9 +104,9 @@
                width="420" height="387" fetchpriority="high" loading="eager" decoding="sync" />
 
           <div class="hero-section__copy">
-            <div class="hero-section__eyebrow">
+            <a class="hero-section__eyebrow" href="https://creativemonkeys.in/" target="_blank" rel="noopener noreferrer">
               <span></span>Education by Creative Monkeys
-            </div>
+            </a>
             <h1>
               <span>Master the</span>
               <strong>Future of AI.</strong>
@@ -136,10 +138,12 @@
             </div>
           </div>
 
-          <div class="hero-section__marks" aria-hidden="true">
-            <img class="hero-section__creative" src="/creative-monkeys.webp" alt=""
-                 width="142" height="130" loading="lazy" decoding="async" />
-            <img class="hero-section__logo2" src="/logo2.webp" alt=""
+          <div class="hero-section__marks">
+            <a href="https://creativemonkeys.in/" target="_blank" rel="noopener noreferrer" class="hero-section__creative-link" aria-label="Creative Monkeys">
+              <img class="hero-section__creative" src="/creative-monkeys.webp" alt="Creative Monkeys Logo"
+                   width="142" height="130" loading="lazy" decoding="async" />
+            </a>
+            <img class="hero-section__logo2" src="/logo2.webp" alt="" aria-hidden="true"
                  width="214" height="267" loading="lazy" decoding="async" />
           </div>
         </section>

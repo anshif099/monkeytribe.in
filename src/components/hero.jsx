@@ -48,13 +48,13 @@ function Hero({ onNavigate }) {
   return (
     <section className="hero-section" id="home">
       {/* LCP image: stable public URL matches <link rel="preload"> in index.html */}
-      <img className="hero-section__face" src="/face.webp" alt="" aria-hidden="true" width="420" height="387" fetchpriority="high" loading="eager" decoding="sync" />
+      <img className="hero-section__face" src="/face.webp" alt="" aria-hidden="true" width="420" height="387" fetchPriority="high" loading="eager" decoding="sync" />
 
       <div className="hero-section__copy">
-        <div className="hero-section__eyebrow">
+        <a className="hero-section__eyebrow" href="https://creativemonkeys.in/" target="_blank" rel="noopener noreferrer">
           <span></span>
           Education by Creative Monkeys
-        </div>
+        </a>
 
         <h1>
           <span>Master the</span>
@@ -100,9 +100,17 @@ function Hero({ onNavigate }) {
         </div>
       </div>
 
-      <div className="hero-section__marks" aria-hidden="true">
-        <img className="hero-section__creative" src="/creative-monkeys.webp" alt="" width="142" height="130" loading="lazy" decoding="async" />
-        <img className="hero-section__logo2" src="/logo2.webp" alt="" width="214" height="267" loading="lazy" decoding="async" />
+      <div className="hero-section__marks">
+        <a
+          href="https://creativemonkeys.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hero-section__creative-link"
+          aria-label="Creative Monkeys"
+        >
+          <img className="hero-section__creative" src="/creative-monkeys.webp" alt="Creative Monkeys Logo" width="142" height="130" loading="lazy" decoding="async" />
+        </a>
+        <img className="hero-section__logo2" src="/logo2.webp" alt="" aria-hidden="true" width="214" height="267" loading="lazy" decoding="async" />
       </div>
 
       {/* <div className="hero-section__scroll" aria-hidden="true">

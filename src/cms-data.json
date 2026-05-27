@@ -1,0 +1,8 @@
+{
+  "home": {
+    "section#home > img": {
+      "styles": {},
+      "src": "/cms-images/face-bg-no.png"
+    }
+  }
+}

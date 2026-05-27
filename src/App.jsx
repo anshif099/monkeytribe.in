@@ -11,6 +11,7 @@ import Webinars from './pages/webinars.jsx'
 import Blog from './pages/blog.jsx'
 import About from './pages/about.jsx'
 import Register from './pages/register.jsx'
+import CmsManager from './components/CmsManager.jsx'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home')
@@ -23,51 +24,40 @@ function App() {
   // Expose routing globally to avoid prop drilling in deeply nested footer/header elements
   window.__navigate = handleNavigate;
 
+  let pageContent;
+
   if (currentPage === 'promptx') {
-    return <PromptX onNavigate={handleNavigate} />
+    pageContent = <PromptX onNavigate={handleNavigate} />
+  } else if (currentPage === 'growthx') {
+    pageContent = <GrowthX onNavigate={handleNavigate} />
+  } else if (currentPage === 'brandx') {
+    pageContent = <BrandX onNavigate={handleNavigate} />
+  } else if (currentPage === 'copycraft') {
+    pageContent = <CopyCraft onNavigate={handleNavigate} />
+  } else if (currentPage === 'courses') {
+    pageContent = <Courses onNavigate={handleNavigate} />
+  } else if (currentPage === 'contact') {
+    pageContent = <Contact onNavigate={handleNavigate} />
+  } else if (currentPage === 'programmes') {
+    pageContent = <Programmes onNavigate={handleNavigate} />
+  } else if (currentPage === 'webinars') {
+    pageContent = <Webinars onNavigate={handleNavigate} />
+  } else if (currentPage === 'blog') {
+    pageContent = <Blog onNavigate={handleNavigate} />
+  } else if (currentPage === 'about') {
+    pageContent = <About onNavigate={handleNavigate} />
+  } else if (currentPage === 'register') {
+    pageContent = <Register onNavigate={handleNavigate} />
+  } else {
+    pageContent = <Home onNavigate={handleNavigate} />
   }
 
-  if (currentPage === 'growthx') {
-    return <GrowthX onNavigate={handleNavigate} />
-  }
-
-  if (currentPage === 'brandx') {
-    return <BrandX onNavigate={handleNavigate} />
-  }
-
-  if (currentPage === 'copycraft') {
-    return <CopyCraft onNavigate={handleNavigate} />
-  }
-
-  if (currentPage === 'courses') {
-    return <Courses onNavigate={handleNavigate} />
-  }
-
-  if (currentPage === 'contact') {
-    return <Contact onNavigate={handleNavigate} />
-  }
-
-  if (currentPage === 'programmes') {
-    return <Programmes onNavigate={handleNavigate} />
-  }
-
-  if (currentPage === 'webinars') {
-    return <Webinars onNavigate={handleNavigate} />
-  }
-
-  if (currentPage === 'blog') {
-    return <Blog onNavigate={handleNavigate} />
-  }
-
-  if (currentPage === 'about') {
-    return <About onNavigate={handleNavigate} />
-  }
-
-  if (currentPage === 'register') {
-    return <Register onNavigate={handleNavigate} />
-  }
-
-  return <Home onNavigate={handleNavigate} />
+  return (
+    <>
+      <CmsManager currentPage={currentPage} onNavigate={handleNavigate} />
+      {pageContent}
+    </>
+  )
 }
 
 export default App

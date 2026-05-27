@@ -1,0 +1,642 @@
+/* PREMIUM CMS STYLING - ISOLATED UNDER .mt-cms */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+.mt-cms {
+  --cms-bg-dark: rgba(10, 10, 16, 0.95);
+  --cms-bg-glass: rgba(15, 15, 25, 0.7);
+  --cms-border-light: rgba(255, 255, 255, 0.08);
+  --cms-border-glow: rgba(0, 240, 255, 0.3);
+  --cms-accent-cyan: #00f0ff;
+  --cms-accent-purple: #9d4edd;
+  --cms-text-main: #f8f9fa;
+  --cms-text-muted: #a0aec0;
+  --cms-font: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --cms-font-display: 'Outfit', sans-serif;
+  
+  font-family: var(--cms-font);
+  color: var(--cms-text-main);
+  box-sizing: border-box;
+}
+
+.mt-cms * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   1. ADMIN LOGIN PAGE (FULLSCREEN CARD)
+   ========================================================================== */
+.mt-cms-login-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000000;
+  background: radial-gradient(circle at 30% 30%, rgba(20, 15, 45, 0.97), rgba(5, 5, 10, 0.99));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.mt-cms-login-card {
+  background: rgba(20, 20, 30, 0.45);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid var(--cms-border-light);
+  border-radius: 28px;
+  padding: 48px;
+  width: 460px;
+  max-width: 90%;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7),
+              0 0 40px rgba(157, 78, 221, 0.1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.mt-cms-login-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.mt-cms-login-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.mt-cms-login-logo img {
+  height: 48px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.2));
+}
+
+.mt-cms-login-logo h2 {
+  font-family: var(--cms-font-display);
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 30%, var(--cms-accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.mt-cms-login-logo p {
+  font-size: 14px;
+  color: var(--cms-text-muted);
+}
+
+.mt-cms-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mt-cms-input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.mt-cms-input-group label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--cms-text-muted);
+}
+
+.mt-cms-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-family: var(--cms-font);
+  color: #fff;
+  font-size: 15px;
+  transition: all 0.25s ease;
+}
+
+.mt-cms-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--cms-accent-cyan);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.mt-cms-login-error {
+  color: #ff4757;
+  font-size: 13px;
+  background: rgba(255, 71, 87, 0.08);
+  border: 1px solid rgba(255, 71, 87, 0.15);
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 500;
+  animation: shake 0.4s ease;
+}
+
+.mt-cms-login-btn {
+  background: linear-gradient(135deg, var(--cms-accent-cyan) 0%, #00b4d8 100%);
+  color: #03045e;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mt-cms-login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 240, 255, 0.4);
+}
+
+.mt-cms-login-btn:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   2. FLOATING CONTROL BAR (TOP BAR)
+   ========================================================================== */
+.mt-cms-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(10, 10, 18, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--cms-border-light);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Offset body content so it doesn't hide behind the sticky admin bar */
+body.mt-cms-admin-active {
+  margin-top: 64px !important;
+}
+
+body.mt-cms-admin-active .header {
+  top: 64px !important;
+}
+
+.mt-cms-topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mt-cms-topbar-logo {
+  height: 32px;
+  filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.2));
+}
+
+.mt-cms-topbar-title {
+  font-family: var(--cms-font-display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mt-cms-badge {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--cms-accent-purple) 0%, #7209b7 100%);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mt-cms-topbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mt-cms-mode-toggle {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px;
+  border-radius: 30px;
+  display: flex;
+  gap: 4px;
+}
+
+.mt-cms-mode-btn {
+  background: transparent;
+  border: none;
+  color: var(--cms-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mt-cms-mode-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.mt-cms-mode-btn.active {
+  background: rgba(0, 240, 255, 0.1);
+  color: var(--cms-accent-cyan);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+}
+
+.mt-cms-mode-btn.active.edit-mode {
+  background: rgba(157, 78, 221, 0.15);
+  color: #d8b4fe;
+  border-color: rgba(157, 78, 221, 0.3);
+}
+
+.mt-cms-page-indicator {
+  font-size: 13px;
+  color: var(--cms-text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mt-cms-page-indicator strong {
+  color: var(--cms-accent-cyan);
+  text-transform: capitalize;
+}
+
+.mt-cms-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mt-cms-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mt-cms-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.mt-cms-btn-primary {
+  background: linear-gradient(135deg, var(--cms-accent-cyan) 0%, #00b4d8 100%);
+  color: #03045e;
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0, 240, 255, 0.15);
+}
+
+.mt-cms-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 240, 255, 0.3);
+}
+
+.mt-cms-btn-primary:disabled {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cms-text-muted);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.mt-cms-btn-danger {
+  color: #ff4d4d;
+  border-color: rgba(255, 77, 77, 0.2);
+}
+
+.mt-cms-btn-danger:hover {
+  background: rgba(255, 77, 77, 0.08);
+  border-color: rgba(255, 77, 77, 0.4);
+}
+
+/* ==========================================================================
+   3. EDIT MODE HIGHLIGHT OVERLAY (DOM OUTLINER)
+   ========================================================================== */
+.mt-cms-highlighter {
+  position: absolute;
+  pointer-events: none;
+  border: 2px dashed var(--cms-accent-cyan);
+  border-radius: 6px;
+  z-index: 999998;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+  transition: all 0.08s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.mt-cms-highlighter-label {
+  position: absolute;
+  top: -24px;
+  left: -2px;
+  background: var(--cms-accent-cyan);
+  color: #03045e;
+  font-family: var(--cms-font-display);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px 4px 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 -2px 10px rgba(0, 240, 255, 0.2);
+}
+
+/* Custom cursors in Edit Mode */
+body.mt-cms-edit-active * {
+  cursor: cell !important;
+}
+
+/* Text-bearing elements should show a text cursor in edit mode */
+body.mt-cms-edit-active p,
+body.mt-cms-edit-active span,
+body.mt-cms-edit-active h1,
+body.mt-cms-edit-active h2,
+body.mt-cms-edit-active h3,
+body.mt-cms-edit-active h4,
+body.mt-cms-edit-active h5,
+body.mt-cms-edit-active h6,
+body.mt-cms-edit-active a,
+body.mt-cms-edit-active li,
+body.mt-cms-edit-active strong,
+body.mt-cms-edit-active em,
+body.mt-cms-edit-active button {
+  cursor: text !important;
+}
+
+/* While actively dragging, show move cursor globally and block text selection highlights */
+body.mt-cms-dragging,
+body.mt-cms-dragging * {
+  cursor: move !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+/* Enable pointer events on standard interactive tags so they can be clicked/edited individually in the header */
+body.mt-cms-edit-active a,
+body.mt-cms-edit-active button,
+body.mt-cms-edit-active [role="button"],
+body.mt-cms-edit-active img {
+  pointer-events: auto !important;
+}
+
+/* Default CMS interface elements should have pointer controls */
+body.mt-cms-edit-active .mt-cms,
+body.mt-cms-edit-active .mt-cms * {
+  pointer-events: auto !important;
+  cursor: default !important;
+}
+
+/* Text editor overrides during typing */
+body.mt-cms-text-editing * {
+  cursor: auto !important;
+}
+
+body.mt-cms-text-editing [contenteditable="true"] {
+  cursor: text !important;
+  outline: 2px dashed var(--cms-accent-cyan) !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important;
+}
+
+/* Selected Element Overlay border */
+.mt-cms-selected-border {
+  position: absolute;
+  pointer-events: none;
+  border: 2.5px solid var(--cms-accent-purple);
+  border-radius: 6px;
+  z-index: 999997;
+  box-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
+  animation: pulseGlow 1.5s infinite alternate;
+}
+
+/* ==========================================================================
+   4. PROPERTIES SIDEBAR PANEL
+   ========================================================================== */
+/* ==========================================================================
+   4. FLOATING CONTEXT MENU (VISUAL BUILDER TOOLBAR)
+   ========================================================================== */
+.mt-cms-floating-menu {
+  position: absolute;
+  z-index: 999999;
+  background: rgba(15, 15, 26, 0.85);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.6),
+              0 0 15px rgba(0, 240, 255, 0.15);
+  pointer-events: auto;
+  font-family: var(--cms-font);
+  animation: slideUpShort 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  user-select: none;
+}
+
+.mt-cms-floating-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding-right: 12px;
+}
+
+.mt-cms-floating-item:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.mt-cms-floating-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--cms-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mt-cms-floating-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mt-cms-floating-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--cms-accent-cyan);
+  color: var(--cms-accent-cyan);
+}
+
+.mt-cms-floating-color {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  transition: transform 0.15s ease;
+}
+
+.mt-cms-floating-color:hover {
+  transform: scale(1.15);
+}
+
+.mt-cms-floating-color input[type="color"] {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.mt-cms-drag-indicator {
+  font-size: 10px;
+  font-weight: 700;
+  color: #d8b4fe;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mt-cms-drag-indicator svg {
+  width: 12px;
+  height: 12px;
+  color: var(--cms-accent-purple);
+  animation: wobble 2s infinite ease-in-out;
+}
+
+@keyframes slideUpShort {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes wobble {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+/* ==========================================================================
+   5. PREMIUM TOAST NOTIFICATION
+   ========================================================================== */
+.mt-cms-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(10, 10, 18, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  padding: 16px 24px;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px rgba(0, 240, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10000000;
+  animation: slideUp 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.mt-cms-toast-success svg {
+  color: var(--cms-accent-cyan);
+  width: 18px;
+  height: 18px;
+}
+
+/* ==========================================================================
+   6. ANIMATIONS
+   ========================================================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+@keyframes pulseGlow {
+  from { box-shadow: 0 0 10px rgba(157, 78, 221, 0.4); }
+  to { box-shadow: 0 0 25px rgba(157, 78, 221, 0.7), 0 0 5px rgba(0, 240, 255, 0.2); }
+}

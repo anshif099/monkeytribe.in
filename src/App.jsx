@@ -1,17 +1,19 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import Home from './pages/home.jsx'
-import PromptX from './pages/promptx.jsx'
-import GrowthX from './pages/growthx.jsx'
-import BrandX from './pages/brandx.jsx'
-import CopyCraft from './pages/copycraft.jsx'
-import Courses from './pages/courses.jsx'
-import Contact from './pages/contact.jsx'
-import Programmes from './pages/programmes.jsx'
-import Webinars from './pages/webinars.jsx'
-import Blog from './pages/blog.jsx'
-import About from './pages/about.jsx'
-import Register from './pages/register.jsx'
 import CmsManager from './components/CmsManager.jsx'
+
+// Dynamically import subpages to enable code splitting
+const PromptX = lazy(() => import('./pages/promptx.jsx'))
+const GrowthX = lazy(() => import('./pages/growthx.jsx'))
+const BrandX = lazy(() => import('./pages/brandx.jsx'))
+const CopyCraft = lazy(() => import('./pages/copycraft.jsx'))
+const Courses = lazy(() => import('./pages/courses.jsx'))
+const Contact = lazy(() => import('./pages/contact.jsx'))
+const Programmes = lazy(() => import('./pages/programmes.jsx'))
+const Webinars = lazy(() => import('./pages/webinars.jsx'))
+const Blog = lazy(() => import('./pages/blog.jsx'))
+const About = lazy(() => import('./pages/about.jsx'))
+const Register = lazy(() => import('./pages/register.jsx'))
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home')
@@ -55,7 +57,9 @@ function App() {
   return (
     <>
       <CmsManager currentPage={currentPage} onNavigate={handleNavigate} />
-      {pageContent}
+      <Suspense fallback={<div className="page-loading-fallback" style={{ minHeight: '100vh', background: '#0b0c10' }}></div>}>
+        {pageContent}
+      </Suspense>
     </>
   )
 }

@@ -66,4 +66,15 @@ function cmsApiPlugin() {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), cmsApiPlugin()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor'
+          }
+        }
+      }
+    }
+  }
 })

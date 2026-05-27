@@ -265,6 +265,10 @@ function CmsManager({ currentPage, onNavigate }) {
 
   // Setup MutationObserver on document load / change of cmsData or text-edit state
   useEffect(() => {
+    // High-performance bypass: avoid running MutationObserver on load for standard public visitors
+    const hasLocalEdits = localStorage.getItem('mt_cms_data') !== null;
+    if (!isLoggedIn && !isAdminPath && !hasLocalEdits) return;
+
     applyCmsDataToDom(cmsData);
     
     observerRef.current = new MutationObserver(() => {
@@ -284,15 +288,19 @@ function CmsManager({ currentPage, onNavigate }) {
         observerRef.current.disconnect();
       }
     };
-  }, [cmsData, isTextEditing]);
+  }, [cmsData, isTextEditing, isLoggedIn, isAdminPath]);
 
   // Re-apply styles on page/currentRoute change to avoid loading delays
   useEffect(() => {
+    // High-performance bypass: avoid running layout computations on route changes for standard public visitors
+    const hasLocalEdits = localStorage.getItem('mt_cms_data') !== null;
+    if (!isLoggedIn && !isAdminPath && !hasLocalEdits) return;
+
     const timer = setTimeout(() => {
       applyCmsDataToDom(cmsData);
     }, 150);
     return () => clearTimeout(timer);
-  }, [currentPage]);
+  }, [currentPage, isLoggedIn, isAdminPath]);
 
   // 3. HANDLERS FOR ELEMENT SELECTOR, DRAGGING AND IN-PLACE TEXT EDITING
   useEffect(() => {

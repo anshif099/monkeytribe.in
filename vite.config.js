@@ -63,9 +63,31 @@ function cmsApiPlugin() {
   }
 }
 
+function inlineCssPlugin() {
+  return {
+    name: 'inline-css-plugin',
+    transformIndexHtml(html, ctx) {
+      if (!ctx || !ctx.bundle) return html
+      let newHtml = html
+      for (const [key, value] of Object.entries(ctx.bundle)) {
+        if (key.endsWith('.css') && value.type === 'asset' && key.startsWith('assets/index')) {
+          const cssContent = value.source
+          // Remove the link tag for this CSS file
+          const linkRegex = new RegExp(`<link[^>]*href=["']?/?${key}["']?[^>]*>`, 'g')
+          newHtml = newHtml.replace(linkRegex, '')
+          // Insert style tag
+          newHtml = newHtml.replace('</head>', `<style>${cssContent}</style></head>`)
+          console.log(`Inlined ${key} successfully into index.html!`)
+        }
+      }
+      return newHtml
+    }
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), cmsApiPlugin()],
+  plugins: [react(), cmsApiPlugin(), inlineCssPlugin()],
   build: {
     rollupOptions: {
       output: {

@@ -10,7 +10,7 @@ function Blog({ onNavigate }) {
       {/* Header — standard light header like home */}
       <Header onNavigate={onNavigate} currentPage="blog" />
 
-      {/* Blog Hero with Blog-Hero.png */}
+      {/* Blog Hero with Blog-Hero.webp */}
       <BlogHero />
 
       {/* Interactive Blog Cards Grid with Filters */}

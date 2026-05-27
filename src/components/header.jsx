@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./header.css";
 
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 
 const Header = ({ onNavigate, currentPage }) => {
   const [isScrolled, setIsScrolled] = useState(false);

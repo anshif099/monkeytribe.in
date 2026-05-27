@@ -1,4 +1,4 @@
-import aboutBrand from '../assets/about-brand.png'
+import aboutBrand from '../assets/about-brand.webp'
 import './Our-Heritage.css'
 
 function OurHeritage() {

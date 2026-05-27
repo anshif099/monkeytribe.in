@@ -1,5 +1,5 @@
 import "./footer.css";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 
 const Footer = () => {
   const navigateTo = (page) => (e) => {

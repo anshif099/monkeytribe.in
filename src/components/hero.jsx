@@ -1,6 +1,6 @@
-import creativeMonkeys from '../assets/creative-monkeys.png'
-import face from '../assets/face.png'
-import logo2 from '../assets/logo2.png'
+import creativeMonkeys from '../assets/creative-monkeys.webp'
+import face from '../assets/face.webp'
+import logo2 from '../assets/logo2.webp'
 import './hero.css'
 
 const tracks = [

@@ -1,6 +1,6 @@
 import React from 'react';
 import './our-story.css';
-import teamImg from '../assets/team.png';
+import teamImg from '../assets/team.webp';
 
 function OurStory() {
   return (

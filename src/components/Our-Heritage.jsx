@@ -15,9 +15,15 @@ function OurHeritage() {
 
           <p>
             Monkey Tribe is the education &amp; training division of{' '}
-            <strong>Creative Monkeys Advertising Pvt. Ltd.</strong> &mdash; a full-service
-            advertising agency with deep roots in brand strategy, digital marketing, and
-            creative communication.
+            <a
+              href="https://creativemonkeys.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="our-heritage__link"
+            >
+              <strong>Creative Monkeys Advertising Pvt. Ltd.</strong>
+            </a>{' '}
+            &mdash; a full-service advertising agency with deep roots in brand strategy, digital marketing, and creative communication.
           </p>
 
           <p>
@@ -32,7 +38,14 @@ function OurHeritage() {
 
           <div className="our-heritage__badge">
             <span>A division of</span>
-            <strong>Creative Monkeys Advertising</strong>
+            <a
+              href="https://creativemonkeys.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="our-heritage__badge-link"
+            >
+              <strong>Creative Monkeys Advertising</strong>
+            </a>
           </div>
         </div>
       </div>

@@ -141,3 +141,30 @@
     bottom: 16px;
   }
 }
+
+.our-heritage__link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+  display: inline;
+}
+
+.our-heritage__link:hover {
+  color: #f8cb12; /* Premium brand yellow hover for a high-end feel */
+  opacity: 0.95;
+}
+
+.our-heritage__badge-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.our-heritage__badge-link:hover {
+  color: #f8cb12; /* Premium brand yellow hover on overlapping badge */
+  opacity: 0.95;
+}

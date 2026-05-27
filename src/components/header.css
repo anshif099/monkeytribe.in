@@ -41,7 +41,7 @@
 /* ================= LOGO ================= */
 
 .header-logo img {
-  width: 115px;
+  width: 100px;
   object-fit: contain;
   cursor: pointer;
 }

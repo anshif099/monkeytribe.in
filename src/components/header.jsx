@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./header.css";
 
-import logo from "../assets/logo.webp";
+
 
 const Header = ({ onNavigate, currentPage }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,7 +37,7 @@ const Header = ({ onNavigate, currentPage }) => {
       <div className="header-container">
         {/* Left */}
         <div className="header-logo" onClick={handleHomeClick}>
-          <img src={logo} alt="Monkey Tribe" width="200" height="266" />
+          <img src="/header-logo.png" alt="Monkey Tribe" width="115" height="auto" />
         </div>
 
         {/* Center */}

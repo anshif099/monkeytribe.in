@@ -28,7 +28,7 @@ function OurHeritage() {
         </div>
 
         <div className="our-heritage__media">
-          <img src={aboutBrand} alt="Creative Monkeys team in a studio" />
+          <img src={aboutBrand} alt="Creative Monkeys team in a studio" width="1200" height="800" loading="lazy" />
 
           <div className="our-heritage__badge">
             <span>A division of</span>

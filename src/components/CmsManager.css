@@ -1,7 +1,5 @@
 /* PREMIUM CMS STYLING - ISOLATED UNDER .mt-cms */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-
 .mt-cms {
   --cms-bg-dark: rgba(10, 10, 16, 0.95);
   --cms-bg-glass: rgba(15, 15, 25, 0.7);

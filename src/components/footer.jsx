@@ -17,7 +17,7 @@ const Footer = () => {
 
           {/* Brand column */}
           <div className="footer-brand">
-            <img src={logo} alt="Monkey Tribe" className="footer-logo" />
+            <img src={logo} alt="Monkey Tribe" className="footer-logo" width="300" height="399" />
             <p className="footer-tagline">
               The education &amp; training division of{" "}
               <span className="footer-tagline--highlight">

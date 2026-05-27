@@ -14,6 +14,9 @@ function OurStory() {
               src={teamImg} 
               alt="Monkey Tribe team collaborating around a table with a tablet" 
               className="our-story__image"
+              width="1200"
+              height="800"
+              loading="lazy"
             />
             <div className="our-story__badge" role="presentation">
               <span className="our-story__badge-est">EST. 2024</span>

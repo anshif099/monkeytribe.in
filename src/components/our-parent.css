@@ -216,3 +216,31 @@
     font-size: 14px;
   }
 }
+
+.our-parent__link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  display: inline-block;
+}
+
+.our-parent__link:hover {
+  color: #f8cb12; /* Brand yellow hover color on light background for great contrast and modern aesthetics */
+  opacity: 0.9;
+}
+
+.our-parent__card-link {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.our-parent__card-link:hover {
+  opacity: 0.85;
+}
+
+.our-parent__card-link:hover .our-parent__card-subheading {
+  text-decoration: underline;
+}

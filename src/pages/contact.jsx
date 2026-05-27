@@ -154,7 +154,16 @@ function Contact({ onNavigate }) {
             {/* Division of */}
             <div className="contact-division">
               <span className="contact-info__section-title">A DIVISION OF</span>
-              <p className="contact-division__name">Creative Monkeys Advertising Pvt. Ltd.</p>
+              <p className="contact-division__name">
+                <a
+                  href="https://creativemonkeys.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-division__link"
+                >
+                  Creative Monkeys Advertising Pvt. Ltd.
+                </a>
+              </p>
               <p className="contact-division__desc">Full-service advertising & brand strategy agency.</p>
             </div>
 

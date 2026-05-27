@@ -217,6 +217,18 @@ a.contact-info__value:hover {
   margin: 0 0 6px;
 }
 
+.contact-division__link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.contact-division__link:hover {
+  color: #ffc400; /* Beautiful golden yellow matching phone link hover style */
+  text-decoration: underline;
+}
+
 .contact-division__desc {
   font-family: 'Inter', sans-serif;
   font-size: 14px;

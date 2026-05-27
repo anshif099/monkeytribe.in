@@ -17,8 +17,15 @@ function OurParent() {
         <div className="our-parent__content-column">
           <span className="our-parent__eyebrow">OUR PARENT COMPANY</span>
           <h2 id="our-parent-heading" className="our-parent__heading">
-            Creative Monkeys<br />
-            Advertising Pvt. Ltd.
+            <a
+              href="https://creativemonkeys.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="our-parent__link"
+            >
+              Creative Monkeys<br />
+              Advertising Pvt. Ltd.
+            </a>
           </h2>
           
           <div className="our-parent__text">
@@ -48,8 +55,15 @@ function OurParent() {
               <span className="our-parent__card-eyebrow">A DIVISION OF</span>
               
               <h3 className="our-parent__card-heading">
-                Creative Monkeys
-                <span className="our-parent__card-subheading">Advertising Pvt. Ltd.</span>
+                <a
+                  href="https://creativemonkeys.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="our-parent__card-link"
+                >
+                  Creative Monkeys
+                  <span className="our-parent__card-subheading">Advertising Pvt. Ltd.</span>
+                </a>
               </h3>
 
               <ul className="our-parent__capabilities-list">

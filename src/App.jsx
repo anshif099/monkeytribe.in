@@ -1,7 +1,9 @@
-import { useState, lazy, Suspense } from 'react'
+import { useState, lazy, Suspense, useEffect } from 'react'
 import Home from './pages/home.jsx'
-import CmsManager from './components/CmsManager.jsx'
-import CustomCourse from './pages/custom-course.jsx'
+
+// Dynamically import components to enable code splitting
+const CmsManager = lazy(() => import('./components/CmsManager.jsx'))
+const CustomCourse = lazy(() => import('./pages/custom-course.jsx'))
 
 // Dynamically import subpages to enable code splitting
 const PromptX = lazy(() => import('./pages/promptx.jsx'))
@@ -18,6 +20,25 @@ const Register = lazy(() => import('./pages/register.jsx'))
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home')
+  const [showCms, setShowCms] = useState(false)
+
+  useEffect(() => {
+    const checkCms = () => {
+      const isCmsActive = window.location.pathname === '/admin' || 
+                          sessionStorage.getItem('mt_cms_logged_in') === 'true' || 
+                          localStorage.getItem('mt_cms_data') !== null;
+      setShowCms(isCmsActive);
+    };
+    checkCms();
+    
+    window.addEventListener('storage', checkCms);
+    // Also check on history/popstate changes
+    window.addEventListener('popstate', checkCms);
+    return () => {
+      window.removeEventListener('storage', checkCms);
+      window.removeEventListener('popstate', checkCms);
+    };
+  }, []);
 
   const handleNavigate = (page) => {
     setCurrentPage(page)
@@ -70,7 +91,11 @@ function App() {
 
   return (
     <>
-      <CmsManager currentPage={currentPage} onNavigate={handleNavigate} />
+      {showCms && (
+        <Suspense fallback={null}>
+          <CmsManager currentPage={currentPage} onNavigate={handleNavigate} />
+        </Suspense>
+      )}
       <Suspense fallback={<div className="page-loading-fallback" style={{ minHeight: '100vh', background: '#0b0c10' }}></div>}>
         {pageContent}
       </Suspense>

@@ -108,9 +108,15 @@ function Hero({ onNavigate }) {
           className="hero-section__creative-link"
           aria-label="Creative Monkeys"
         >
-          <img className="hero-section__creative" src="/creative-monkeys.webp" alt="Creative Monkeys Logo" width="142" height="130" loading="lazy" decoding="async" />
+          <picture>
+            <source type="image/webp" srcSet="/creative-monkeys-sm.webp 1x, /creative-monkeys.webp 2x" />
+            <img className="hero-section__creative" src="/creative-monkeys.webp" alt="Creative Monkeys Logo" width="142" height="130" loading="lazy" decoding="async" />
+          </picture>
         </a>
-        <img className="hero-section__logo2" src="/logo2.webp" alt="" aria-hidden="true" width="214" height="267" loading="lazy" decoding="async" />
+        <picture>
+          <source type="image/webp" srcSet="/logo2-sm.webp 1x, /logo2.webp 2x" />
+          <img className="hero-section__logo2" src="/logo2.webp" alt="" aria-hidden="true" width="214" height="267" loading="lazy" decoding="async" />
+        </picture>
       </div>
 
       {/* <div className="hero-section__scroll" aria-hidden="true">

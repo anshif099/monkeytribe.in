@@ -1,5 +1,5 @@
 import "./footer.css";
-import logo from "../assets/logo.webp";
+
 
 const Footer = () => {
   const navigateTo = (page) => (e) => {
@@ -17,7 +17,10 @@ const Footer = () => {
 
           {/* Brand column */}
           <div className="footer-brand">
-            <img src={logo} alt="Monkey Tribe" className="footer-logo" width="200" height="266" />
+            <picture>
+              <source type="image/webp" srcSet="/logo-sm.webp 1x, /logo.webp 2x" />
+              <img src="/logo.webp" alt="Monkey Tribe" className="footer-logo" width="200" height="266" />
+            </picture>
             <p className="footer-tagline">
               The education &amp; training division of{" "}
               <a

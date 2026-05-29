@@ -37,7 +37,13 @@ const Header = ({ onNavigate, currentPage }) => {
       <div className="header-container">
         {/* Left */}
         <div className="header-logo" onClick={handleHomeClick}>
-          <img src="/header-logo.png" alt="Monkey Tribe" width="115" height="auto" />
+          <picture>
+            <source
+              type="image/webp"
+              srcSet="/header-logo@1x.webp 1x, /header-logo.webp 2x"
+            />
+            <img src="/header-logo.png" alt="Monkey Tribe" width="115" height="144" />
+          </picture>
         </div>
 
         {/* Center */}

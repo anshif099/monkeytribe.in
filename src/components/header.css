@@ -423,8 +423,9 @@
   transition: transform 0.25s ease;
 }
 
-.download-brochure-btn:hover {
+.header-nav a.download-brochure-btn:hover {
   background: #2f1d13;
+  border-color: #2f1d13;
   color: #ffffff !important;
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(47, 29, 19, 0.15);
@@ -440,7 +441,7 @@
   color: #68615e !important;
 }
 
-.header--scrolled .download-brochure-btn:hover {
+.header--scrolled .header-nav a.download-brochure-btn:hover {
   background: #68615e;
   border-color: #68615e;
   color: #ffffff !important;
@@ -461,16 +462,16 @@
   color: rgba(255, 255, 255, 0.9) !important;
 }
 
-.promptx-page .header:not(.header--scrolled) .download-brochure-btn:hover,
-.growthx-page .header:not(.header--scrolled) .download-brochure-btn:hover,
-.brandx-page .header:not(.header--scrolled) .download-brochure-btn:hover,
-.copycraft-page .header:not(.header--scrolled) .download-brochure-btn:hover,
-.courses-page .header:not(.header--scrolled) .download-brochure-btn:hover,
-.contact-page .header:not(.header--scrolled) .download-brochure-btn:hover,
-.programmes-page .header:not(.header--scrolled) .download-brochure-btn:hover,
-.webinars-page .header:not(.header--scrolled) .download-brochure-btn:hover,
-.about-page .header:not(.header--scrolled) .download-brochure-btn:hover,
-.register-page .header:not(.header--scrolled) .download-brochure-btn:hover {
+.promptx-page .header:not(.header--scrolled) .header-nav a.download-brochure-btn:hover,
+.growthx-page .header:not(.header--scrolled) .header-nav a.download-brochure-btn:hover,
+.brandx-page .header:not(.header--scrolled) .header-nav a.download-brochure-btn:hover,
+.copycraft-page .header:not(.header--scrolled) .header-nav a.download-brochure-btn:hover,
+.courses-page .header:not(.header--scrolled) .header-nav a.download-brochure-btn:hover,
+.contact-page .header:not(.header--scrolled) .header-nav a.download-brochure-btn:hover,
+.programmes-page .header:not(.header--scrolled) .header-nav a.download-brochure-btn:hover,
+.webinars-page .header:not(.header--scrolled) .header-nav a.download-brochure-btn:hover,
+.about-page .header:not(.header--scrolled) .header-nav a.download-brochure-btn:hover,
+.register-page .header:not(.header--scrolled) .header-nav a.download-brochure-btn:hover {
   background: #ffffff;
   border-color: #ffffff;
   color: #000000 !important;

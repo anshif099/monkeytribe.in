@@ -12,13 +12,17 @@
     <link rel="preload" as="image" href="/hero-bg.webp" type="image/webp" />
 
     <!-- Warm up font connections — non-blocking -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
+    <!-- Preload the Google Fonts stylesheet to fetch it immediately at high priority -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" />
+
     <!-- Load Google Fonts 100% async — zero render-blocking -->
-    <script>
-      (function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600&display=swap';document.head.appendChild(l);})();
-    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" />
+    </noscript>
 
     <!-- Critical above-the-fold styles: paint the hero instantly before any JS loads -->
     <style>

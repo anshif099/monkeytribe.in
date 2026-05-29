@@ -40,7 +40,7 @@ const Header = ({ onNavigate, currentPage }) => {
           <picture>
             <source
               type="image/webp"
-              srcSet="/header-logo@1x.webp 1x, /header-logo.webp 2x"
+              srcSet="/header-logo-1x.webp 1x, /header-logo-2x.webp 2x"
             />
             <img src="/header-logo.png" alt="Monkey Tribe" width="115" height="144" />
           </picture>

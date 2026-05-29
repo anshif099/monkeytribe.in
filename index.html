@@ -75,7 +75,10 @@
         <header class="header">
           <div class="header-container">
             <div class="header-logo">
-              <img src="/header-logo.png" alt="Monkey Tribe" width="115" height="auto" />
+              <picture>
+                <source type="image/webp" srcset="/header-logo-1x.webp 1x, /header-logo-2x.webp 2x" />
+                <img src="/header-logo.png" alt="Monkey Tribe" width="115" height="144" />
+              </picture>
             </div>
             <nav class="header-nav">
               <a href="#" class="active">Home</a>
@@ -140,11 +143,17 @@
 
           <div class="hero-section__marks">
             <a href="https://creativemonkeys.in/" target="_blank" rel="noopener noreferrer" class="hero-section__creative-link" aria-label="Creative Monkeys">
-              <img class="hero-section__creative" src="/creative-monkeys.webp" alt="Creative Monkeys Logo"
-                   width="142" height="130" loading="lazy" decoding="async" />
+              <picture>
+                <source type="image/webp" srcset="/creative-monkeys-1x.webp" />
+                <img class="hero-section__creative" src="/creative-monkeys.webp" alt="Creative Monkeys Logo"
+                     width="142" height="130" loading="lazy" decoding="async" />
+              </picture>
             </a>
-            <img class="hero-section__logo2" src="/logo2.webp" alt="" aria-hidden="true"
-                 width="214" height="267" loading="lazy" decoding="async" />
+            <picture>
+              <source type="image/webp" srcset="/logo2-sm.webp 1x, /logo2.webp 2x" />
+              <img class="hero-section__logo2" src="/logo2.webp" alt="" aria-hidden="true"
+                   width="214" height="267" loading="lazy" decoding="async" />
+            </picture>
           </div>
         </section>
       </main>

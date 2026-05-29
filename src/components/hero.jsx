@@ -109,7 +109,7 @@ function Hero({ onNavigate }) {
           aria-label="Creative Monkeys"
         >
           <picture>
-            <source type="image/webp" srcSet="/creative-monkeys-sm.webp 1x, /creative-monkeys.webp 2x" />
+            <source type="image/webp" srcSet="/creative-monkeys-1x.webp" />
             <img className="hero-section__creative" src="/creative-monkeys.webp" alt="Creative Monkeys Logo" width="142" height="130" loading="lazy" decoding="async" />
           </picture>
         </a>

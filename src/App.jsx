@@ -1,6 +1,7 @@
 import { useState, lazy, Suspense } from 'react'
 import Home from './pages/home.jsx'
 import CmsManager from './components/CmsManager.jsx'
+import CustomCourse from './pages/custom-course.jsx'
 
 // Dynamically import subpages to enable code splitting
 const PromptX = lazy(() => import('./pages/promptx.jsx'))
@@ -50,6 +51,19 @@ function App() {
     pageContent = <About onNavigate={handleNavigate} />
   } else if (currentPage === 'register') {
     pageContent = <Register onNavigate={handleNavigate} />
+  } else if (currentPage.startsWith('custom-course-')) {
+    // Dynamic custom courses created via CMS
+    const customCourses = (() => {
+      try { return JSON.parse(localStorage.getItem('mt_custom_courses') || '[]'); } catch { return []; }
+    })();
+    const course = customCourses.find(c => c.id === currentPage);
+    pageContent = (
+      <CustomCourse
+        onNavigate={handleNavigate}
+        courseId={currentPage}
+        courseName={course ? course.label : currentPage}
+      />
+    )
   } else {
     pageContent = <Home onNavigate={handleNavigate} />
   }

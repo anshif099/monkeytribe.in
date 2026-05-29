@@ -10,8 +10,9 @@ const PALETTE = [
 // ── Static built-in tracks ────────────────────────────────────────────────────
 const STATIC_TRACKS = [
   {
+    id: 'promptx',
     className: 'prompt',
-    label: 'PromptX',
+    defaultLabel: 'PromptX',
     pageId: 'promptx',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -21,8 +22,9 @@ const STATIC_TRACKS = [
     ),
   },
   {
+    id: 'growthx',
     className: 'growth',
-    label: 'GrowthX',
+    defaultLabel: 'GrowthX',
     pageId: 'growthx',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -32,8 +34,9 @@ const STATIC_TRACKS = [
     ),
   },
   {
+    id: 'brandx',
     className: 'brand',
-    label: 'BrandX',
+    defaultLabel: 'BrandX',
     pageId: 'brandx',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -44,8 +47,9 @@ const STATIC_TRACKS = [
     ),
   },
   {
+    id: 'copycraft',
     className: 'copy',
-    label: 'CopyCraft',
+    defaultLabel: 'CopyCraft',
     pageId: 'copycraft',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -57,38 +61,80 @@ const STATIC_TRACKS = [
 ]
 
 // ── localStorage helpers ──────────────────────────────────────────────────────
+const LS_CUSTOM   = 'mt_custom_courses'
+const LS_STATIC   = 'mt_static_track_overrides'   // { [id]: { label?, hidden? } }
+
 function loadCustomCourses() {
-  try {
-    return JSON.parse(localStorage.getItem('mt_custom_courses') || '[]')
-  } catch {
-    return []
-  }
+  try { return JSON.parse(localStorage.getItem(LS_CUSTOM) || '[]') } catch { return [] }
 }
-
 function saveCustomCourses(list) {
-  localStorage.setItem('mt_custom_courses', JSON.stringify(list))
+  localStorage.setItem(LS_CUSTOM, JSON.stringify(list))
+}
+function loadStaticOverrides() {
+  try { return JSON.parse(localStorage.getItem(LS_STATIC) || '{}') } catch { return {} }
+}
+function saveStaticOverrides(obj) {
+  localStorage.setItem(LS_STATIC, JSON.stringify(obj))
 }
 
-// ── Icon for custom courses ───────────────────────────────────────────────────
-function CustomIcon() {
+// ── Shared SVG icons for controls ────────────────────────────────────────────
+const EditIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+  </svg>
+)
+const DeleteIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="3 6 5 6 21 6" />
+    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+  </svg>
+)
+const ArrowIcon = () => (
+  <svg className="hero-track__arrow" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M5 12h13" />
+    <path d="M13 6l6 6-6 6" />
+  </svg>
+)
+const CustomIcon = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+    <path d="M2 17l10 5 10-5" />
+    <path d="M2 12l10 5 10-5" />
+  </svg>
+)
+
+// ── Shared edit/delete toolbar ────────────────────────────────────────────────
+function TrackControls({ onEdit, onDelete }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 2L2 7l10 5 10-5-10-5z" />
-      <path d="M2 17l10 5 10-5" />
-      <path d="M2 12l10 5 10-5" />
-    </svg>
+    <div className="hero-track-controls mt-cms">
+      <button
+        className="hero-track-ctrl hero-track-ctrl--edit"
+        title="Rename track label"
+        onClick={onEdit}
+      >
+        <EditIcon />
+      </button>
+      <button
+        className="hero-track-ctrl hero-track-ctrl--delete"
+        title="Remove from hero"
+        onClick={onDelete}
+      >
+        <DeleteIcon />
+      </button>
+    </div>
   )
 }
 
 // ── Main Hero component ───────────────────────────────────────────────────────
 function Hero({ onNavigate }) {
-  const [customCourses, setCustomCourses] = useState(loadCustomCourses)
-  const [isEditMode, setIsEditMode] = useState(false)
+  const [customCourses, setCustomCourses]     = useState(loadCustomCourses)
+  const [staticOverrides, setStaticOverrides] = useState(loadStaticOverrides)
+  const [isEditMode, setIsEditMode]           = useState(false)
 
-  // ── Modal state ────────────────────────────────────────────────────────────
-  const [modal, setModal] = useState(null) // null | { mode: 'add' | 'edit', courseId?: string, value: string }
+  // null | { type: 'add' | 'edit-static' | 'edit-custom', id?: string, value: string }
+  const [modal, setModal] = useState(null)
 
-  // Watch for CMS edit mode toggled from CmsManager's body class
+  // ── Watch CMS edit mode class ──────────────────────────────────────────────
   useEffect(() => {
     const check = () => setIsEditMode(document.body.classList.contains('mt-cms-edit-active'))
     const obs = new MutationObserver(check)
@@ -97,44 +143,75 @@ function Hero({ onNavigate }) {
     return () => obs.disconnect()
   }, [])
 
-  // ── Sync courses if another tab/component updates localStorage ─────────────
+  // ── Cross-tab storage sync ─────────────────────────────────────────────────
   useEffect(() => {
-    const onStorage = () => setCustomCourses(loadCustomCourses())
+    const onStorage = () => {
+      setCustomCourses(loadCustomCourses())
+      setStaticOverrides(loadStaticOverrides())
+    }
     window.addEventListener('storage', onStorage)
     return () => window.removeEventListener('storage', onStorage)
   }, [])
 
-  // ── Create new course (copy of CopyCraft) ─────────────────────────────────
-  const handleAddCourse = () => {
-    setModal({ mode: 'add', value: 'New Course' })
+  // ── Static track helpers ───────────────────────────────────────────────────
+  const getStaticLabel = (track) =>
+    staticOverrides[track.id]?.label ?? track.defaultLabel
+
+  const isStaticHidden = (track) =>
+    staticOverrides[track.id]?.hidden === true
+
+  const hiddenStaticTracks = STATIC_TRACKS.filter(isStaticHidden)
+
+  const handleStaticEdit = (e, track) => {
+    e.preventDefault(); e.stopPropagation()
+    setModal({ type: 'edit-static', id: track.id, value: getStaticLabel(track) })
   }
 
-  const handleEditCourse = (e, courseId, currentLabel) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setModal({ mode: 'edit', courseId, value: currentLabel })
+  const handleStaticDelete = (e, track) => {
+    e.preventDefault(); e.stopPropagation()
+    if (!window.confirm(`Hide "${getStaticLabel(track)}" from the hero section?\nThe page itself is kept — you can restore it anytime.`)) return
+    const updated = { ...staticOverrides, [track.id]: { ...staticOverrides[track.id], hidden: true } }
+    saveStaticOverrides(updated)
+    setStaticOverrides(updated)
   }
 
-  const handleDeleteCourse = (e, courseId) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (!window.confirm('Delete this course page completely? This cannot be undone.')) return
+  const handleRestoreStatic = (e, trackId) => {
+    e.preventDefault(); e.stopPropagation()
+    const updated = { ...staticOverrides, [trackId]: { ...staticOverrides[trackId], hidden: false } }
+    saveStaticOverrides(updated)
+    setStaticOverrides(updated)
+  }
+
+  // ── Custom course helpers ──────────────────────────────────────────────────
+  const handleCustomEdit = (e, course) => {
+    e.preventDefault(); e.stopPropagation()
+    setModal({ type: 'edit-custom', id: course.id, value: course.label })
+  }
+
+  const handleCustomDelete = (e, courseId) => {
+    e.preventDefault(); e.stopPropagation()
+    if (!window.confirm('Delete this custom course page completely? This cannot be undone.')) return
     const updated = customCourses.filter(c => c.id !== courseId)
     saveCustomCourses(updated)
     setCustomCourses(updated)
-    // Also clean up any CMS data for this course
     try {
-      const cmsData = JSON.parse(localStorage.getItem('mt_cms_data') || '{}')
-      delete cmsData[courseId]
-      localStorage.setItem('mt_cms_data', JSON.stringify(cmsData))
+      const cms = JSON.parse(localStorage.getItem('mt_cms_data') || '{}')
+      delete cms[courseId]
+      localStorage.setItem('mt_cms_data', JSON.stringify(cms))
     } catch {}
   }
 
+  // ── Add new course ─────────────────────────────────────────────────────────
+  const handleAddCourse = () => {
+    setModal({ type: 'add', value: 'New Course' })
+  }
+
+  // ── Modal confirm ──────────────────────────────────────────────────────────
   const handleModalConfirm = () => {
     const label = modal.value.trim()
     if (!label) return
 
-    if (modal.mode === 'add') {
+    if (modal.type === 'add') {
       const id = `custom-course-${Date.now()}`
       const colorIndex = customCourses.length % PALETTE.length
       const newCourse = { id, label, color: PALETTE[colorIndex] }
@@ -142,13 +219,16 @@ function Hero({ onNavigate }) {
       saveCustomCourses(updated)
       setCustomCourses(updated)
       setModal(null)
-      // Navigate to the new page
       if (onNavigate) onNavigate(id)
-    } else {
-      // Edit existing
-      const updated = customCourses.map(c =>
-        c.id === modal.courseId ? { ...c, label } : c
-      )
+
+    } else if (modal.type === 'edit-static') {
+      const updated = { ...staticOverrides, [modal.id]: { ...staticOverrides[modal.id], label } }
+      saveStaticOverrides(updated)
+      setStaticOverrides(updated)
+      setModal(null)
+
+    } else if (modal.type === 'edit-custom') {
+      const updated = customCourses.map(c => c.id === modal.id ? { ...c, label } : c)
       saveCustomCourses(updated)
       setCustomCourses(updated)
       setModal(null)
@@ -159,6 +239,9 @@ function Hero({ onNavigate }) {
     if (e.key === 'Enter') handleModalConfirm()
     if (e.key === 'Escape') setModal(null)
   }
+
+  // ── Visible static tracks ──────────────────────────────────────────────────
+  const visibleStaticTracks = STATIC_TRACKS.filter(t => !isStaticHidden(t))
 
   return (
     <section className="hero-section" id="home">
@@ -198,29 +281,40 @@ function Hero({ onNavigate }) {
         </p>
 
         <div className="hero-section__tracks" aria-label="Course tracks">
-          {/* ── Static tracks ──────────────────────────────────────────── */}
-          {STATIC_TRACKS.map((track) => (
-            <a
-              className={`hero-track hero-track--${track.className}`}
-              href="#"
-              onClick={(e) => {
-                e.preventDefault()
-                if (onNavigate) onNavigate(track.pageId)
-              }}
-              key={track.label}
-            >
-              {track.icon}
-              <span>{track.label}</span>
-              <svg className="hero-track__arrow" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M5 12h13" />
-                <path d="M13 6l6 6-6 6" />
-              </svg>
-            </a>
+
+          {/* ── Static tracks (with edit/delete in edit mode) ─────────── */}
+          {visibleStaticTracks.map((track) => (
+            <div className="hero-track-wrapper" key={track.id}>
+              {isEditMode && (
+                <TrackControls
+                  onEdit={(e) => handleStaticEdit(e, track)}
+                  onDelete={(e) => handleStaticDelete(e, track)}
+                />
+              )}
+              <a
+                className={`hero-track hero-track--${track.className}`}
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault()
+                  if (onNavigate) onNavigate(track.pageId)
+                }}
+              >
+                {track.icon}
+                <span>{getStaticLabel(track)}</span>
+                <ArrowIcon />
+              </a>
+            </div>
           ))}
 
-          {/* ── Custom course tracks ───────────────────────────────────── */}
+          {/* ── Custom course tracks (with edit/delete in edit mode) ───── */}
           {customCourses.map((course) => (
             <div className="hero-track-wrapper" key={course.id}>
+              {isEditMode && (
+                <TrackControls
+                  onEdit={(e) => handleCustomEdit(e, course)}
+                  onDelete={(e) => handleCustomDelete(e, course.id)}
+                />
+              )}
               <a
                 className="hero-track hero-track--custom"
                 href="#"
@@ -232,40 +326,12 @@ function Hero({ onNavigate }) {
               >
                 <CustomIcon />
                 <span>{course.label}</span>
-                <svg className="hero-track__arrow" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M5 12h13" />
-                  <path d="M13 6l6 6-6 6" />
-                </svg>
+                <ArrowIcon />
               </a>
-
-              {/* Edit / Delete — visible in edit mode only */}
-              {isEditMode && (
-                <div className="hero-track-controls mt-cms">
-                  <button
-                    className="hero-track-ctrl hero-track-ctrl--edit"
-                    title="Rename course"
-                    onClick={(e) => handleEditCourse(e, course.id, course.label)}
-                  >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                    </svg>
-                  </button>
-                  <button
-                    className="hero-track-ctrl hero-track-ctrl--delete"
-                    title="Delete course"
-                    onClick={(e) => handleDeleteCourse(e, course.id)}
-                  >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="3 6 5 6 21 6" />
-                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                    </svg>
-                  </button>
-                </div>
-              )}
             </div>
           ))}
 
-          {/* ── Add new course button (edit mode only) ─────────────────── */}
+          {/* ── + New Course button (edit mode only) ──────────────────── */}
           {isEditMode && (
             <button
               className="hero-track-add mt-cms"
@@ -280,6 +346,23 @@ function Hero({ onNavigate }) {
             </button>
           )}
         </div>
+
+        {/* ── Restore hidden static tracks (edit mode, if any are hidden) ── */}
+        {isEditMode && hiddenStaticTracks.length > 0 && (
+          <div className="hero-restore-row mt-cms">
+            <span className="hero-restore-label">Hidden tracks:</span>
+            {hiddenStaticTracks.map(track => (
+              <button
+                key={track.id}
+                className="hero-restore-btn mt-cms"
+                onClick={(e) => handleRestoreStatic(e, track.id)}
+                title={`Restore ${getStaticLabel(track)}`}
+              >
+                + {getStaticLabel(track)}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="hero-section__marks">
@@ -301,15 +384,19 @@ function Hero({ onNavigate }) {
         </picture>
       </div>
 
-      {/* ── Course name modal ─────────────────────────────────────────────── */}
+      {/* ── Modal ─────────────────────────────────────────────────────────── */}
       {modal && (
         <div className="hero-course-modal-backdrop mt-cms" onClick={() => setModal(null)}>
           <div className="hero-course-modal mt-cms" onClick={(e) => e.stopPropagation()}>
-            <h3>{modal.mode === 'add' ? '✦ New Course Page' : '✎ Rename Course'}</h3>
+            <h3>
+              {modal.type === 'add'
+                ? '✦ New Course Page'
+                : '✎ Rename Track'}
+            </h3>
             <p>
-              {modal.mode === 'add'
-                ? 'A new CopyCraft-style page will be created. You can fully edit it in CMS mode.'
-                : 'Update the course name shown in the navigation track.'}
+              {modal.type === 'add'
+                ? 'A new CopyCraft-style page will be created. You can fully edit every section in CMS mode.'
+                : 'Update the label shown on this course track button.'}
             </p>
             <input
               className="hero-course-modal__input"
@@ -325,7 +412,7 @@ function Hero({ onNavigate }) {
                 Cancel
               </button>
               <button className="hero-course-modal__btn hero-course-modal__btn--confirm" onClick={handleModalConfirm}>
-                {modal.mode === 'add' ? 'Create Page' : 'Save Name'}
+                {modal.type === 'add' ? 'Create Page' : 'Save Name'}
               </button>
             </div>
           </div>

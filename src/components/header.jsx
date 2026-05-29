@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./header.css";
-import brochurePdf from "../assets/Broucher-Monkey-Tribe.pdf";
 
 
 const Header = ({ onNavigate, currentPage }) => {
@@ -116,7 +115,7 @@ const Header = ({ onNavigate, currentPage }) => {
             Contact
           </a>
           <a
-            href={brochurePdf}
+            href="/Broucher-Monkey-Tribe.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="download-brochure-btn"
@@ -172,7 +171,7 @@ const Header = ({ onNavigate, currentPage }) => {
             <a href="#" className={currentPage === "about" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('about'); }}>About</a>
             <a href="#" className={currentPage === "contact" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('contact'); }}>Contact</a>
             <a 
-              href={brochurePdf} 
+              href="/Broucher-Monkey-Tribe.pdf" 
               target="_blank"
               rel="noopener noreferrer"
               className="download-brochure-btn-mobile"

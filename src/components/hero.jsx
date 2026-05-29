@@ -284,7 +284,7 @@ function Hero({ onNavigate }) {
 
           {/* ── Static tracks (with edit/delete in edit mode) ─────────── */}
           {visibleStaticTracks.map((track) => (
-            <div className="hero-track-wrapper" key={track.id}>
+            <div className="hero-track-wrapper mt-cms" key={track.id}>
               {isEditMode && (
                 <TrackControls
                   onEdit={(e) => handleStaticEdit(e, track)}
@@ -308,7 +308,7 @@ function Hero({ onNavigate }) {
 
           {/* ── Custom course tracks (with edit/delete in edit mode) ───── */}
           {customCourses.map((course) => (
-            <div className="hero-track-wrapper" key={course.id}>
+            <div className="hero-track-wrapper mt-cms" key={course.id}>
               {isEditMode && (
                 <TrackControls
                   onEdit={(e) => handleCustomEdit(e, course)}
@@ -330,9 +330,11 @@ function Hero({ onNavigate }) {
               </a>
             </div>
           ))}
+        </div>
 
-          {/* ── + New Course button (edit mode only) ──────────────────── */}
-          {isEditMode && (
+        {/* ── + New Course button — own row below tracks (edit mode only) ── */}
+        {isEditMode && (
+          <div className="hero-tracks-add-row mt-cms">
             <button
               className="hero-track-add mt-cms"
               onClick={handleAddCourse}
@@ -344,13 +346,13 @@ function Hero({ onNavigate }) {
               </svg>
               <span>New Course</span>
             </button>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* ── Restore hidden static tracks (edit mode, if any are hidden) ── */}
         {isEditMode && hiddenStaticTracks.length > 0 && (
           <div className="hero-restore-row mt-cms">
-            <span className="hero-restore-label">Hidden tracks:</span>
+            <span className="hero-restore-label">Hidden:</span>
             {hiddenStaticTracks.map(track => (
               <button
                 key={track.id}

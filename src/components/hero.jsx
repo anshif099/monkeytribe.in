@@ -330,11 +330,9 @@ function Hero({ onNavigate }) {
               </a>
             </div>
           ))}
-        </div>
 
-        {/* ── + New Course button — own row below tracks (edit mode only) ── */}
-        {isEditMode && (
-          <div className="hero-tracks-add-row mt-cms">
+          {/* ── + New Course button — right of last button inside tracks (edit mode only) ── */}
+          {isEditMode && (
             <button
               className="hero-track-add mt-cms"
               onClick={handleAddCourse}
@@ -346,8 +344,8 @@ function Hero({ onNavigate }) {
               </svg>
               <span>New Course</span>
             </button>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* ── Restore hidden static tracks (edit mode, if any are hidden) ── */}
         {isEditMode && hiddenStaticTracks.length > 0 && (

@@ -88,8 +88,10 @@
 
 .hero-section__tracks {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   gap: 15px;
+  row-gap: 20px;
   margin-top: 53px;
 }
 
@@ -378,24 +380,19 @@
   transform: scale(1.12);
 }
 
-/* ── + New Course row — sits below the track buttons on its own line ──────── */
-.hero-tracks-add-row {
-  margin-top: 14px;
-}
-
 /* ── + New Course button ────────────────────────────────────────────────────── */
 .hero-track-add {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 10px;
   height: 45px;
-  padding: 0 18px;
+  padding: 0 20px;
   border-radius: 8px;
   border: 2px dashed rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.06);
   color: rgba(255, 255, 255, 0.8);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;

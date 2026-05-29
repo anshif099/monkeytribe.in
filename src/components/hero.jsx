@@ -284,7 +284,7 @@ function Hero({ onNavigate }) {
 
           {/* ── Static tracks (with edit/delete in edit mode) ─────────── */}
           {visibleStaticTracks.map((track) => (
-            <div className="hero-track-wrapper mt-cms" key={track.id}>
+            <div className="hero-track-wrapper" key={track.id}>
               {isEditMode && (
                 <TrackControls
                   onEdit={(e) => handleStaticEdit(e, track)}
@@ -308,7 +308,7 @@ function Hero({ onNavigate }) {
 
           {/* ── Custom course tracks (with edit/delete in edit mode) ───── */}
           {customCourses.map((course) => (
-            <div className="hero-track-wrapper mt-cms" key={course.id}>
+            <div className="hero-track-wrapper" key={course.id}>
               {isEditMode && (
                 <TrackControls
                   onEdit={(e) => handleCustomEdit(e, course)}

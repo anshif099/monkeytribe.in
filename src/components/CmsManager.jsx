@@ -360,12 +360,18 @@ function CmsManager({ currentPage, onNavigate }) {
         return;
       }
       
-      if (target === activeHoverElementRef.current) return;
-      activeHoverElementRef.current = target;
+      let finalTarget = target;
+      const trackWrapper = target.closest('.hero-track-wrapper');
+      if (trackWrapper) {
+        finalTarget = trackWrapper;
+      }
+
+      if (finalTarget === activeHoverElementRef.current) return;
+      activeHoverElementRef.current = finalTarget;
       
-      const rect = target.getBoundingClientRect();
-      setHoveredElement(target);
-      setHoverTag(target.tagName.toLowerCase());
+      const rect = finalTarget.getBoundingClientRect();
+      setHoveredElement(finalTarget);
+      setHoverTag(trackWrapper ? 'course track' : finalTarget.tagName.toLowerCase());
       setHoverRect({
         top: rect.top + window.scrollY,
         left: rect.left + window.scrollX,
@@ -401,20 +407,26 @@ function CmsManager({ currentPage, onNavigate }) {
       const target = document.elementFromPoint(e.clientX, e.clientY);
       if (!target || target.closest('.mt-cms') || isTextEditing || target.closest('[contenteditable="true"]')) return;
 
-      const selector = getUniqueSelector(target);
+      let finalTarget = target;
+      const trackWrapper = target.closest('.hero-track-wrapper');
+      if (trackWrapper) {
+        finalTarget = trackWrapper;
+      }
+
+      const selector = getUniqueSelector(finalTarget);
 
       dragStartRef.current = {
         startX: e.clientX,
         startY: e.clientY,
-        left: parsePx(target.style.left),
-        top: parsePx(target.style.top),
-        element: target,
+        left: parsePx(finalTarget.style.left),
+        top: parsePx(finalTarget.style.top),
+        element: finalTarget,
         selector: selector,
         hasMoved: false
       };
 
       // Only prevent default on non-text elements (like buttons or images) to allow natural browser text caret focus!
-      const isLeafText = target.children.length === 0 && target.tagName !== 'IMG';
+      const isLeafText = finalTarget.children.length === 0 && finalTarget.tagName !== 'IMG';
       if (!isLeafText) {
         e.preventDefault();
         e.stopPropagation();

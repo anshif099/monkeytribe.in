@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./header.css";
-import brochurePdf from "../assets/Broucher.pdf";
+import brochurePdf from "../assets/Broucher-Monkey-Tribe.pdf";
 
 
 const Header = ({ onNavigate, currentPage }) => {

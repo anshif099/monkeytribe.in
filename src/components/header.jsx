@@ -117,9 +117,10 @@ const Header = ({ onNavigate, currentPage }) => {
           </a>
           <a
             href={brochurePdf}
-            download="Monkey-Tribe-Brochure.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="download-brochure-btn"
-            title="Download Monkey Tribe course brochure (PDF)"
+            title="Open Monkey Tribe course brochure (PDF) in a new tab"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -172,7 +173,8 @@ const Header = ({ onNavigate, currentPage }) => {
             <a href="#" className={currentPage === "contact" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('contact'); }}>Contact</a>
             <a 
               href={brochurePdf} 
-              download="Monkey-Tribe-Brochure.pdf" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="download-brochure-btn-mobile"
               onClick={() => setIsMobileOpen(false)}
             >

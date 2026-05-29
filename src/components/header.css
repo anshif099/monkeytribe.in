@@ -397,3 +397,117 @@
 .register-page .header:not(.header--scrolled) .header-logo img {
   filter: brightness(0) invert(1);
 }
+
+/* ================= DOWNLOAD BROCHURE BUTTON ================= */
+
+.download-brochure-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 99px;
+  border: 1.5px solid #2f1d13;
+  color: #2f1d13 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  margin-left: 6px;
+}
+
+.download-brochure-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  transition: transform 0.25s ease;
+}
+
+.download-brochure-btn:hover {
+  background: #2f1d13;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(47, 29, 19, 0.15);
+}
+
+.download-brochure-btn:hover svg {
+  transform: translateY(1px);
+}
+
+/* Scrolled state */
+.header--scrolled .download-brochure-btn {
+  border-color: #68615e;
+  color: #68615e !important;
+}
+
+.header--scrolled .download-brochure-btn:hover {
+  background: #68615e;
+  border-color: #68615e;
+  color: #ffffff !important;
+}
+
+/* Light header text styling for dark background hero pages when not scrolled */
+.promptx-page .header:not(.header--scrolled) .download-brochure-btn,
+.growthx-page .header:not(.header--scrolled) .download-brochure-btn,
+.brandx-page .header:not(.header--scrolled) .download-brochure-btn,
+.copycraft-page .header:not(.header--scrolled) .download-brochure-btn,
+.courses-page .header:not(.header--scrolled) .download-brochure-btn,
+.contact-page .header:not(.header--scrolled) .download-brochure-btn,
+.programmes-page .header:not(.header--scrolled) .download-brochure-btn,
+.webinars-page .header:not(.header--scrolled) .download-brochure-btn,
+.about-page .header:not(.header--scrolled) .download-brochure-btn,
+.register-page .header:not(.header--scrolled) .download-brochure-btn {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.promptx-page .header:not(.header--scrolled) .download-brochure-btn:hover,
+.growthx-page .header:not(.header--scrolled) .download-brochure-btn:hover,
+.brandx-page .header:not(.header--scrolled) .download-brochure-btn:hover,
+.copycraft-page .header:not(.header--scrolled) .download-brochure-btn:hover,
+.courses-page .header:not(.header--scrolled) .download-brochure-btn:hover,
+.contact-page .header:not(.header--scrolled) .download-brochure-btn:hover,
+.programmes-page .header:not(.header--scrolled) .download-brochure-btn:hover,
+.webinars-page .header:not(.header--scrolled) .download-brochure-btn:hover,
+.about-page .header:not(.header--scrolled) .download-brochure-btn:hover,
+.register-page .header:not(.header--scrolled) .download-brochure-btn:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000000 !important;
+}
+
+/* Disable navigation line animation for the brochure button */
+.header-nav .download-brochure-btn::after {
+  display: none !important;
+}
+
+/* Mobile drawer styling */
+.mobile-nav-links .download-brochure-btn-mobile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 32px;
+  border-radius: 99px;
+  border: 1.5px solid #f8cb12;
+  color: #f8cb12 !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  text-decoration: none;
+  margin: 10px 0;
+  transition: all 0.2s ease;
+  width: auto;
+}
+
+.mobile-nav-links .download-brochure-btn-mobile svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+}
+
+.mobile-nav-links .download-brochure-btn-mobile:hover {
+  background: #f8cb12;
+  color: #000000 !important;
+  transform: scale(1.03);
+}

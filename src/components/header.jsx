@@ -115,6 +115,19 @@ const Header = ({ onNavigate, currentPage }) => {
           >
             Contact
           </a>
+          <a
+            href="/monkey-tribe-brochure.pdf"
+            download
+            className="download-brochure-btn"
+            title="Download Monkey Tribe course brochure (PDF)"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            <span>Download Brochure</span>
+          </a>
         </nav>
 
         {/* Right */}
@@ -157,6 +170,19 @@ const Header = ({ onNavigate, currentPage }) => {
             <a href="#" className={currentPage === "blog" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('blog'); }}>Blog</a>
             <a href="#" className={currentPage === "about" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('about'); }}>About</a>
             <a href="#" className={currentPage === "contact" ? "active" : ""} onClick={(e) => { e.preventDefault(); setIsMobileOpen(false); if (onNavigate) onNavigate('contact'); }}>Contact</a>
+            <a 
+              href="/monkey-tribe-brochure.pdf" 
+              download 
+              className="download-brochure-btn-mobile"
+              onClick={() => setIsMobileOpen(false)}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              <span>Download Brochure</span>
+            </a>
             
             <div className="mobile-nav-actions">
               <button 

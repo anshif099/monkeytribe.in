@@ -81,6 +81,8 @@ function CmsManager({ currentPage, onNavigate }) {
   const [propColor, setPropColor] = useState('#ffffff');
   const [propBgColor, setPropBgColor] = useState('transparent');
   const [propSrc, setPropSrc] = useState('');
+  const [propText, setPropText] = useState('');
+  const [propPlaceholder, setPropPlaceholder] = useState('');
   
   // UI states
   const [showToast, setShowToast] = useState(false);
@@ -203,14 +205,36 @@ function CmsManager({ currentPage, onNavigate }) {
             // Apply text edits
             if (overrides.text !== undefined && overrides.text !== null) {
               if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                if (element.value !== overrides.text) {
-                  element.value = overrides.text;
+                if (element.placeholder !== overrides.text) {
+                  element.placeholder = overrides.text;
                 }
               } else if (element.tagName === 'IMG') {
                 // If user selected img and tried to edit text somehow
-              } else if (element.children.length === 0) {
-                if (element.innerText !== overrides.text) {
-                  element.innerText = overrides.text;
+              } else {
+                let textNode = null;
+                for (let i = 0; i < element.childNodes.length; i++) {
+                  if (element.childNodes[i].nodeType === 3) { // TEXT_NODE
+                    textNode = element.childNodes[i];
+                    break;
+                  }
+                }
+                if (textNode) {
+                  if (textNode.textContent !== overrides.text) {
+                    textNode.textContent = overrides.text;
+                  }
+                } else {
+                  if (element.innerText !== overrides.text) {
+                    element.innerText = overrides.text;
+                  }
+                }
+              }
+            }
+            
+            // Apply placeholder edits
+            if (overrides.placeholder !== undefined && overrides.placeholder !== null) {
+              if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                if (element.placeholder !== overrides.placeholder) {
+                  element.placeholder = overrides.placeholder;
                 }
               }
             }
@@ -490,8 +514,23 @@ function CmsManager({ currentPage, onNavigate }) {
         setPropBgColor(computed.backgroundColor === 'rgba(0, 0, 0, 0)' ? 'transparent' : rgb2hex(computed.backgroundColor));
         setPropSrc(el.src || '');
 
+        // Pre-populate text and placeholder states
+        let textVal = '';
+        if (el.tagName !== 'IMG') {
+          let textNode = null;
+          for (let i = 0; i < el.childNodes.length; i++) {
+            if (el.childNodes[i].nodeType === 3) { // TEXT_NODE
+              textNode = el.childNodes[i];
+              break;
+            }
+          }
+          textVal = textNode ? textNode.textContent : el.innerText;
+        }
+        setPropText(textVal || '');
+        setPropPlaceholder(el.placeholder || '');
+
         // IN-PLACE EDITING TRIGGER (if leaf text element)
-        if (el.children.length === 0 && el.tagName !== 'IMG') {
+        if (el.children.length === 0 && el.tagName !== 'IMG' && el.tagName !== 'INPUT' && el.tagName !== 'TEXTAREA' && el.tagName !== 'SELECT') {
           setIsTextEditing(true);
           el.contentEditable = 'true';
           el.focus();
@@ -558,6 +597,16 @@ function CmsManager({ currentPage, onNavigate }) {
   };
 
   // 4. APPLY PROPERTY CHANGES INSTANTLY TO DOM AND CACHE THEM
+  const handlePropTextChange = (newVal) => {
+    setPropText(newVal);
+    updateElementProperty('text', newVal);
+  };
+
+  const handlePropPlaceholderChange = (newVal) => {
+    setPropPlaceholder(newVal);
+    updateElementProperty('placeholder', newVal);
+  };
+
   const updateElementProperty = (key, value, styleKey = null) => {
     if (!selectedElement || !selectedSelector) return;
     
@@ -565,8 +614,25 @@ function CmsManager({ currentPage, onNavigate }) {
     if (styleKey) {
       selectedElement.style[styleKey] = value;
     } else if (key === 'text') {
-      if (selectedElement.children.length === 0) {
-        selectedElement.innerText = value;
+      if (selectedElement.tagName === 'INPUT' || selectedElement.tagName === 'TEXTAREA') {
+        selectedElement.placeholder = value;
+      } else {
+        let textNode = null;
+        for (let i = 0; i < selectedElement.childNodes.length; i++) {
+          if (selectedElement.childNodes[i].nodeType === 3) { // TEXT_NODE
+            textNode = selectedElement.childNodes[i];
+            break;
+          }
+        }
+        if (textNode) {
+          textNode.textContent = value;
+        } else {
+          selectedElement.innerText = value;
+        }
+      }
+    } else if (key === 'placeholder') {
+      if (selectedElement.tagName === 'INPUT' || selectedElement.tagName === 'TEXTAREA') {
+        selectedElement.placeholder = value;
       }
     } else if (key === 'src') {
       selectedElement.src = value;
@@ -576,25 +642,10 @@ function CmsManager({ currentPage, onNavigate }) {
     
     // Update local React state to keep inputs synced
     if (key === 'text') setPropText(value);
+    if (key === 'placeholder') setPropPlaceholder(value);
     if (key === 'src') setPropSrc(value);
     if (styleKey === 'color') setPropColor(value);
     if (styleKey === 'backgroundColor') setPropBgColor(value);
-    if (styleKey === 'fontSize') setPropFontSize(value);
-    if (styleKey === 'fontWeight') setPropFontWeight(value);
-    if (styleKey === 'textAlign') setPropTextAlign(value);
-    if (styleKey === 'padding') {
-      setPropPadding(value);
-      selectedElement.style.padding = `${value}px`;
-    }
-    if (styleKey === 'margin') {
-      setPropMargin(value);
-      selectedElement.style.margin = `${value}px`;
-    }
-    if (styleKey === 'borderRadius') {
-      setPropBorderRadius(value);
-      selectedElement.style.borderRadius = `${value}px`;
-    }
-    if (key === 'customCss') setPropCustomCss(value);
     
     // 2. Prepare structural overrides tree
     const currentRoute = currentPage || 'home';
@@ -610,6 +661,8 @@ function CmsManager({ currentPage, onNavigate }) {
     
     if (key === 'text') {
       elementConfig.text = value;
+    } else if (key === 'placeholder') {
+      elementConfig.placeholder = value;
     } else if (key === 'src') {
       elementConfig.src = value;
     } else if (key === 'customCss') {
@@ -946,6 +999,55 @@ function CmsManager({ currentPage, onNavigate }) {
               />
             </div>
           </div>
+
+          {selectedElement.tagName !== 'IMG' && selectedElement.tagName !== 'INPUT' && selectedElement.tagName !== 'TEXTAREA' && selectedElement.tagName !== 'SELECT' && (
+            <div className="mt-cms-floating-item">
+              <span className="mt-cms-floating-label" style={{ marginRight: '6px' }}>Edit Text</span>
+              <input 
+                type="text" 
+                value={propText}
+                onChange={(e) => handlePropTextChange(e.target.value)}
+                placeholder="Change text..."
+                style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '6px',
+                  color: '#fff',
+                  padding: '4px 8px',
+                  fontSize: '11px',
+                  width: '120px',
+                  outline: 'none',
+                  fontFamily: 'inherit'
+                }}
+              />
+            </div>
+          )}
+
+          {(selectedElement.tagName === 'INPUT' || selectedElement.tagName === 'TEXTAREA') && (
+            <div className="mt-cms-floating-item">
+              <span className="mt-cms-floating-label" style={{ marginRight: '6px' }}>Placeholder</span>
+              <input 
+                type="text" 
+                value={propPlaceholder || propText}
+                onChange={(e) => {
+                  handlePropPlaceholderChange(e.target.value);
+                  handlePropTextChange(e.target.value);
+                }}
+                placeholder="Change placeholder..."
+                style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '6px',
+                  color: '#fff',
+                  padding: '4px 8px',
+                  fontSize: '11px',
+                  width: '125px',
+                  outline: 'none',
+                  fontFamily: 'inherit'
+                }}
+              />
+            </div>
+          )}
 
           {/* Hidden Image File Uploader & Trigger */}
           {selectedElement.tagName === 'IMG' && (

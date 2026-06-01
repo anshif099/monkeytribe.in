@@ -39,6 +39,16 @@ const curriculumData = [
   },
   {
     number: '08',
+    title: 'Advanced Agentic Systems',
+    description: 'Design autonomous AI agents that can plan, use external tools, self-correct, and collaborate to solve complex, multi-step goals.',
+  },
+  {
+    number: '09',
+    title: 'Enterprise Scaling & Security',
+    description: 'Optimize prompts for cost, speed, and safety. Learn techniques to prevent prompt injection, secure APIs, and handle data privacy.',
+  },
+  {
+    number: '10',
     title: 'Capstone Project',
     description: 'Design and deploy a complete AI-powered workflow solving a real-world problem in your field.',
   },
@@ -77,7 +87,7 @@ function PromptxCurriculum() {
     >
       <div className="promptx-curriculum__container footer-container">
         <span className="promptx-curriculum__eyebrow">Curriculum</span>
-        <h2 className="promptx-curriculum__title">8 modules. Zero fluff.</h2>
+        <h2 className="promptx-curriculum__title">10 modules. Zero fluff.</h2>
 
         <div className="promptx-curriculum__grid">
           {curriculumData.map((module, index) => (

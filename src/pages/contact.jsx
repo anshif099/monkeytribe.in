@@ -110,7 +110,12 @@ function Contact({ onNavigate }) {
                 </div>
                 <div className="contact-info__details">
                   <span className="contact-info__label">LOCATION</span>
-                  <span className="contact-info__value">India</span>
+                  <address className="contact-info__address">
+                    Mabrook Building<br />
+                    Freedom Road<br />
+                    Deshabhimani Rd, Kaloor<br />
+                    Kochi, Kerala, India
+                  </address>
                 </div>
               </div>
             </div>

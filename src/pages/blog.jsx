@@ -14,7 +14,7 @@ function Blog({ onNavigate }) {
       <BlogHero />
 
       {/* Interactive Blog Cards Grid with Filters */}
-      <BlogGrid />
+      <BlogGrid onNavigate={onNavigate} />
 
       {/* Footer — standard black like home */}
       <Footer />

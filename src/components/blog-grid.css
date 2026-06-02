@@ -148,6 +148,45 @@
     0 4px 12px rgba(248, 203, 18, 0.06);
 }
 
+/* Clickable card modifier */
+.blog-grid__card--link {
+  cursor: pointer;
+}
+
+.blog-grid__card--link:focus-visible {
+  outline: 2px solid #fcc01a;
+  outline-offset: 3px;
+}
+
+/* Read Article row */
+.blog-grid__card-readmore {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f1115;
+  transition: gap 0.25s ease, color 0.2s ease;
+}
+
+.blog-grid__card-readmore svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.25s ease;
+}
+
+.blog-grid__card--link:hover .blog-grid__card-readmore {
+  color: #c49200;
+  gap: 10px;
+}
+
+.blog-grid__card--link:hover .blog-grid__card-readmore svg {
+  transform: translateX(3px);
+}
+
+
 /* Category Badge */
 .blog-grid__card-category {
   margin-bottom: 20px;

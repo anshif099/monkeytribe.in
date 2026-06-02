@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './blog-grid.css';
 
-function BlogGrid() {
+function BlogGrid({ onNavigate }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedTag, setSelectedTag] = useState('all');
 
@@ -43,6 +43,11 @@ function BlogGrid() {
     }
   ];
 
+  // Map article id -> page slug for navigation
+  const articlePageMap = {
+    1: 'ai-integrated-digital-marketing',
+    // future articles can be added here
+  };
   // Filtering Logic
   const filteredArticles = articles.filter((article) => {
     const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
@@ -109,8 +114,18 @@ function BlogGrid() {
 
         {/* Card Grid */}
         <div className="blog-grid__layout">
-          {filteredArticles.map((article) => (
-            <article key={article.id} className="blog-grid__card">
+          {filteredArticles.map((article) => {
+            const slug = articlePageMap[article.id];
+            return (
+            <article
+              key={article.id}
+              className={`blog-grid__card${slug ? ' blog-grid__card--link' : ''}`}
+              onClick={slug && onNavigate ? () => onNavigate(slug) : undefined}
+              role={slug ? 'button' : undefined}
+              tabIndex={slug ? 0 : undefined}
+              onKeyDown={slug && onNavigate ? (e) => { if (e.key === 'Enter' || e.key === ' ') onNavigate(slug); } : undefined}
+              aria-label={slug ? `Read article: ${article.title}` : undefined}
+            >
               
               {/* Category pill */}
               <div className="blog-grid__card-category">
@@ -143,8 +158,19 @@ function BlogGrid() {
                 ))}
               </div>
 
+              {/* Read More arrow — only for articles with a dedicated page */}
+              {articlePageMap[article.id] && (
+                <div className="blog-grid__card-readmore">
+                  <span>Read Article</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              )}
+
             </article>
-          ))}
+            );
+          })}
         </div>
 
       </div>

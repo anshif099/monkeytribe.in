@@ -17,6 +17,7 @@ const Webinars = lazy(() => import('./pages/webinars.jsx'))
 const Blog = lazy(() => import('./pages/blog.jsx'))
 const About = lazy(() => import('./pages/about.jsx'))
 const Register = lazy(() => import('./pages/register.jsx'))
+const AiIntegratedDigitalMarketing = lazy(() => import('./pages/ai-integrated-digital-marketing.jsx'))
 
 // Derive the initial page from the current URL pathname
 function getPageFromPath(pathname) {
@@ -85,6 +86,8 @@ function App() {
     pageContent = <About onNavigate={handleNavigate} />
   } else if (currentPage === 'register') {
     pageContent = <Register onNavigate={handleNavigate} />
+  } else if (currentPage === 'ai-integrated-digital-marketing') {
+    pageContent = <AiIntegratedDigitalMarketing onNavigate={handleNavigate} />
   } else if (currentPage.startsWith('custom-course-')) {
     // Dynamic custom courses created via CMS
     const customCourses = (() => {

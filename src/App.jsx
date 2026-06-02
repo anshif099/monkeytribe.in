@@ -18,8 +18,14 @@ const Blog = lazy(() => import('./pages/blog.jsx'))
 const About = lazy(() => import('./pages/about.jsx'))
 const Register = lazy(() => import('./pages/register.jsx'))
 
+// Derive the initial page from the current URL pathname
+function getPageFromPath(pathname) {
+  const slug = pathname.replace(/^\//, '').replace(/\/$/, '') || 'home';
+  return slug;
+}
+
 function App() {
-  const [currentPage, setCurrentPage] = useState('home')
+  const [currentPage, setCurrentPage] = useState(() => getPageFromPath(window.location.pathname))
   const [showCms, setShowCms] = useState(false)
 
   useEffect(() => {
@@ -30,17 +36,24 @@ function App() {
       setShowCms(isCmsActive);
     };
     checkCms();
+
+    // Sync state when the user uses back/forward browser buttons
+    const handlePopState = () => {
+      setCurrentPage(getPageFromPath(window.location.pathname));
+      checkCms();
+    };
     
     window.addEventListener('storage', checkCms);
-    // Also check on history/popstate changes
-    window.addEventListener('popstate', checkCms);
+    window.addEventListener('popstate', handlePopState);
     return () => {
       window.removeEventListener('storage', checkCms);
-      window.removeEventListener('popstate', checkCms);
+      window.removeEventListener('popstate', handlePopState);
     };
   }, []);
 
   const handleNavigate = (page) => {
+    const newPath = page === 'home' ? '/' : `/${page}`;
+    window.history.pushState({ page }, '', newPath);
     setCurrentPage(page)
     window.scrollTo({ top: 0, behavior: 'instant' })
   }

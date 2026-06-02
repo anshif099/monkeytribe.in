@@ -32,7 +32,7 @@
   position: relative;
   z-index: 2;
   width: 90%;
-  max-width: 860px;
+  max-width: 1150px;
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
@@ -141,3 +141,1675 @@
     font-size: 40px;
   }
 }
+
+/* =========================================================
+   HERO DESCRIPTION & AUTHOR BADGE
+   ========================================================= */
+
+.ai-blog-hero__desc {
+  font-family: var(--font-sans);
+  font-size: 36px !important;
+  line-height: 1.4 !important;
+  color: #475467;
+  max-width: 1150px;
+  margin: 0 auto 36px;
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.ai-blog-hero__author-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #fef08a; /* Soft, warm golden yellow matching screenshot */
+  border: 1px solid rgba(252, 192, 26, 0.25);
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #1f2937;
+  box-shadow: 0 4px 18px rgba(252, 192, 26, 0.15);
+  font-weight: 500;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.ai-blog-hero__author-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(252, 192, 26, 0.25);
+}
+
+.ai-blog-hero__author-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #1f2937; /* Dark charcoal/black circle */
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+  letter-spacing: -0.05em;
+}
+
+.ai-blog-hero__author-name {
+  font-weight: 700;
+  color: #0f1115;
+}
+
+.ai-blog-hero__author-dot {
+  color: rgba(31, 41, 55, 0.25);
+  font-weight: bold;
+}
+
+.ai-blog-hero__author-date {
+  color: #4b5563;
+}
+
+.ai-blog-hero__author-read-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #4b5563;
+}
+
+.ai-blog-hero__clock-icon {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5;
+  color: #4b5563;
+}
+
+/* =========================================================
+   INFINITE MARQUEE SECTION
+   ========================================================= */
+
+.ai-marquee-section {
+  background: #ffffff;
+  padding: 80px 0;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Subtle fading gradient masks on left and right edges for a ultra-premium look */
+.ai-marquee-section::before,
+.ai-marquee-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 160px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.ai-marquee-section::before {
+  left: 0;
+  background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.ai-marquee-section::after {
+  right: 0;
+  background: linear-gradient(-90deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.ai-marquee-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.ai-marquee-row {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+
+.ai-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Scrolling Directions and Speeds */
+.ai-marquee-row--ltr .ai-marquee-track {
+  animation: marquee-ltr 45s linear infinite;
+}
+
+.ai-marquee-row--rtl .ai-marquee-track {
+  animation: marquee-rtl 40s linear infinite;
+}
+
+/* Pause animation on hover to allow users to read items comfortably */
+.ai-marquee-row:hover .ai-marquee-track {
+  animation-play-state: paused;
+}
+
+.ai-marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-right: 24px; /* Ensure seamless spacing when wrapping */
+}
+
+/* Premium Marquee Pills */
+.marquee-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: rgba(15, 17, 21, 0.03);
+  border: 1.5px solid rgba(15, 17, 21, 0.08);
+  border-radius: 100px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f1115;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+/* Row 1 Concept Pill Dot indicators */
+.marquee-pill__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.font-dot-1 { background: #fcc01a; } /* Monkey Tribe Gold */
+.font-dot-2 { background: #ff5b5b; } /* Coral Red */
+.font-dot-3 { background: #10b981; } /* Emerald Green */
+.font-dot-4 { background: #3b82f6; } /* Royal Blue */
+
+/* Premium Hover State for Concepts */
+.marquee-pill:not(.marquee-pill--tool):hover {
+  background: #0f1115;
+  color: #ffffff;
+  border-color: #0f1115;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(15, 17, 21, 0.12);
+}
+
+/* Row 2: Specialized AI Tools Styling */
+.marquee-pill--tool {
+  background: rgba(252, 192, 26, 0.04);
+  border-color: rgba(252, 192, 26, 0.22);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.tool-svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  flex-shrink: 0;
+  transition: transform 0.4s ease;
+}
+
+/* Premium Hover State for AI Tools */
+.marquee-pill--tool:hover {
+  background: #fcc01a;
+  color: #0f1115;
+  border-color: #fcc01a;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(252, 192, 26, 0.25);
+}
+
+.marquee-pill--tool:hover .tool-svg {
+  transform: rotate(10deg) scale(1.15);
+}
+
+/* Animations */
+@keyframes marquee-ltr {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-rtl {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ai-blog-hero__desc {
+    font-size: 26px !important;
+    line-height: 1.4 !important;
+  }
+  
+  .ai-blog-hero__author-badge {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
+  .ai-marquee-section {
+    padding: 60px 0;
+  }
+  
+  .marquee-pill {
+    padding: 11px 22px;
+    font-size: 14px;
+  }
+  
+  .marquee-pill--tool {
+    font-size: 13.5px;
+  }
+  
+  .ai-marquee-section::before,
+  .ai-marquee-section::after {
+    width: 80px;
+  }
+}
+
+@media (max-width: 520px) {
+  .ai-blog-hero__desc {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+  }
+}
+
+/* =========================================================
+   SCROLL PROGRESS TRACKING LINE
+   ========================================================= */
+
+.ai-scroll-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: #000000;
+  z-index: 1002;
+  transition: width 0.08s ease-out;
+  will-change: width;
+}
+
+/* =========================================================
+   BLOG BODY CONTENT SECTION
+   ========================================================= */
+
+.ai-content-section {
+  background: #ffffff;
+  padding: 80px 0 100px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ai-content-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ai-content-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  margin: 0 0 28px 0;
+  line-height: 1.4;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.ai-content-para {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important; /* Premium subtle gray font color for body */
+  font-weight: 400;
+  margin: 0 0 28px 0;
+  text-align: left;
+  letter-spacing: -0.01em;
+}
+
+/* Eliminate margin on the last paragraph */
+.ai-content-para:last-of-type {
+  margin-bottom: 48px;
+}
+
+/* =========================================================
+   PAGINATION DOTS / SLIDER INDICATOR
+   ========================================================= */
+
+.ai-slider-dots-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  margin: 20px auto 0;
+  position: relative;
+  align-self: center;
+}
+
+.ai-slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.ai-slider-dot--active {
+  background: #0f1115;
+  box-shadow: 0 0 0 3px rgba(15, 17, 21, 0.12);
+  transform: scale(1.1);
+}
+
+.ai-slider-dot--inactive {
+  background: #cbd5e1;
+}
+
+.ai-slider-dot--inactive:hover {
+  background: #94a3b8;
+  transform: scale(1.05);
+}
+
+.ai-slider-line {
+  flex-grow: 1;
+  height: 1.5px;
+  background: #e2e8f0;
+  margin: 0 12px;
+}
+
+/* =========================================================
+   WHAT AI-INTEGRATED DIGITAL MARKETING ACTUALLY MEANS SECTION
+   ========================================================= */
+
+.ai-means-section {
+  background: #ffffff;
+  padding: 0 0 120px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ai-means-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ai-means-header-wrap {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 24px;
+}
+
+.ai-means-bullet-decor {
+  position: absolute;
+  left: -4px;
+  top: -2px;
+  font-size: 32px;
+  color: #94a3b8;
+  line-height: 1;
+}
+
+.ai-means-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: none;
+}
+
+.ai-means-line-decor {
+  width: 110px;
+  height: 2.5px;
+  background: #0f1115;
+  margin-top: 18px;
+}
+
+.ai-means-para {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  margin: 0 0 32px 0;
+}
+
+.ai-means-para strong {
+  color: #0f1115;
+  font-weight: 600;
+}
+
+.ai-means-subpara {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.60 !important;
+  color: #475467 !important;
+  margin: 0 0 24px 0;
+}
+
+.ai-means-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.ai-means-list li {
+  font-family: var(--font-sans);
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+  color: #475467 !important;
+  position: relative;
+  padding-left: 28px;
+}
+
+.ai-means-list li::before {
+  content: '•';
+  position: absolute;
+  left: 6px;
+  top: -1px;
+  color: #0f1115;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.ai-means-para-extra {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  margin: 36px 0 48px 0;
+  text-align: left;
+}
+
+.ai-means-para-extra strong {
+  color: #0f1115;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .ai-means-heading {
+    font-size: 38px !important;
+  }
+  .ai-means-para,
+  .ai-means-para-extra,
+  .ai-means-subpara {
+    font-size: 18px !important;
+  }
+  .ai-means-list li {
+    font-size: 16px !important;
+  }
+}
+
+/* =========================================================
+   THE FIVE PILLARS OF AI-INTEGRATED MARKETING
+   ========================================================= */
+
+.ai-pillars-section {
+  background: #ffffff;
+  padding: 0 0 120px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ai-pillars-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ai-pillars-header-wrap {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 24px;
+}
+
+.ai-pillars-bullet-decor {
+  position: absolute;
+  left: -4px;
+  top: -2px;
+  font-size: 32px;
+  color: #94a3b8;
+  line-height: 1;
+}
+
+.ai-pillars-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: none;
+}
+
+.ai-pillars-line-decor {
+  width: 110px;
+  height: 2.5px;
+  background: #0f1115;
+  margin-top: 18px;
+}
+
+.ai-pillar-block {
+  width: 100%;
+  margin-bottom: 48px;
+}
+
+.ai-pillar-subheading-wrap {
+  position: relative;
+  margin: 40px 0 24px 0;
+  padding-left: 24px;
+}
+
+.ai-pillar-bullet-decor-small {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  font-size: 24px;
+  color: #94a3b8;
+  line-height: 1.2;
+}
+
+.ai-pillar-subheading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.3;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+.ai-pillar-para {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  margin: 0 0 28px 0;
+}
+
+.ai-pillar-subpara {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.6 !important;
+  color: #0f1115 !important;
+  font-weight: 600;
+  margin: 0 0 24px 0;
+}
+
+.ai-pillar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.ai-pillar-list li {
+  font-family: var(--font-sans);
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+  color: #475467 !important;
+  position: relative;
+  padding-left: 28px;
+}
+
+.ai-pillar-list li::before {
+  content: '•';
+  position: absolute;
+  left: 6px;
+  top: -1px;
+  color: #0f1115;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.ai-pillar-practice {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  margin: 0;
+}
+
+.ai-pillar-practice strong {
+  color: #0f1115;
+  font-weight: 600;
+}
+
+/* Premium quote block styling matching screenshot */
+.ai-pillar-quote-card {
+  position: relative;
+  background: #f8f9fa;
+  border-left: 4px solid #0f1115;
+  border-radius: 8px;
+  padding: 32px 40px;
+  margin: 40px 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.ai-pillar-quote-icon {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px;
+  color: #cbd5e1;
+  line-height: 1;
+  font-weight: 700;
+  margin-top: -10px;
+  user-select: none;
+}
+
+.ai-pillar-quote-text {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.5 !important;
+  color: #344054 !important;
+  font-weight: 500;
+  font-style: italic;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .ai-pillars-heading {
+    font-size: 38px !important;
+  }
+  .ai-pillar-subheading {
+    font-size: 26px !important;
+  }
+  .ai-pillar-para,
+  .ai-pillar-subpara,
+  .ai-pillar-practice {
+    font-size: 18px !important;
+  }
+  .ai-pillar-list li {
+    font-size: 16px !important;
+  }
+  .ai-pillar-quote-card {
+    padding: 24px 28px;
+  }
+  .ai-pillar-quote-text {
+    font-size: 17px !important;
+  }
+  .ai-pillar-quote-icon {
+    font-size: 36px;
+  }
+}
+
+/* =========================================================
+   AI TOOLS EVERY MARKETER SHOULD KNOW
+   ========================================================= */
+
+.ai-tools-section {
+  background: #ffffff;
+  padding: 0 0 120px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ai-tools-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ai-tools-header-wrap {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 24px;
+}
+
+.ai-tools-bullet-decor {
+  position: absolute;
+  left: -4px;
+  top: -2px;
+  font-size: 32px;
+  color: #94a3b8;
+  line-height: 1;
+}
+
+.ai-tools-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: none;
+}
+
+.ai-tools-line-decor {
+  width: 110px;
+  height: 2.5px;
+  background: #0f1115;
+  margin-top: 18px;
+}
+
+.ai-tool-category {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.ai-tool-subheading-wrap {
+  position: relative;
+  margin: 40px 0 24px 0;
+  padding-left: 24px;
+}
+
+.ai-tool-bullet-decor-small {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  font-size: 24px;
+  color: #94a3b8;
+  line-height: 1.2;
+}
+
+.ai-tool-subheading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.3;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+.ai-tool-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.ai-tool-list li {
+  font-family: var(--font-sans);
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+  color: #475467 !important;
+  position: relative;
+  padding-left: 28px;
+}
+
+.ai-tool-list li strong {
+  color: #344054;
+  font-weight: 700;
+}
+
+.ai-tool-list li::before {
+  content: '•';
+  position: absolute;
+  left: 6px;
+  top: -1px;
+  color: #0f1115;
+  font-size: 20px;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .ai-tools-heading {
+    font-size: 38px !important;
+  }
+  .ai-tool-subheading {
+    font-size: 26px !important;
+  }
+  .ai-tool-list li {
+    font-size: 16px !important;
+  }
+}
+
+/* =========================================================
+   BUILDING AN AI-INTEGRATED MARKETING STRATEGY: A FRAMEWORK
+   ========================================================= */
+
+.ai-framework-section {
+  background: #ffffff;
+  padding: 0 0 120px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ai-framework-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ai-framework-header-wrap {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 24px;
+}
+
+.ai-framework-bullet-decor {
+  position: absolute;
+  left: -4px;
+  top: -2px;
+  font-size: 32px;
+  color: #94a3b8;
+  line-height: 1;
+}
+
+.ai-framework-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: none;
+}
+
+.ai-framework-line-decor {
+  width: 110px;
+  height: 2.5px;
+  background: #0f1115;
+  margin-top: 18px;
+}
+
+.ai-framework-step {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.ai-framework-subheading-wrap {
+  position: relative;
+  margin: 40px 0 24px 0;
+  padding-left: 24px;
+}
+
+.ai-framework-bullet-decor-small {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  font-size: 24px;
+  color: #94a3b8;
+  line-height: 1.2;
+}
+
+.ai-framework-subheading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.3;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+.ai-framework-para {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  margin: 0;
+}
+
+.ai-framework-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.ai-framework-list li {
+  font-family: var(--font-sans);
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+  color: #475467 !important;
+  position: relative;
+  padding-left: 28px;
+}
+
+.ai-framework-list li::before {
+  content: '•';
+  position: absolute;
+  left: 6px;
+  top: -1px;
+  color: #0f1115;
+  font-size: 20px;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .ai-framework-heading {
+    font-size: 38px !important;
+  }
+  .ai-framework-subheading {
+    font-size: 26px !important;
+  }
+  .ai-framework-para {
+    font-size: 18px !important;
+  }
+  .ai-framework-list li {
+    font-size: 16px !important;
+  }
+}
+
+/* =========================================================
+   THE ETHICAL DIMENSION OF AI MARKETING
+   ========================================================= */
+
+.ai-ethics-section {
+  background: #ffffff;
+  padding: 0 0 120px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ai-ethics-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ai-ethics-header-wrap {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 24px;
+}
+
+.ai-ethics-bullet-decor {
+  position: absolute;
+  left: -4px;
+  top: -2px;
+  font-size: 32px;
+  color: #94a3b8;
+  line-height: 1;
+}
+
+.ai-ethics-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: none;
+}
+
+.ai-ethics-line-decor {
+  width: 110px;
+  height: 2.5px;
+  background: #0f1115;
+  margin-top: 18px;
+}
+
+.ai-ethics-para {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  margin: 0 0 28px 0;
+}
+
+.ai-ethics-para-extra {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  margin: 36px 0 48px 0;
+  text-align: left;
+}
+
+.ai-ethics-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.ai-ethics-list li {
+  font-family: var(--font-sans);
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+  color: #475467 !important;
+  position: relative;
+  padding-left: 28px;
+}
+
+.ai-ethics-list li strong {
+  color: #0f1115;
+  font-weight: 700;
+}
+
+.ai-ethics-list li::before {
+  content: '•';
+  position: absolute;
+  left: 6px;
+  top: -1px;
+  color: #0f1115;
+  font-size: 20px;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .ai-ethics-heading {
+    font-size: 38px !important;
+  }
+  .ai-ethics-para,
+  .ai-ethics-para-extra {
+    font-size: 18px !important;
+  }
+  .ai-ethics-list li {
+    font-size: 16px !important;
+  }
+}
+
+/* =========================================================
+   THE SKILLS GAP — AND THE OPPORTUNITY
+   ========================================================= */
+
+.ai-skills-gap-section {
+  background: #ffffff;
+  padding: 0 0 120px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ai-skills-gap-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ai-skills-gap-header-wrap {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 24px;
+}
+
+.ai-skills-gap-bullet-decor {
+  position: absolute;
+  left: -4px;
+  top: -2px;
+  font-size: 32px;
+  color: #94a3b8;
+  line-height: 1;
+}
+
+.ai-skills-gap-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: none;
+}
+
+.ai-skills-gap-line-decor {
+  width: 110px;
+  height: 2.5px;
+  background: #0f1115;
+  margin-top: 18px;
+}
+
+.ai-skills-gap-para {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  margin: 0 0 28px 0;
+}
+
+.ai-skills-gap-para-extra {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  margin: 0 0 48px 0;
+}
+
+@media (max-width: 768px) {
+  .ai-skills-gap-heading {
+    font-size: 38px !important;
+  }
+  .ai-skills-gap-para,
+  .ai-skills-gap-para-extra {
+    font-size: 18px !important;
+  }
+}
+
+/* =========================================================
+   KEY TAKEAWAYS
+   ========================================================= */
+
+.ai-takeaways-section {
+  background: #ffffff;
+  padding: 0 0 120px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ai-takeaways-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ai-takeaways-header-wrap {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 24px;
+}
+
+.ai-takeaways-bullet-decor {
+  position: absolute;
+  left: -4px;
+  top: -2px;
+  font-size: 32px;
+  color: #94a3b8;
+  line-height: 1;
+}
+
+.ai-takeaways-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: none;
+}
+
+.ai-takeaways-line-decor {
+  width: 110px;
+  height: 2.5px;
+  background: #0f1115;
+  margin-top: 18px;
+}
+
+.ai-takeaways-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.ai-takeaways-list li {
+  font-family: var(--font-sans);
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+  color: #475467 !important;
+  position: relative;
+  padding-left: 28px;
+}
+
+.ai-takeaways-list li::before {
+  content: '•';
+  position: absolute;
+  left: 6px;
+  top: -1px;
+  color: #0f1115;
+  font-size: 20px;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .ai-takeaways-heading {
+    font-size: 38px !important;
+  }
+  .ai-takeaways-list li {
+    font-size: 16px !important;
+  }
+}
+
+/* =========================================================
+   GROW FASTER WITH MONKEY TRIBE
+   ========================================================= */
+
+.ai-grow-faster-section {
+  background: #ffffff;
+  padding: 0 0 80px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ai-grow-faster-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ai-grow-faster-header-wrap {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 24px;
+}
+
+.ai-grow-faster-bullet-decor {
+  position: absolute;
+  left: -4px;
+  top: -2px;
+  font-size: 32px;
+  color: #94a3b8;
+  line-height: 1;
+}
+
+.ai-grow-faster-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: none;
+}
+
+.ai-grow-faster-line-decor {
+  width: 110px;
+  height: 2.5px;
+  background: #0f1115;
+  margin-top: 18px;
+}
+
+.ai-grow-faster-para {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  margin: 0 0 48px 0;
+}
+
+.ai-grow-faster-para strong {
+  color: #0f1115;
+  font-weight: 700;
+}
+
+/* Explore Topics Styling */
+.ai-explore-topics-wrap {
+  width: 100%;
+  border-top: 1px solid #f1f1f1;
+  padding-top: 48px;
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ai-explore-topics-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #475467;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.ai-topics-pills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 700px;
+}
+
+.ai-topic-pill {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f1115;
+  background: #fef08a; /* Soft light golden yellow tag */
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.ai-topic-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(252, 192, 26, 0.15);
+}
+
+/* =========================================================
+   WRITTEN BY AUTHOR SECTION
+   ========================================================= */
+
+.ai-author-section {
+  background: #ffffff;
+  padding: 0 0 120px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ai-author-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  border-top: 1px solid #f1f1f1;
+  padding-top: 48px;
+}
+
+.ai-author-card {
+  width: 100%;
+  background: #fffbef; /* Premium warm cream card background */
+  border: 1px solid rgba(252, 192, 26, 0.15);
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  box-shadow: 0 10px 30px rgba(252, 192, 26, 0.04);
+}
+
+.ai-author-avatar-wrap {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0 0 0 4px #ffffff, 0 0 0 6px rgba(31, 41, 55, 0.1);
+}
+
+.ai-author-avatar-inner {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.ai-author-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ai-author-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.ai-author-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  margin: 0 0 8px 0;
+  text-transform: none;
+}
+
+.ai-author-desc {
+  font-family: var(--font-sans);
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  color: #475467 !important;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .ai-grow-faster-heading {
+    font-size: 38px !important;
+  }
+  .ai-grow-faster-para {
+    font-size: 18px !important;
+  }
+  .ai-author-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 24px;
+    gap: 20px;
+  }
+  .ai-author-info {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Yellow footer accent line dividing from standard black footer */
+.ai-footer-accent {
+  width: 100%;
+  height: 5px;
+  background-color: #f8cb12;
+  position: relative;
+  z-index: 10;
+}
+
+/* =========================================================
+   LEFT SIDE TIMELINE LINE LAYOUT
+   ========================================================= */
+
+.ai-blog-body-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.ai-blog-line-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 820px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ai-vertical-line {
+  position: absolute;
+  top: 90px;      /* Starts beautifully near the beginning of content */
+  bottom: 160px;   /* Fades out beautifully before the topics / cards */
+  left: 0;         /* Aligns perfectly with the left padding boundary of the content container */
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(148, 163, 184, 0.02) 0%,
+    rgba(148, 163, 184, 0.12) 3%,
+    rgba(148, 163, 184, 0.38) 12%,
+    rgba(148, 163, 184, 0.45) 50%,
+    rgba(148, 163, 184, 0.15) 88%,
+    rgba(148, 163, 184, 0) 100%
+  );
+}
+
+/* ── Shift all content elements to the right to create a gorgeous gap from the line ── */
+.ai-content-container > *:not(.ai-slider-dots-container):not(.ai-explore-topics-wrap),
+.ai-means-container > *:not(.ai-slider-dots-container),
+.ai-pillars-container > *:not(.ai-slider-dots-container),
+.ai-tools-container > *:not(.ai-slider-dots-container),
+.ai-framework-container > *:not(.ai-slider-dots-container),
+.ai-ethics-container > *:not(.ai-slider-dots-container),
+.ai-skills-gap-container > *:not(.ai-slider-dots-container),
+.ai-takeaways-container > *:not(.ai-slider-dots-container),
+.ai-grow-faster-container > *:not(.ai-slider-dots-container):not(.ai-explore-topics-wrap) {
+  padding-left: 64px;
+  box-sizing: border-box;
+}
+
+/* ── Shift major bullet decorations to be perfectly centered in the gap ── */
+.ai-means-header-wrap,
+.ai-pillars-header-wrap,
+.ai-tools-header-wrap,
+.ai-framework-header-wrap,
+.ai-ethics-header-wrap,
+.ai-skills-gap-header-wrap,
+.ai-takeaways-header-wrap,
+.ai-grow-faster-header-wrap {
+  padding-left: 64px !important;
+}
+
+.ai-means-bullet-decor,
+.ai-pillars-bullet-decor,
+.ai-tools-bullet-decor,
+.ai-framework-bullet-decor,
+.ai-ethics-bullet-decor,
+.ai-skills-gap-bullet-decor,
+.ai-takeaways-bullet-decor,
+.ai-grow-faster-bullet-decor {
+  left: 32px !important;
+}
+
+/* ── Shift minor subheadings and their bullets to align perfectly ── */
+.ai-pillar-subheading-wrap,
+.ai-tool-subheading-wrap,
+.ai-framework-subheading-wrap {
+  padding-left: 0 !important;
+}
+
+.ai-pillar-bullet-decor-small,
+.ai-tool-bullet-decor-small,
+.ai-framework-bullet-decor-small {
+  left: -32px !important;
+}
+
+/* ── Responsive adjustments for mobile viewports ── */
+@media (max-width: 768px) {
+  .ai-content-container > *:not(.ai-slider-dots-container):not(.ai-explore-topics-wrap),
+  .ai-means-container > *:not(.ai-slider-dots-container),
+  .ai-pillars-container > *:not(.ai-slider-dots-container),
+  .ai-tools-container > *:not(.ai-slider-dots-container),
+  .ai-framework-container > *:not(.ai-slider-dots-container),
+  .ai-ethics-container > *:not(.ai-slider-dots-container),
+  .ai-skills-gap-container > *:not(.ai-slider-dots-container),
+  .ai-takeaways-container > *:not(.ai-slider-dots-container),
+  .ai-grow-faster-container > *:not(.ai-slider-dots-container):not(.ai-explore-topics-wrap) {
+    padding-left: 40px;
+  }
+
+  .ai-means-header-wrap,
+  .ai-pillars-header-wrap,
+  .ai-tools-header-wrap,
+  .ai-framework-header-wrap,
+  .ai-ethics-header-wrap,
+  .ai-skills-gap-header-wrap,
+  .ai-takeaways-header-wrap,
+  .ai-grow-faster-header-wrap {
+    padding-left: 40px !important;
+  }
+
+  .ai-means-bullet-decor,
+  .ai-pillars-bullet-decor,
+  .ai-tools-bullet-decor,
+  .ai-framework-bullet-decor,
+  .ai-ethics-bullet-decor,
+  .ai-skills-gap-bullet-decor,
+  .ai-takeaways-bullet-decor,
+  .ai-grow-faster-bullet-decor {
+    left: 20px !important;
+  }
+
+  .ai-pillar-bullet-decor-small,
+  .ai-tool-bullet-decor-small,
+  .ai-framework-bullet-decor-small {
+    left: -20px !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+

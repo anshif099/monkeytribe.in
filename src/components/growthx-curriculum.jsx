@@ -4,53 +4,53 @@ import './growthx-curriculum.css'
 const curriculumData = [
   {
     number: '01',
-    title: 'AI & the Marketing Landscape',
-    description: 'Understand how AI is reshaping digital marketing — from content to campaigns to customer journeys.',
+    title: 'Introduction to Digital Marketing & Social Media Management',
+    description: 'Understand the digital marketing ecosystem and the role of social media. Learn how AI is transforming brand communication, audience engagement, and content strategy.',
   },
   {
     number: '02',
-    title: 'AI-Powered Content Creation',
-    description: 'Generate high-quality copy, visuals, and video scripts at scale using the latest AI tools.',
+    title: 'AI Tools for Social Media Content Creation',
+    description: 'Use AI-powered tools to generate compelling captions, visuals, reels scripts, and posts at scale — faster and smarter than ever before.',
   },
   {
     number: '03',
-    title: 'SEO & Content Strategy with AI',
-    description: 'Use AI to research keywords, plan content calendars, and optimise for search at unprecedented speed.',
+    title: 'Social Media Branding & Visual Identity',
+    description: 'Build a consistent and recognisable brand presence across platforms. Learn design principles, colour psychology, and AI-assisted visual identity creation.',
   },
   {
     number: '04',
-    title: 'Social Media Automation',
-    description: 'Build AI-driven social media workflows — scheduling, caption generation, trend monitoring, and engagement.',
+    title: 'Social Media Strategy & Audience Growth',
+    description: 'Develop data-driven social media strategies tailored for growth. Understand algorithms, content calendars, and AI-driven audience targeting techniques.',
   },
   {
     number: '05',
-    title: 'Paid Advertising & AI Optimisation',
-    description: 'Leverage AI for ad copy, audience targeting, bid optimisation, and performance analysis.',
+    title: 'AI-Powered Social Media Management Tools',
+    description: 'Master tools like Buffer, Hootsuite, Later, and AI-native platforms to automate scheduling, track performance, and manage multiple accounts efficiently.',
   },
   {
     number: '06',
-    title: 'Email Marketing with AI',
-    description: 'Personalise email campaigns at scale — AI-driven segmentation, subject line testing, and automation flows.',
+    title: 'Social Media Advertising & Paid Campaigns',
+    description: 'Run high-performing paid campaigns on Instagram, Facebook, and LinkedIn. Use AI for ad copy, audience segmentation, bid optimisation, and creative testing.',
   },
   {
     number: '07',
-    title: 'Analytics & Data-Driven Decisions',
-    description: 'Use AI to interpret marketing data, identify trends, and make faster, smarter campaign decisions.',
+    title: 'Influencer Marketing & Community Management',
+    description: 'Identify the right influencers using AI tools, build partnerships, and manage brand communities that drive loyalty and organic reach.',
   },
   {
     number: '08',
-    title: 'Brand Strategy in the AI Age',
-    description: 'Understand how AI changes brand positioning, audience research, and competitive intelligence.',
+    title: 'Analytics, Insights & Consumer Behavior',
+    description: 'Interpret social media data using AI-powered analytics dashboards. Track KPIs, understand consumer behaviour, and make smarter campaign decisions.',
   },
   {
     number: '09',
-    title: 'AI Tools Masterclass',
-    description: 'Deep-dive into the top AI marketing tools — Jasper, Midjourney, Perplexity, HubSpot AI, and more.',
+    title: 'AI Automation & Advanced Social Media Workflows',
+    description: 'Build end-to-end automated workflows for content publishing, engagement responses, lead generation, and reporting using AI and no-code tools.',
   },
   {
     number: '10',
-    title: 'Capstone Campaign',
-    description: 'Plan and present a complete AI-powered marketing campaign for a real or simulated brand.',
+    title: 'Capstone Project & Real-World Applications',
+    description: 'Plan and present a complete AI-powered social media marketing campaign for a real or simulated brand — from strategy to execution to results.',
   },
 ]
 

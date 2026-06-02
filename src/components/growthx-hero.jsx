@@ -47,6 +47,8 @@ function GrowthXHero() {
 
       <div className="growthx-hero__meta-bar">
         <div className="growthx-hero__meta-container">
+
+          {/* Duration */}
           <div className="growthx-hero__meta-item">
             <div className="growthx-hero__meta-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -55,25 +57,94 @@ function GrowthXHero() {
               </svg>
             </div>
             <div className="growthx-hero__meta-text">
-              <strong>10 Weeks</strong>
-              <span>Duration</span>
+              <strong>30 Hours</strong>
+              <span>Online Training</span>
             </div>
           </div>
 
+          {/* Strategy */}
           <div className="growthx-hero__meta-item">
             <div className="growthx-hero__meta-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
               </svg>
             </div>
             <div className="growthx-hero__meta-text">
-              <strong>Online</strong>
-              <span>Self-paced</span>
+              <strong>Branding</strong>
+              <span>& Content Strategy</span>
             </div>
           </div>
 
+          {/* Projects */}
+          <div className="growthx-hero__meta-item">
+            <div className="growthx-hero__meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+            </div>
+            <div className="growthx-hero__meta-text">
+              <strong>Real-World</strong>
+              <span>Projects</span>
+            </div>
+          </div>
+
+          {/* Specialization */}
+          <div className="growthx-hero__meta-item">
+            <div className="growthx-hero__meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </div>
+            <div className="growthx-hero__meta-text">
+              <strong>Social Media</strong>
+              <span>Management</span>
+            </div>
+          </div>
+
+          {/* Marketing */}
+          <div className="growthx-hero__meta-item">
+            <div className="growthx-hero__meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 7L13.5 15.5L8.5 10.5L2 17" />
+                <polyline points="16 7 22 7 22 13" />
+              </svg>
+            </div>
+            <div className="growthx-hero__meta-text">
+              <strong>Advertising</strong>
+              <span>& Campaign Optimization</span>
+            </div>
+          </div>
+
+          {/* Certification */}
+          <div className="growthx-hero__meta-item">
+            <div className="growthx-hero__meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="8" r="6" />
+                <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+              </svg>
+            </div>
+            <div className="growthx-hero__meta-text">
+              <strong>Certification</strong>
+              <span>Included</span>
+            </div>
+          </div>
+
+          {/* AI Techniques */}
+          <div className="growthx-hero__meta-item">
+            <div className="growthx-hero__meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="3" />
+                <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+              </svg>
+            </div>
+            <div className="growthx-hero__meta-text">
+              <strong>AI-Powered</strong>
+              <span>Marketing</span>
+            </div>
+          </div>
+
+          {/* Analytics */}
           <div className="growthx-hero__meta-item">
             <div className="growthx-hero__meta-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -83,10 +154,11 @@ function GrowthXHero() {
               </svg>
             </div>
             <div className="growthx-hero__meta-text">
-              <strong>All Levels</strong>
-              <span>Beginner to Pro</span>
+              <strong>Analysis</strong>
+              <span>& Automation</span>
             </div>
           </div>
+
         </div>
       </div>
     </section>

@@ -85,7 +85,7 @@ function Contact({ onNavigate }) {
                 </div>
                 <div className="contact-info__details">
                   <span className="contact-info__label">EMAIL</span>
-                  <a href="mailto: hello@creativemonkeys.in" className="contact-info__value">hello@creativemonkeys.in</a>
+                  <a href="mailto: hello@monkeytribe.in" className="contact-info__value">hello@monkeytribe.in</a>
                 </div>
               </div>
 

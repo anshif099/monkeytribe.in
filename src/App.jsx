@@ -20,6 +20,7 @@ const Register = lazy(() => import('./pages/register.jsx'))
 const AiIntegratedDigitalMarketing = lazy(() => import('./pages/ai-integrated-digital-marketing.jsx'))
 const AiPromptEngineeringGuide = lazy(() => import('./pages/ai-prompt-engineering-guide.jsx'))
 const CareerOpportunitiesInAiEra = lazy(() => import('./pages/career-opportunities-in-ai-era.jsx'))
+const Dashboard = lazy(() => import('./pages/dashboard.jsx'))
 
 // Derive the initial page from the current URL pathname
 function getPageFromPath(pathname) {
@@ -33,9 +34,11 @@ function App() {
 
   useEffect(() => {
     const checkCms = () => {
-      const isCmsActive = window.location.pathname === '/admin' || 
+      const isDashboard = window.location.pathname === '/dashboard' || window.location.pathname === '/admin-dashboard';
+      const isCmsActive = !isDashboard && (
+                          window.location.pathname === '/admin' || 
                           sessionStorage.getItem('mt_cms_logged_in') === 'true' || 
-                          localStorage.getItem('mt_cms_data') !== null;
+                          localStorage.getItem('mt_cms_data') !== null);
       setShowCms(isCmsActive);
     };
     checkCms();
@@ -88,6 +91,8 @@ function App() {
     pageContent = <About onNavigate={handleNavigate} />
   } else if (currentPage === 'register') {
     pageContent = <Register onNavigate={handleNavigate} />
+  } else if (currentPage === 'dashboard' || currentPage === 'admin-dashboard') {
+    pageContent = <Dashboard onNavigate={handleNavigate} />
   } else if (currentPage === 'ai-integrated-digital-marketing') {
     pageContent = <AiIntegratedDigitalMarketing onNavigate={handleNavigate} />
   } else if (currentPage === 'ai-prompt-engineering-guide') {

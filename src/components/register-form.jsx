@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { saveRegistration } from '../lib/firebase';
 import './register-form.css';
+
 
 const COURSES = [
   {
@@ -163,7 +165,7 @@ function RegisterForm() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     const newErrors = {};
     const txId = formData.transactionId.trim();
     if (!txId) {
@@ -177,7 +179,23 @@ function RegisterForm() {
       return;
     }
 
-    setIsSuccess(true);
+    try {
+      await saveRegistration({
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        city: formData.city || '',
+        qualification: formData.qualification || '',
+        experience: formData.experience || '',
+        transactionId: txId,
+        course: selectedCourseDetails?.badge || selectedCourse,
+        status: 'PAID'
+      });
+      setIsSuccess(true);
+    } catch (err) {
+      console.error("Failed to submit paid registration:", err);
+      alert("Something went wrong while confirming your payment. Please try again or contact support if the issue persists.");
+    }
   };
 
   const selectedCourseDetails = COURSES.find(c => c.id === selectedCourse);

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { saveEnrollment } from '../lib/firebase'
 import './growthx-enrol.css'
 
 function GrowthXEnrol() {
@@ -28,12 +29,24 @@ function GrowthXEnrol() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!formData.name || !formData.email) return
-    setSubmitted(true)
-    // backend submission mock
+    try {
+      await saveEnrollment({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        course: 'GrowthX',
+        status: 'lead'
+      })
+      setSubmitted(true)
+    } catch (err) {
+      console.error("Failed to submit growthx lead: ", err)
+      alert("There was an issue submitting your request. Please try again.")
+    }
   }
+
 
   return (
     <section

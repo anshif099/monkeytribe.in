@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from '../components/header.jsx'
 import Footer from '../components/footer.jsx'
+import { saveContact } from '../lib/firebase'
 import './contact.css'
 
 function Contact({ onNavigate }) {
@@ -13,6 +14,7 @@ function Contact({ onNavigate }) {
   })
   const [errors, setErrors] = useState({})
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -22,7 +24,7 @@ function Contact({ onNavigate }) {
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const newErrors = {}
     if (!formData.fullName.trim()) newErrors.fullName = 'Full Name is required'
@@ -39,16 +41,25 @@ function Contact({ onNavigate }) {
       return
     }
 
-    // Success
-    setIsSubmitted(true)
-    setFormData({
-      fullName: '',
-      email: '',
-      phone: '',
-      enquiryType: '',
-      message: '',
-    })
+    setIsSubmitting(true)
+    try {
+      await saveContact(formData)
+      setIsSubmitted(true)
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        enquiryType: '',
+        message: '',
+      })
+    } catch (err) {
+      console.error("Failed to submit form: ", err)
+      alert("There was an issue submitting your enquiry. Please check your internet connection and try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
+
 
   return (
     <main className="contact-page">

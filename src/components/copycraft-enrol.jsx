@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { saveEnrollment } from '../lib/firebase'
 import './copycraft-enrol.css'
 
 function CopyCraftEnrol() {
@@ -34,11 +35,26 @@ function CopyCraftEnrol() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!formData.name || !formData.email || !formData.profession) return
-    setSubmitted(true)
+    try {
+      await saveEnrollment({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        profession: formData.profession,
+        goals: formData.goals,
+        course: 'CopyCraft',
+        status: 'lead'
+      })
+      setSubmitted(true)
+    } catch (err) {
+      console.error("Failed to submit copycraft lead: ", err)
+      alert("There was an issue submitting your request. Please try again.")
+    }
   }
+
 
   return (
     <section

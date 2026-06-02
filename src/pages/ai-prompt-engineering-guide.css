@@ -1,0 +1,692 @@
+/* =========================================================
+   AI PROMPT ENGINEERING GUIDE — PAGE STYLING
+   ========================================================= */
+
+.prompt-blog-page {
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Hero Section ── */
+.prompt-blog-hero {
+  background: linear-gradient(180deg, #f9f9f9 0%, #ffffff 100%);
+  padding: 160px 0 140px; /* Spacious bottom padding to breathe beautifully */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  flex-grow: 1; /* Fills remaining height dynamically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prompt-blog-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(248, 203, 18, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.prompt-blog-hero__container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Back to Blog Button ── */
+.prompt-blog-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 48px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #475467;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.prompt-blog-hero__back:hover {
+  color: #0f1115;
+  transform: translateX(-3px);
+}
+
+.prompt-blog-hero__back svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ── Category Badge Pill ── */
+.prompt-blog-hero__badge-wrap {
+  margin-bottom: 32px;
+}
+
+.prompt-blog-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #344054;
+  background: #ffffff;
+  border: 1.5px solid #d0d5dd;
+  border-radius: 100px;
+  padding: 8px 18px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.prompt-blog-hero__badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fcc01a; /* Warm golden-yellow dot */
+  flex-shrink: 0;
+}
+
+/* ── Giant Premium Heading ── */
+.prompt-blog-hero__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 88px; /* Slightly adjusted for balance, matching screenshot */
+  font-weight: 800;
+  color: #0f1115;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 36px; /* Added spacing below the title to match screenshot layout */
+  text-align: center;
+}
+
+/* ── Description & Author Badge ── */
+.prompt-blog-hero__desc {
+  font-family: var(--font-sans);
+  font-size: 36px !important;
+  line-height: 1.4 !important;
+  color: #475467;
+  max-width: 1150px;
+  margin: 0 auto 36px;
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.prompt-blog-hero__author-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #fef08a; /* Soft, warm golden yellow matching screenshot */
+  border: 1px solid rgba(252, 192, 26, 0.25);
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #1f2937;
+  box-shadow: 0 4px 18px rgba(252, 192, 26, 0.15);
+  font-weight: 500;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.prompt-blog-hero__author-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(252, 192, 26, 0.25);
+}
+
+.prompt-blog-hero__author-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #1f2937; /* Dark charcoal/black circle */
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+  letter-spacing: -0.05em;
+}
+
+.prompt-blog-hero__author-name {
+  font-weight: 700;
+  color: #0f1115;
+}
+
+.prompt-blog-hero__author-dot {
+  color: rgba(31, 41, 55, 0.25);
+  font-weight: bold;
+}
+
+.prompt-blog-hero__author-date {
+  color: #4b5563;
+}
+
+.prompt-blog-hero__author-read-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #4b5563;
+}
+
+.prompt-blog-hero__clock-icon {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5;
+  color: #4b5563;
+}
+
+/* ── Footer Accent Line ── */
+.prompt-footer-accent {
+  width: 100%;
+  height: 5px;
+  background-color: #f8cb12;
+  position: relative;
+  z-index: 10;
+}
+
+/* ── Responsive Hero Styles ── */
+@media (max-width: 992px) {
+  .prompt-blog-hero {
+    padding: 140px 0 100px;
+  }
+  .prompt-blog-hero__title {
+    font-size: 68px;
+  }
+}
+
+@media (max-width: 768px) {
+  .prompt-blog-hero {
+    padding: 120px 0 80px;
+  }
+  .prompt-blog-hero__title {
+    font-size: 48px;
+    margin-bottom: 24px;
+  }
+  .prompt-blog-hero__desc {
+    font-size: 26px !important;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .prompt-blog-hero {
+    padding: 110px 0 64px;
+  }
+  .prompt-blog-hero__title {
+    font-size: 36px;
+    margin-bottom: 18px;
+  }
+  .prompt-blog-hero__desc {
+    font-size: 18px !important;
+    margin-bottom: 18px;
+  }
+}
+
+/* =========================================================
+   LEFT SIDE TIMELINE LINE LAYOUT
+   ========================================================= */
+
+.prompt-blog-body-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.prompt-blog-line-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 820px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.prompt-vertical-line {
+  position: absolute;
+  top: 40px;       /* Starts beautifully near the beginning of content */
+  bottom: 80px;    /* Will end beautifully at the end of the content wrapper */
+  left: 0;         /* Aligns perfectly with the left padding boundary of the content container */
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(148, 163, 184, 0.02) 0%,
+    rgba(148, 163, 184, 0.12) 3%,
+    rgba(148, 163, 184, 0.38) 12%,
+    rgba(148, 163, 184, 0.45) 50%,
+    rgba(148, 163, 184, 0.15) 88%,
+    rgba(148, 163, 184, 0) 100%
+  );
+}
+
+/* ── Shift all content elements to the right to create a gorgeous gap from the line ── */
+.prompt-content-container > *:not(.prompt-slider-dots-container) {
+  padding-left: 64px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .prompt-content-container > *:not(.prompt-slider-dots-container) {
+    padding-left: 40px;
+  }
+}
+
+/* =========================================================
+   BODY CONTENT SECTION
+   ========================================================= */
+
+.prompt-content-section {
+  background: #ffffff;
+  padding: 80px 0 100px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.prompt-content-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.prompt-content-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  margin: 0 0 28px 0;
+  line-height: 1.4;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.prompt-content-para {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  font-weight: 400;
+  margin: 0 0 28px 0;
+  text-align: left;
+  letter-spacing: -0.01em;
+}
+
+.prompt-content-para strong {
+  color: #0f1115;
+  font-weight: 600;
+}
+
+.prompt-content-para:last-of-type {
+  margin-bottom: 48px;
+}
+
+/* =========================================================
+   PAGINATION DOTS / SLIDER INDICATOR
+   ========================================================= */
+
+.prompt-slider-dots-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  margin: 20px auto 0;
+  position: relative;
+  align-self: center;
+}
+
+.prompt-slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.prompt-slider-dot--active {
+  background: #0f1115;
+  box-shadow: 0 0 0 3px rgba(15, 17, 21, 0.12);
+  transform: scale(1.1);
+}
+
+.prompt-slider-dot--inactive {
+  background: #cbd5e1;
+}
+
+.prompt-slider-dot--inactive:hover {
+  background: #94a3b8;
+  transform: scale(1.05);
+}
+
+.prompt-slider-line {
+  flex-grow: 1;
+  height: 1.5px;
+  background: #e2e8f0;
+  margin: 0 12px;
+}
+
+@media (max-width: 768px) {
+  .prompt-content-section {
+    padding: 60px 0 80px;
+  }
+  .prompt-content-para {
+    font-size: 18px !important;
+  }
+}
+
+/* =========================================================
+   SCROLL PROGRESS TRACKING LINE
+   ========================================================= */
+
+.prompt-scroll-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: #000000;
+  z-index: 1002;
+  transition: width 0.08s ease-out;
+  will-change: width;
+}
+
+/* =========================================================
+   WHAT IS PROMPT ENGINEERING SECTION
+   ========================================================= */
+
+.prompt-definition-section {
+  background: #ffffff;
+  padding: 0 0 120px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.prompt-definition-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.prompt-definition-header-wrap {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.prompt-definition-bullet-decor {
+  position: absolute;
+  top: -2px;
+  font-size: 32px;
+  color: #94a3b8;
+  line-height: 1;
+}
+
+.prompt-definition-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: none;
+}
+
+.prompt-definition-line-decor {
+  width: 110px;
+  height: 2.5px;
+  background: #0f1115;
+  margin-top: 18px;
+}
+
+.prompt-definition-para {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  margin: 0 0 28px 0;
+}
+
+.prompt-definition-para strong {
+  color: #0f1115;
+  font-weight: 600;
+}
+
+.prompt-definition-para:last-of-type {
+  margin-bottom: 48px;
+}
+
+/* ── Shift all content elements to the right to create a gorgeous gap from the line ── */
+.prompt-content-container > *:not(.prompt-slider-dots-container),
+.prompt-definition-container > *:not(.prompt-slider-dots-container),
+.prompt-matters-container > *:not(.prompt-slider-dots-container) {
+  padding-left: 64px;
+  box-sizing: border-box;
+}
+
+/* ── Shift major bullet decorations to be perfectly centered in the gap ── */
+.prompt-definition-header-wrap,
+.prompt-matters-header-wrap {
+  padding-left: 64px !important;
+}
+
+.prompt-definition-bullet-decor,
+.prompt-matters-bullet-decor {
+  left: 32px !important;
+}
+
+/* ── Shift minor subheadings and their bullets to align perfectly ── */
+.prompt-matters-subheading-wrap {
+  padding-left: 0 !important;
+}
+
+.prompt-matters-bullet-decor-small {
+  left: -32px !important;
+}
+
+/* =========================================================
+   WHY PROMPT ENGINEERING MATTERS SECTION
+   ========================================================= */
+
+.prompt-matters-section {
+  background: #ffffff;
+  padding: 0 0 120px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.prompt-matters-container {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.prompt-matters-header-wrap {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.prompt-matters-bullet-decor {
+  position: absolute;
+  top: -2px;
+  font-size: 32px;
+  color: #94a3b8;
+  line-height: 1;
+}
+
+.prompt-matters-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: none;
+}
+
+.prompt-matters-line-decor {
+  width: 110px;
+  height: 2.5px;
+  background: #0f1115;
+  margin-top: 18px;
+}
+
+.prompt-matters-block {
+  width: 100%;
+  margin-bottom: 48px;
+}
+
+.prompt-matters-subheading-wrap {
+  position: relative;
+  margin: 40px 0 24px 0;
+}
+
+.prompt-matters-bullet-decor-small {
+  position: absolute;
+  top: -2px;
+  font-size: 24px;
+  color: #94a3b8;
+  line-height: 1.2;
+}
+
+.prompt-matters-subheading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px !important;
+  font-weight: 700;
+  color: #0f1115 !important;
+  line-height: 1.3;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+.prompt-matters-label {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.6 !important;
+  color: #475467 !important;
+  font-weight: 700;
+  margin: 24px 0 16px 0;
+  display: block;
+}
+
+/* Premium quote block styling matching screenshot */
+.prompt-quote-card {
+  position: relative;
+  background: #f8f9fa;
+  border-left: 4px solid #0f1115;
+  border-radius: 8px;
+  padding: 32px 40px;
+  margin: 16px 0 28px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.prompt-quote-icon {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px;
+  color: #cbd5e1;
+  line-height: 1;
+  font-weight: 700;
+  margin-top: -10px;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.prompt-quote-text {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.55 !important;
+  color: #475467 !important;
+  font-weight: 500;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ── Responsive adjustments for mobile viewports ── */
+@media (max-width: 768px) {
+  .prompt-definition-section,
+  .prompt-matters-section {
+    padding: 0 0 80px 0;
+  }
+  .prompt-definition-heading,
+  .prompt-matters-heading {
+    font-size: 38px !important;
+  }
+  .prompt-definition-para {
+    font-size: 18px !important;
+  }
+  .prompt-matters-subheading {
+    font-size: 26px !important;
+  }
+  .prompt-matters-label {
+    font-size: 18px !important;
+  }
+  .prompt-quote-card {
+    padding: 24px 28px;
+  }
+  .prompt-quote-text {
+    font-size: 17px !important;
+  }
+  .prompt-quote-icon {
+    font-size: 36px;
+  }
+
+  .prompt-content-container > *:not(.prompt-slider-dots-container),
+  .prompt-definition-container > *:not(.prompt-slider-dots-container),
+  .prompt-matters-container > *:not(.prompt-slider-dots-container) {
+    padding-left: 40px;
+  }
+
+  .prompt-definition-header-wrap,
+  .prompt-matters-header-wrap {
+    padding-left: 40px !important;
+  }
+
+  .prompt-definition-bullet-decor,
+  .prompt-matters-bullet-decor {
+    left: 20px !important;
+  }
+
+  .prompt-matters-bullet-decor-small {
+    left: -20px !important;
+  }
+}

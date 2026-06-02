@@ -46,7 +46,7 @@ function BlogGrid({ onNavigate }) {
   // Map article id -> page slug for navigation
   const articlePageMap = {
     1: 'ai-integrated-digital-marketing',
-    // future articles can be added here
+    2: 'ai-prompt-engineering-guide',
   };
   // Filtering Logic
   const filteredArticles = articles.filter((article) => {

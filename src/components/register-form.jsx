@@ -7,11 +7,11 @@ const COURSES = [
     badge: 'PromptX',
     popular: true,
     title: 'AI Prompt Engineering Mastery',
-    duration: '8 Weeks',
+    duration: '30 Hours',
     modules: '10 Modules',
     features: ['Prompt design frameworks', 'AI workflow automation', 'Real-world projects'],
-    price: 9999,
-    originalPrice: 14999,
+    price: 12500,
+    originalPrice: 15000,
     color: '#3127b2',
     accent: 'indigo'
   },
@@ -20,11 +20,11 @@ const COURSES = [
     badge: 'GrowthX',
     popular: false,
     title: 'AI Digital Marketing Mastery',
-    duration: '10 Weeks',
+    duration: '30 Hours',
     modules: '12 Modules',
     features: ['AI content strategy', 'Campaign automation', 'Performance analytics'],
-    price: 11999,
-    originalPrice: 17999,
+    price: 12500,
+    originalPrice: 15000,
     color: '#035a41',
     accent: 'green'
   },
@@ -193,11 +193,11 @@ function RegisterForm() {
   return (
     <section className="register-form-section">
       <div className="register-form-section__container">
-        
+
         {/* Step Indicators */}
         {!isSuccess && (
           <div className="step-indicator" role="navigation" aria-label="Registration steps">
-            
+
             {/* Step 1 indicator */}
             <div className={`step-indicator__item ${step === 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}>
               <div className="step-indicator__icon-wrapper">
@@ -208,9 +208,9 @@ function RegisterForm() {
               </div>
               <span className="step-indicator__label">Choose Course</span>
             </div>
-            
+
             <div className="step-indicator__line" />
-            
+
             {/* Step 2 indicator */}
             <div className={`step-indicator__item ${step === 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''}`}>
               <div className="step-indicator__icon-wrapper">
@@ -221,9 +221,9 @@ function RegisterForm() {
               </div>
               <span className="step-indicator__label">Your Details</span>
             </div>
-            
+
             <div className="step-indicator__line" />
-            
+
             {/* Step 3 indicator */}
             <div className={`step-indicator__item ${step === 3 ? 'active' : ''} ${step > 3 ? 'completed' : ''}`}>
               <div className="step-indicator__icon-wrapper">
@@ -248,7 +248,7 @@ function RegisterForm() {
                   <polyline points="22 4 12 14.01 9 11.01" />
                 </svg>
               </div>
-              
+
               <h2 className="register-box__success-title">Enrolment Successful!</h2>
               <p className="register-box__success-text">
                 Welcome to Monkey Tribe, <strong>{formData.fullName}</strong>! Your registration for <strong>{selectedCourseDetails?.title}</strong> is complete.
@@ -287,29 +287,29 @@ function RegisterForm() {
             </div>
           ) : (
             <div className="register-wizard">
-              
+
               {/* STEP 1: SELECT COURSE */}
               {step === 1 && (
                 <div className="wizard-step">
                   <h2 className="wizard-step__title">Select your course</h2>
                   <p className="wizard-step__subtitle">All courses include lifetime access, certificate, and community support.</p>
-                  
+
                   <div className="wizard-step__courses-list">
                     {COURSES.map((course) => {
                       const isSelected = selectedCourse === course.id;
                       return (
-                        <div 
-                          key={course.id} 
+                        <div
+                          key={course.id}
                           className={`wizard-step__list-card ${isSelected ? 'selected' : ''}`}
                           style={{ '--course-accent': course.color }}
                           onClick={() => handleCourseSelect(course.id)}
                         >
                           {/* Column 1: Icon Box */}
-                          <div 
-                            className="wizard-step__card-icon-container" 
-                            style={{ 
-                              background: `${course.color}12`, 
-                              color: course.color 
+                          <div
+                            className="wizard-step__card-icon-container"
+                            style={{
+                              background: `${course.color}12`,
+                              color: course.color
                             }}
                           >
                             {getCourseIcon(course.id)}
@@ -361,7 +361,7 @@ function RegisterForm() {
                               <span className="wizard-step__price-primary">{formatCurrency(course.price)}</span>
                               <span className="wizard-step__price-secondary">{formatCurrency(course.originalPrice)}</span>
                             </div>
-                            
+
                             <div className="wizard-step__radio-circle">
                               {isSelected && <div className="wizard-step__radio-dot" />}
                             </div>
@@ -373,8 +373,8 @@ function RegisterForm() {
                   </div>
 
                   <div className="wizard-actions">
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className="wizard-actions__btn-continue-full"
                       onClick={handleNextStep}
                     >
@@ -387,7 +387,7 @@ function RegisterForm() {
               {/* STEP 2: SHARE YOUR DETAILS */}
               {step === 2 && (
                 <div className="wizard-step">
-                  
+
                   {/* Selected Course Summary bar */}
                   <div className="selected-course-bar">
                     <div className="selected-course-bar__left">
@@ -413,8 +413,8 @@ function RegisterForm() {
                     </div>
                     <div className="selected-course-bar__right">
                       <strong className="selected-course-bar__price">{formatCurrency(selectedCourseDetails?.price)}</strong>
-                      <button 
-                        type="button" 
+                      <button
+                        type="button"
                         className="selected-course-bar__change-link"
                         onClick={() => setStep(1)}
                       >
@@ -427,12 +427,12 @@ function RegisterForm() {
                   <p className="wizard-step__subtitle">We'll use these to set up your course access and send your confirmation.</p>
 
                   <div className="wizard-step__form">
-                    
+
                     <div className="wizard-step__form-row">
                       <div className="register-form-group">
                         <label htmlFor="reg-fullName">FULL NAME <span className="required">*</span></label>
-                        <input 
-                          type="text" 
+                        <input
+                          type="text"
                           id="reg-fullName"
                           name="fullName"
                           placeholder="Your full name"
@@ -445,8 +445,8 @@ function RegisterForm() {
 
                       <div className="register-form-group">
                         <label htmlFor="reg-email">EMAIL ADDRESS <span className="required">*</span></label>
-                        <input 
-                          type="email" 
+                        <input
+                          type="email"
                           id="reg-email"
                           name="email"
                           placeholder="you@example.com"
@@ -463,8 +463,8 @@ function RegisterForm() {
                         <label htmlFor="reg-phone">PHONE NUMBER <span className="required">*</span></label>
                         <div className="phone-input-wrapper">
                           <div className="phone-prefix">+91</div>
-                          <input 
-                            type="tel" 
+                          <input
+                            type="tel"
                             id="reg-phone"
                             name="phone"
                             placeholder="10-digit number"
@@ -478,8 +478,8 @@ function RegisterForm() {
 
                       <div className="register-form-group">
                         <label htmlFor="reg-city">CITY</label>
-                        <input 
-                          type="text" 
+                        <input
+                          type="text"
                           id="reg-city"
                           name="city"
                           placeholder="Your city"
@@ -492,7 +492,7 @@ function RegisterForm() {
                     <div className="wizard-step__form-row">
                       <div className="register-form-group">
                         <label htmlFor="reg-qualification">HIGHEST QUALIFICATION</label>
-                        <select 
+                        <select
                           id="reg-qualification"
                           name="qualification"
                           value={formData.qualification}
@@ -510,7 +510,7 @@ function RegisterForm() {
 
                       <div className="register-form-group">
                         <label htmlFor="reg-experience">WORK EXPERIENCE</label>
-                        <select 
+                        <select
                           id="reg-experience"
                           name="experience"
                           value={formData.experience}
@@ -530,15 +530,15 @@ function RegisterForm() {
                   </div>
 
                   <div className="wizard-actions">
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className="wizard-actions__btn-back"
                       onClick={handlePrevStep}
                     >
                       Back
                     </button>
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className="wizard-actions__btn-next"
                       onClick={handleNextStep}
                     >
@@ -552,7 +552,7 @@ function RegisterForm() {
               {/* STEP 3: PAY & CONFIRM */}
               {step === 3 && (
                 <div className="wizard-step">
-                  
+
                   {/* Selected Course Summary bar (Dark Midnight theme) */}
                   <div className="selected-course-bar selected-course-bar--dark">
                     <div className="selected-course-bar__top-row">
@@ -606,18 +606,18 @@ function RegisterForm() {
                   <p className="wizard-step__subtitle">Pay via UPI — secure, instant, and hassle-free.</p>
 
                   <div className="wizard-step__payment-gateways">
-                    
+
                     {/* Horizontal Payment selectors */}
                     <div className="payment-tabs">
-                      <div 
+                      <div
                         className={`payment-tabs__item ${paymentTab === 'gpay' ? 'active' : ''}`}
                         onClick={() => setPaymentTab('gpay')}
                       >
                         <div className="payment-tabs__sphere" />
                         <span>Google Pay</span>
                       </div>
-                      
-                      <div 
+
+                      <div
                         className={`payment-tabs__item ${paymentTab === 'phonepe' ? 'active' : ''}`}
                         onClick={() => setPaymentTab('phonepe')}
                       >
@@ -628,7 +628,7 @@ function RegisterForm() {
                         <span>PhonePe / Paytm</span>
                       </div>
 
-                      <div 
+                      <div
                         className={`payment-tabs__item ${paymentTab === 'anyupi' ? 'active' : ''}`}
                         onClick={() => setPaymentTab('anyupi')}
                       >
@@ -642,15 +642,15 @@ function RegisterForm() {
 
                     {/* Dynamic checkout box */}
                     <div className="payment-box-wrapper">
-                      
+
                       {/* UPI Copy details block */}
                       <div className="payment-upi-details-row">
                         <div className="payment-upi-id-block">
                           <span className="payment-upi-id-label">UPI ID</span>
                           <strong className="payment-upi-id-value">monkeytribe@upi</strong>
                         </div>
-                        <button 
-                          type="button" 
+                        <button
+                          type="button"
                           className="payment-copy-btn"
                           onClick={handleCopyUpi}
                         >
@@ -695,9 +695,9 @@ function RegisterForm() {
                       </div>
 
                       {/* Open payment app action button */}
-                      <a 
-                        href={paymentTab === 'gpay' ? 'https://pay.google.com' : 'https://www.phonepe.com'} 
-                        target="_blank" 
+                      <a
+                        href={paymentTab === 'gpay' ? 'https://pay.google.com' : 'https://www.phonepe.com'}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="payment-action-btn-blue"
                       >
@@ -722,8 +722,8 @@ function RegisterForm() {
                       </svg>
                       <span>UPI TRANSACTION ID <span className="required">*</span></span>
                     </label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       id="reg-transactionId"
                       name="transactionId"
                       placeholder="e.g. 123456789012"
@@ -741,15 +741,15 @@ function RegisterForm() {
 
                   {/* Action buttons */}
                   <div className="wizard-actions">
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className="wizard-actions__btn-back"
                       onClick={handlePrevStep}
                     >
                       Back
                     </button>
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className="wizard-actions__btn-pay-secure"
                       onClick={handlePayment}
                     >

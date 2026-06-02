@@ -47,6 +47,7 @@ function BlogGrid({ onNavigate }) {
   const articlePageMap = {
     1: 'ai-integrated-digital-marketing',
     2: 'ai-prompt-engineering-guide',
+    3: 'career-opportunities-in-ai-era',
   };
   // Filtering Logic
   const filteredArticles = articles.filter((article) => {

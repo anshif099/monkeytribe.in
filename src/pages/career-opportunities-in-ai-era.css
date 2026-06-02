@@ -1,0 +1,98 @@
+/* =========================================================
+   CAREER OPPORTUNITIES IN THE AI ERA
+   Page-specific article refinements
+   ========================================================= */
+
+.career-ai-page .ai-blog-hero {
+  min-height: 100vh;
+  padding: 132px 0 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.career-ai-page .ai-blog-hero__container {
+  max-width: 1240px;
+}
+
+.career-ai-page .ai-blog-hero__title {
+  max-width: 1120px;
+  margin-bottom: 34px;
+}
+
+.career-ai-page .ai-blog-hero__desc {
+  max-width: 980px;
+}
+
+.career-ai-page .ai-content-section {
+  min-height: calc(100vh - 100px);
+  align-items: center;
+  padding: 80px 0;
+}
+
+.career-ai-page .career-ai-skill-line {
+  margin-top: 28px;
+}
+
+.career-ai-page .career-ai-tools-intro {
+  font-family: var(--font-sans);
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+  color: #475467 !important;
+  margin: 0 0 34px 0;
+}
+
+.career-ai-page .career-ai-skills-list {
+  margin-bottom: 54px;
+}
+
+.career-ai-page .career-ai-quote-card {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 48px 0;
+  border-radius: 12px;
+  box-shadow: 0 18px 38px rgba(15, 17, 21, 0.12);
+}
+
+.career-ai-page .career-ai-ready-section {
+  padding-bottom: 96px;
+}
+
+.career-ai-page .career-ai-ready-section .ai-grow-faster-para {
+  max-width: 760px;
+}
+
+.career-ai-page .career-ai-ready-section .ai-explore-topics-wrap {
+  border-top: 1px solid #eef0f3;
+  margin-top: 48px;
+  padding-top: 52px;
+}
+
+.career-ai-page .ai-author-section {
+  padding-bottom: 104px;
+}
+
+@media (max-width: 992px) {
+  .career-ai-page .ai-blog-hero {
+    padding: 128px 0 76px;
+  }
+}
+
+@media (max-width: 768px) {
+  .career-ai-page .ai-blog-hero {
+    min-height: auto;
+    padding: 120px 0 64px;
+  }
+
+  .career-ai-page .ai-content-section {
+    min-height: auto;
+    align-items: flex-start;
+    padding: 64px 0 80px;
+  }
+}
+
+@media (max-width: 520px) {
+  .career-ai-page .ai-blog-hero__title {
+    font-size: 38px;
+  }
+}

@@ -85,7 +85,7 @@ function Contact({ onNavigate }) {
                 </div>
                 <div className="contact-info__details">
                   <span className="contact-info__label">EMAIL</span>
-                  <a href="mailto:hello@monkeytribe.in" className="contact-info__value">hello@monkeytribe.in</a>
+                  <a href="mailto: hello@creativemonkeys.in" className="contact-info__value">hello@creativemonkeys.in</a>
                 </div>
               </div>
 
@@ -97,7 +97,7 @@ function Contact({ onNavigate }) {
                 </div>
                 <div className="contact-info__details">
                   <span className="contact-info__label">PHONE</span>
-                  <a href="tel:+910000000000" className="contact-info__value">+91 00000 00000</a>
+                  <a href="tel:+919947098620" className="contact-info__value"> 9947098620</a>
                 </div>
               </div>
 

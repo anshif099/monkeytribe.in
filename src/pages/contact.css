@@ -185,9 +185,9 @@ a.contact-info__value:hover {
 .contact-social__link {
   width: 42px;
   height: 42px;
-  border-radius: 50%;
+  border-radius: 10px;
   background: #f8f9fa;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -206,6 +206,16 @@ a.contact-info__value:hover {
 .contact-social__link svg {
   width: 18px;
   height: 18px;
+  flex-shrink: 0;
+}
+
+.contact-social__link svg polygon {
+  fill: #f8f9fa;
+  transition: fill 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-social__link:hover svg polygon {
+  fill: #0f1115;
 }
 
 /* Division text */

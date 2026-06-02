@@ -138,7 +138,7 @@ const Footer = () => {
             <h4 className="footer-col-heading">GET IN TOUCH</h4>
             <ul className="footer-col-list">
               <li>
-                <a href="mailto:hello@monkeytribe.in">hello@monkeytribe.in</a>
+                <a href="mailto:hello@creativemonkeys.in">hello@creativemonkeys.in</a>
               </li>
               <li className="footer-division">
                 A division of{" "}

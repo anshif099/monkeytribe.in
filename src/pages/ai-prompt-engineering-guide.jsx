@@ -236,9 +236,488 @@ function AiPromptEngineeringGuide({ onNavigate }) {
             </div>
           </div>
         </section>
+
+        {/* Core Principles of Effective Prompting Section */}
+        <section className="prompt-principles-section">
+          <div className="prompt-principles-container">
+            <div className="prompt-principles-header-wrap">
+              <span className="prompt-principles-bullet-decor" aria-hidden="true">&bull;</span>
+              <h2 className="prompt-principles-heading">
+                The Core Principles of Effective <br /> Prompting
+              </h2>
+              <div className="prompt-principles-line-decor" aria-hidden="true" />
+            </div>
+
+            <div className="prompt-principles-block">
+              <div className="prompt-principles-subheading-wrap">
+                <span className="prompt-principles-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-principles-subheading">
+                  1. Be Specific and Contextual
+                </h3>
+              </div>
+
+              <p className="prompt-principles-para">
+                Vague prompts produce vague outputs. The more context you provide &mdash; about your audience, your goal, your tone, your constraints &mdash; the better the result.
+              </p>
+
+              <p className="prompt-principles-example">
+                <strong>Instead of:</strong> "Summarise this article." <strong>Try:</strong> "Summarise this article in 3 bullet points for a non-technical audience. Focus on the business implications, not the technical details."
+              </p>
+            </div>
+
+            <div className="prompt-principles-block">
+              <div className="prompt-principles-subheading-wrap">
+                <span className="prompt-principles-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-principles-subheading">
+                  2. Assign a Role
+                </h3>
+              </div>
+
+              <p className="prompt-principles-para">
+                AI systems respond powerfully to role assignments. When you tell an AI to act as a specific expert, it draws on patterns associated with that expertise.
+              </p>
+
+              <p className="prompt-principles-example">
+                <strong>Example:</strong> "You are a senior brand strategist with 15 years of experience in FMCG. Review the following brand brief and identify the three biggest strategic gaps."
+              </p>
+            </div>
+
+            <div className="prompt-principles-block">
+              <div className="prompt-principles-subheading-wrap">
+                <span className="prompt-principles-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-principles-subheading">
+                  3. Use the Chain-of-Thought Technique
+                </h3>
+              </div>
+
+              <p className="prompt-principles-para">
+                For complex tasks, ask the AI to think step by step before giving its final answer. This dramatically improves the quality of reasoning.
+              </p>
+
+              <p className="prompt-principles-example">
+                <strong>Example:</strong> "Before answering, think through the problem step by step. Then give me your recommendation."
+              </p>
+            </div>
+
+            <div className="prompt-principles-block">
+              <div className="prompt-principles-subheading-wrap">
+                <span className="prompt-principles-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-principles-subheading">
+                  4. Provide Examples (Few-Shot Prompting)
+                </h3>
+              </div>
+
+              <p className="prompt-principles-para">
+                Show the AI what good looks like. Providing one or two examples of the output you want dramatically improves consistency and quality.
+              </p>
+
+              <p className="prompt-principles-example">
+                <strong>Example:</strong> "Here are two examples of the tone I want: [Example 1] [Example 2]. Now write a third in the same style about [topic]."
+              </p>
+            </div>
+
+            <div className="prompt-principles-block">
+              <div className="prompt-principles-subheading-wrap">
+                <span className="prompt-principles-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-principles-subheading">
+                  5. Iterate and Refine
+                </h3>
+              </div>
+
+              <p className="prompt-principles-para">
+                The first output is rarely the final output. Treat prompting as a conversation &mdash; refine, redirect, and build on each response.
+              </p>
+
+              <p className="prompt-principles-label">
+                Refinement prompts:
+              </p>
+
+              <ul className="prompt-principles-list">
+                <li>"Make this more concise."</li>
+                <li>"Rewrite the opening &mdash; it needs to be more compelling."</li>
+                <li>"Add more specific examples to support the second point."</li>
+              </ul>
+            </div>
+
+            <div className="prompt-principles-block">
+              <div className="prompt-principles-subheading-wrap">
+                <span className="prompt-principles-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-principles-subheading">
+                  6. Set Constraints
+                </h3>
+              </div>
+
+              <p className="prompt-principles-para">
+                Constraints are not limitations &mdash; they are creative parameters that sharpen the output.
+              </p>
+
+              <p className="prompt-principles-label">
+                Examples of useful constraints:
+              </p>
+
+              <ul className="prompt-principles-list">
+                <li>Word count: "Keep this under 150 words."</li>
+                <li>Format: "Present this as a numbered list."</li>
+                <li>Tone: "Write in a warm, conversational tone &mdash; avoid corporate jargon."</li>
+                <li>Audience: "This is for first-year university students with no prior knowledge of marketing."</li>
+              </ul>
+            </div>
+
+            <div className="prompt-slider-dots-container" aria-hidden="true">
+              <span className="prompt-slider-dot prompt-slider-dot--active" />
+              <div className="prompt-slider-line" />
+              <span className="prompt-slider-dot prompt-slider-dot--inactive" />
+            </div>
+          </div>
+        </section>
+
+        {/* Advanced Prompting Techniques Section */}
+        <section className="prompt-advanced-section">
+          <div className="prompt-advanced-container">
+            <div className="prompt-advanced-header-wrap">
+              <span className="prompt-advanced-bullet-decor" aria-hidden="true">&bull;</span>
+              <h2 className="prompt-advanced-heading">
+                Advanced Prompting Techniques
+              </h2>
+              <div className="prompt-advanced-line-decor" aria-hidden="true" />
+            </div>
+
+            <div className="prompt-advanced-block">
+              <div className="prompt-advanced-subheading-wrap">
+                <span className="prompt-advanced-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-advanced-subheading">
+                  The RISEN Framework
+                </h3>
+              </div>
+
+              <p className="prompt-advanced-para">
+                A structured approach to building powerful prompts:
+              </p>
+
+              <ul className="prompt-advanced-list">
+                <li>Role &mdash; Who is the AI in this interaction?</li>
+                <li>Instructions &mdash; What exactly do you want it to do?</li>
+                <li>Steps &mdash; What process should it follow?</li>
+                <li>End Goal &mdash; What does success look like?</li>
+                <li>Narrows &mdash; What constraints apply?</li>
+              </ul>
+            </div>
+
+            <div className="prompt-advanced-block">
+              <div className="prompt-advanced-subheading-wrap">
+                <span className="prompt-advanced-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-advanced-subheading">
+                  Prompt Chaining
+                </h3>
+              </div>
+
+              <p className="prompt-advanced-para">
+                Break complex tasks into a sequence of smaller prompts, where each output feeds into the next. This is particularly powerful for multi-stage creative or analytical work.
+              </p>
+
+              <p className="prompt-advanced-label">
+                Example chain:
+              </p>
+
+              <ul className="prompt-advanced-list">
+                <li>"Analyse the target audience for this product."</li>
+                <li>"Based on that analysis, identify the top 3 emotional triggers we should address."</li>
+                <li>"Now write a campaign concept that activates those triggers."</li>
+              </ul>
+            </div>
+
+            <div className="prompt-advanced-block">
+              <div className="prompt-advanced-subheading-wrap">
+                <span className="prompt-advanced-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-advanced-subheading">
+                  System Prompts and Personas
+                </h3>
+              </div>
+
+              <p className="prompt-advanced-para">
+                When using AI tools that allow system-level instructions, use them to establish a persistent persona, tone, and set of rules that apply across the entire conversation.
+              </p>
+            </div>
+
+            <div className="prompt-slider-dots-container" aria-hidden="true">
+              <span className="prompt-slider-dot prompt-slider-dot--active" />
+              <div className="prompt-slider-line" />
+              <span className="prompt-slider-dot prompt-slider-dot--inactive" />
+            </div>
+          </div>
+        </section>
+
+        {/* Common Prompt Engineering Mistakes Section */}
+        <section className="prompt-mistakes-section">
+          <div className="prompt-mistakes-container">
+            <div className="prompt-mistakes-header-wrap">
+              <span className="prompt-mistakes-bullet-decor" aria-hidden="true">&bull;</span>
+              <h2 className="prompt-mistakes-heading">
+                Common Prompt Engineering <br /> Mistakes
+              </h2>
+              <div className="prompt-mistakes-line-decor" aria-hidden="true" />
+            </div>
+
+            <ul className="prompt-mistakes-list">
+              <li>
+                <strong>Being too vague</strong> &mdash; "Write something good" tells the AI nothing useful
+              </li>
+              <li>
+                <strong>Overloading a single prompt</strong> &mdash; Break complex tasks into steps
+              </li>
+              <li>
+                <strong>Ignoring tone and audience</strong> &mdash; Always specify who you are writing for
+              </li>
+              <li>
+                <strong>Accepting the first output</strong> &mdash; Iteration is where the magic happens
+              </li>
+              <li>
+                <strong>Not providing context</strong> &mdash; AI has no knowledge of your specific situation unless you share it
+              </li>
+              <li>
+                <strong>Forgetting constraints</strong> &mdash; Without boundaries, outputs tend to be generic
+              </li>
+            </ul>
+
+            <div className="prompt-mistakes-quote-card">
+              <span className="prompt-mistakes-quote-icon" aria-hidden="true">&ldquo;</span>
+              <p className="prompt-mistakes-quote-text">
+                The best prompt engineers are not just technically skilled &mdash; they are clear thinkers who know exactly what they want.
+              </p>
+            </div>
+
+            <div className="prompt-slider-dots-container" aria-hidden="true">
+              <span className="prompt-slider-dot prompt-slider-dot--active" />
+              <div className="prompt-slider-line" />
+              <span className="prompt-slider-dot prompt-slider-dot--inactive" />
+            </div>
+          </div>
+        </section>
+
+        {/* Prompt Engineering Across Industries Section */}
+        <section className="prompt-industries-section">
+          <div className="prompt-industries-container">
+            <div className="prompt-industries-header-wrap">
+              <span className="prompt-industries-bullet-decor" aria-hidden="true">&bull;</span>
+              <h2 className="prompt-industries-heading">
+                Prompt Engineering Across Industries
+              </h2>
+              <div className="prompt-industries-line-decor" aria-hidden="true" />
+            </div>
+
+            <div className="prompt-industries-block">
+              <div className="prompt-industries-subheading-wrap">
+                <span className="prompt-industries-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-industries-subheading">
+                  Marketing &amp; Advertising
+                </h3>
+              </div>
+
+              <ul className="prompt-industries-list">
+                <li>Generating campaign concepts and ad copy variations</li>
+                <li>Creating audience personas and customer journey maps</li>
+                <li>Producing SEO-optimised content at scale</li>
+                <li>Analysing competitor messaging and identifying gaps</li>
+              </ul>
+            </div>
+
+            <div className="prompt-industries-block">
+              <div className="prompt-industries-subheading-wrap">
+                <span className="prompt-industries-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-industries-subheading">
+                  Brand Strategy
+                </h3>
+              </div>
+
+              <ul className="prompt-industries-list">
+                <li>Developing brand voice guidelines</li>
+                <li>Writing brand manifestos and positioning statements</li>
+                <li>Generating naming options and taglines</li>
+                <li>Stress-testing brand strategy against market scenarios</li>
+              </ul>
+            </div>
+
+            <div className="prompt-industries-block">
+              <div className="prompt-industries-subheading-wrap">
+                <span className="prompt-industries-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-industries-subheading">
+                  Education &amp; Training
+                </h3>
+              </div>
+
+              <ul className="prompt-industries-list">
+                <li>Creating course outlines and lesson plans</li>
+                <li>Generating quiz questions and assessment rubrics</li>
+                <li>Personalising learning content for different audiences</li>
+                <li>Producing case studies and worked examples</li>
+              </ul>
+            </div>
+
+            <div className="prompt-industries-block">
+              <div className="prompt-industries-subheading-wrap">
+                <span className="prompt-industries-bullet-decor-small" aria-hidden="true">&bull;</span>
+                <h3 className="prompt-industries-subheading">
+                  Business Operations
+                </h3>
+              </div>
+
+              <ul className="prompt-industries-list">
+                <li>Drafting proposals, reports, and presentations</li>
+                <li>Summarising research and synthesising insights</li>
+                <li>Automating repetitive writing tasks</li>
+                <li>Building internal knowledge bases</li>
+              </ul>
+            </div>
+
+            <div className="prompt-slider-dots-container" aria-hidden="true">
+              <span className="prompt-slider-dot prompt-slider-dot--active" />
+              <div className="prompt-slider-line" />
+              <span className="prompt-slider-dot prompt-slider-dot--inactive" />
+            </div>
+          </div>
+        </section>
+
+        {/* The Future of Prompt Engineering Section */}
+        <section className="prompt-future-section">
+          <div className="prompt-future-container">
+            <div className="prompt-future-header-wrap">
+              <span className="prompt-future-bullet-decor" aria-hidden="true">&bull;</span>
+              <h2 className="prompt-future-heading">
+                The Future of Prompt Engineering
+              </h2>
+              <div className="prompt-future-line-decor" aria-hidden="true" />
+            </div>
+
+            <p className="prompt-future-para">
+              As AI systems become more capable, the nature of prompt engineering will evolve. We are moving from simple text prompts toward:
+            </p>
+
+            <ul className="prompt-future-list">
+              <li>
+                <strong>Multimodal prompting</strong> &mdash; Combining text, images, audio, and video in a single instruction
+              </li>
+              <li>
+                <strong>Agentic prompting</strong> &mdash; Designing prompts that enable AI to take autonomous, multi-step actions
+              </li>
+              <li>
+                <strong>Personalised AI systems</strong> &mdash; Building AI assistants that understand your specific context, preferences, and goals over time
+              </li>
+            </ul>
+
+            <p className="prompt-future-para prompt-future-para--closing">
+              The professionals who invest in prompt engineering today are building a skill that will only become more valuable as these capabilities expand.
+            </p>
+
+            <div className="prompt-slider-dots-container" aria-hidden="true">
+              <span className="prompt-slider-dot prompt-slider-dot--active" />
+              <div className="prompt-slider-line" />
+              <span className="prompt-slider-dot prompt-slider-dot--inactive" />
+            </div>
+          </div>
+        </section>
+
+        {/* Key Takeaways Section */}
+        <section className="prompt-takeaways-section">
+          <div className="prompt-takeaways-container">
+            <div className="prompt-takeaways-header-wrap">
+              <span className="prompt-takeaways-bullet-decor" aria-hidden="true">&bull;</span>
+              <h2 className="prompt-takeaways-heading">
+                Key Takeaways
+              </h2>
+              <div className="prompt-takeaways-line-decor" aria-hidden="true" />
+            </div>
+
+            <ul className="prompt-takeaways-list">
+              <li>
+                Prompt engineering is the practice of designing instructions that get the best possible outputs from AI systems
+              </li>
+              <li>
+                Specificity, context, role assignment, and iteration are the foundations of effective prompting
+              </li>
+              <li>
+                Advanced techniques like chain-of-thought, few-shot prompting, and prompt chaining unlock dramatically better results
+              </li>
+              <li>
+                Prompt engineering is a transferable skill that applies across all AI tools and industries
+              </li>
+              <li>
+                It is already a recognised and well-compensated career path &mdash; and demand is growing fast
+              </li>
+            </ul>
+
+            <div className="prompt-slider-dots-container" aria-hidden="true">
+              <span className="prompt-slider-dot prompt-slider-dot--active" />
+              <div className="prompt-slider-line" />
+              <span className="prompt-slider-dot prompt-slider-dot--inactive" />
+            </div>
+          </div>
+        </section>
+
+        {/* Learn Prompt Engineering with Monkey Tribe Section */}
+        <section className="prompt-learn-section">
+          <div className="prompt-learn-container">
+            <div className="prompt-learn-header-wrap">
+              <span className="prompt-learn-bullet-decor" aria-hidden="true">&bull;</span>
+              <h2 className="prompt-learn-heading">
+                Learn Prompt Engineering with <br /> Monkey Tribe
+              </h2>
+              <div className="prompt-learn-line-decor" aria-hidden="true" />
+            </div>
+
+            <p className="prompt-learn-para">
+              Our <strong>PromptX</strong> course is designed to take you from curious beginner to confident prompt engineer. You will learn the frameworks, techniques, and real-world applications that turn AI from a novelty into a genuine professional superpower.
+            </p>
+
+            <div className="prompt-learn-divider" aria-hidden="true">
+              <span className="prompt-learn-divider-line" />
+              <span className="prompt-learn-dot prompt-learn-dot--active" />
+              <span className="prompt-learn-dot" />
+              <span className="prompt-learn-dot prompt-learn-dot--muted" />
+              <span className="prompt-learn-divider-line" />
+            </div>
+
+            <div className="prompt-explore-topics-wrap">
+              <span className="prompt-explore-topics-eyebrow">EXPLORE TOPICS</span>
+              <div className="prompt-topics-pills-list">
+                <span className="prompt-topic-pill">#prompt engineering</span>
+                <span className="prompt-topic-pill">#AI</span>
+                <span className="prompt-topic-pill">#ChatGPT</span>
+                <span className="prompt-topic-pill">#LLM</span>
+                <span className="prompt-topic-pill">#productivity</span>
+                <span className="prompt-topic-pill">#PromptX</span>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
-      {/* ── Visual Yellow Footer Accent Line ── */}
+      {/* Author Card Section */}
+      <section className="prompt-author-section">
+        <div className="prompt-author-container">
+          <div className="prompt-author-divider" aria-hidden="true">
+            <span className="prompt-author-divider-line" />
+            <span className="prompt-author-divider-accent" />
+            <span className="prompt-author-divider-line" />
+          </div>
+
+          <div className="prompt-author-card">
+            <div className="prompt-author-avatar-wrap">
+              <div className="prompt-author-avatar-inner">
+                <span>M</span>
+              </div>
+            </div>
+            <div className="prompt-author-info">
+              <span className="prompt-author-eyebrow">WRITTEN BY</span>
+              <h3 className="prompt-author-name">Monkey Tribe</h3>
+              <p className="prompt-author-desc">
+                Content creator and writer sharing insights and stories.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Accent Line */}
       <div className="prompt-footer-accent" aria-hidden="true" />
 
       {/* ── Footer ── */}

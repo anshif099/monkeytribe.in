@@ -4,53 +4,53 @@ import './promptx-curriculum.css'
 const curriculumData = [
   {
     number: '01',
-    title: 'Foundations of AI & LLMs',
-    description: 'Understand how large language models work, their capabilities, and limitations. Build the mental model you need to prompt effectively.',
+    title: 'Introduction to Artificial Intelligence & Prompt Engineering',
+    description: 'Understand how AI and large language models work, their capabilities, and limitations. Build the mental model you need to prompt effectively and communicate with AI like a pro.',
   },
   {
     number: '02',
-    title: 'Core Prompt Patterns',
-    description: 'Master the essential prompt structures — zero-shot, few-shot, chain-of-thought, role prompting, and more.',
+    title: 'Fundamentals of Effective Prompt Writing',
+    description: 'Master the essential prompt structures — zero-shot, few-shot, chain-of-thought, role prompting, and more. Learn the building blocks of clear, precise, and powerful prompts.',
   },
   {
     number: '03',
-    title: 'Advanced Reasoning Chains',
-    description: 'Design multi-step prompts that guide AI through complex reasoning tasks with precision and reliability.',
+    title: 'Advanced Prompt Engineering Techniques',
+    description: 'Design multi-step prompts, reasoning chains, and iterative refinement strategies that guide AI through complex tasks with precision and reliability.',
   },
   {
     number: '04',
-    title: 'Prompt Engineering for Creativity',
-    description: "Unlock AI's creative potential — generate copy, concepts, campaigns, and content at scale.",
+    title: 'Prompt Engineering for Content Creation',
+    description: "Unlock AI's creative potential — generate blogs, social media copy, scripts, ad campaigns, and content at scale with expert-crafted prompts.",
   },
   {
     number: '05',
-    title: 'Building AI Workflows',
-    description: 'Chain prompts into automated pipelines. Integrate AI into real tools and processes.',
+    title: 'Prompt Engineering for Education & Research',
+    description: 'Use AI to accelerate learning, summarise research, generate study materials, design lesson plans, and conduct in-depth analysis across any subject.',
   },
   {
     number: '06',
-    title: 'Evaluation & Iteration',
-    description: 'Learn to test, measure, and refine your prompts systematically. Build a personal prompt library.',
+    title: 'Prompt Engineering for Business & Productivity',
+    description: 'Automate reports, emails, proposals, and workflows. Apply prompt engineering to boost business productivity, streamline operations, and save hours every week.',
   },
   {
     number: '07',
-    title: 'Domain-Specific Applications',
-    description: 'Apply prompt engineering to marketing, coding, research, education, and business operations.',
+    title: 'Prompt Engineering for Programming & Technical Tasks',
+    description: 'Leverage AI for code generation, debugging, documentation, and technical problem-solving. Make AI your most productive coding partner.',
   },
   {
     number: '08',
-    title: 'Advanced Agentic Systems',
-    description: 'Design autonomous AI agents that can plan, use external tools, self-correct, and collaborate to solve complex, multi-step goals.',
+    title: 'Prompt Engineering for Image & Multimedia Generation',
+    description: 'Master prompt crafting for AI image, audio, and video generation tools. Create stunning visuals and multimedia assets using well-structured creative prompts.',
   },
   {
     number: '09',
-    title: 'Enterprise Scaling & Security',
-    description: 'Optimize prompts for cost, speed, and safety. Learn techniques to prevent prompt injection, secure APIs, and handle data privacy.',
+    title: 'Ethics, Safety & Responsible AI Prompting',
+    description: 'Understand bias, hallucinations, and responsible use of AI. Learn to prompt safely, avoid misuse, and apply ethical frameworks in real-world AI interactions.',
   },
   {
     number: '10',
-    title: 'Capstone Project',
-    description: 'Design and deploy a complete AI-powered workflow solving a real-world problem in your field.',
+    title: 'Capstone Projects & Real-World Applications',
+    description: 'Design and deploy complete AI-powered workflows solving real-world problems in your field. Build a personal prompt library and present your capstone project.',
   },
 ]
 

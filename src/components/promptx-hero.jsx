@@ -47,6 +47,8 @@ function PromptXHero() {
 
       <div className="promptx-hero__meta-bar">
         <div className="promptx-hero__meta-container">
+
+          {/* Duration */}
           <div className="promptx-hero__meta-item">
             <div className="promptx-hero__meta-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -55,38 +57,83 @@ function PromptXHero() {
               </svg>
             </div>
             <div className="promptx-hero__meta-text">
-              <strong>8 Weeks</strong>
-              <span>Duration</span>
+              <strong>30 Hours</strong>
+              <span>Intensive Training</span>
             </div>
           </div>
 
+          {/* Modules */}
           <div className="promptx-hero__meta-item">
             <div className="promptx-hero__meta-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
               </svg>
             </div>
             <div className="promptx-hero__meta-text">
-              <strong>Online</strong>
-              <span>Self-paced</span>
+              <strong>10 Modules</strong>
+              <span>Practical Modules</span>
             </div>
           </div>
 
+          {/* Applications */}
           <div className="promptx-hero__meta-item">
             <div className="promptx-hero__meta-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="20" x2="18" y2="10" />
-                <line x1="12" y1="20" x2="12" y2="4" />
-                <line x1="6" y1="20" x2="6" y2="14" />
+                <circle cx="12" cy="12" r="3" />
+                <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
               </svg>
             </div>
             <div className="promptx-hero__meta-text">
-              <strong>All Levels</strong>
-              <span>Beginner to Pro</span>
+              <strong>Real-World</strong>
+              <span>AI Applications</span>
             </div>
           </div>
+
+          {/* Practice */}
+          <div className="promptx-hero__meta-item">
+            <div className="promptx-hero__meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
+            <div className="promptx-hero__meta-text">
+              <strong>Hands-on</strong>
+              <span>Exercises</span>
+            </div>
+          </div>
+
+          {/* Learning */}
+          <div className="promptx-hero__meta-item">
+            <div className="promptx-hero__meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+              </svg>
+            </div>
+            <div className="promptx-hero__meta-text">
+              <strong>Industry</strong>
+              <span>Oriented Learning</span>
+            </div>
+          </div>
+
+          {/* Certification */}
+          <div className="promptx-hero__meta-item">
+            <div className="promptx-hero__meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="8" r="6" />
+                <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+              </svg>
+            </div>
+            <div className="promptx-hero__meta-text">
+              <strong>Certification</strong>
+              <span>Included</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

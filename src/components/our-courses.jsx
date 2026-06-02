@@ -7,12 +7,12 @@ const courses = [
     label: 'PromptX',
     title: 'AI Prompt Engineering Mastery',
     description:
-      'Learn to communicate with AI at an expert level. Design powerful prompts, build AI workflows, and unlock capabilities that most professionals never discover.',
+      'A comprehensive 30-hours course to Master Prompt Engineering and AI interaction techniques, learn to communicate effectively with AI tools to boost productivity, creativity, research, automation, content generation, and business workflows.',
     features: [
-      'Master prompt design patterns',
-      'Build AI-powered workflows',
-      'Chain complex reasoning tasks',
-      'Deploy prompts in real projects',
+      'Master Prompt Engineering',
+      'Communicate Effectively with AI',
+      'Enhance Productivity & Creativity',
+      'Automate Workflows & Business Tasks',
     ],
   },
   {
@@ -20,12 +20,12 @@ const courses = [
     label: 'GrowthX',
     title: 'AI Digital Marketing Mastery',
     description:
-      'Harness AI to supercharge your marketing. From content generation to campaign optimisation — learn to grow brands faster with intelligent automation.',
+      'A specialized 30-hours course in AI-integrated Digital Marketing with a strong focus on Social Media Management. Learn to build powerful digital strategies using AI tools, creativity, analytics, automation, and audience insights.',
     features: [
-      'AI-driven content strategy',
-      'Automated campaign management',
-      'Data-led audience targeting',
-      'Performance analytics with AI',
+      'AI-Powered Digital Marketing',
+      'Social Media Management Skills',
+      'Data-Driven Strategy & Analytics',
+      'Automation & Audience Growth Techniques',
     ],
   },
   {

@@ -20,9 +20,9 @@ function PromptXHero() {
           </h1>
 
           <p className="promptx-hero__description">
-            The definitive course for professionals who want to harness the full
-            power of AI. Learn to design prompts that produce expert-level
-            results — every time.
+            A practical AI prompt engineering course in Kerala for professionals
+            who want to harness the full power of AI. Learn to design prompts
+            that produce expert-level results every time.
           </p>
 
           <div className="promptx-hero__actions">

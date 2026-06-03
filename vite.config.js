@@ -80,10 +80,10 @@ export default defineConfig(({ mode }) => {
       {
         name: 'local-smtp-email-middleware',
         configureServer(server) {
-          server.middlewares.use('/api/send-backup-email', createSmtpMiddleware(env));
+          server.middlewares.use('/api/send-backup-email.php', createSmtpMiddleware(env));
         },
         configurePreviewServer(server) {
-          server.middlewares.use('/api/send-backup-email', createSmtpMiddleware(env));
+          server.middlewares.use('/api/send-backup-email.php', createSmtpMiddleware(env));
         }
       }
     ],

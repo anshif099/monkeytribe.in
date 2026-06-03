@@ -1,6 +1,6 @@
 /**
  * Utility to send email notifications for database backups.
- * Hits the secure backend endpoint /api/send-backup-email.
+ * Hits the secure backend endpoint /api/send-backup-email.php.
  */
 
 export async function sendBackupEmail(subject: string, data: any): Promise<boolean> {
@@ -31,7 +31,7 @@ This email was automatically sent as a backup at the same time the data was save
   `.trim();
 
   try {
-    const response = await fetch("/api/send-backup-email", {
+    const response = await fetch("/api/send-backup-email.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

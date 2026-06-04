@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense, useEffect } from 'react'
+import { useState, lazy, Suspense, useEffect, useCallback } from 'react'
 import Home from './pages/home.jsx'
 
 // Dynamically import components to enable code splitting
@@ -19,6 +19,7 @@ const About = lazy(() => import('./pages/about.jsx'))
 const Register = lazy(() => import('./pages/register.jsx'))
 const AiIntegratedDigitalMarketing = lazy(() => import('./pages/ai-integrated-digital-marketing.jsx'))
 const AiPromptEngineeringGuide = lazy(() => import('./pages/ai-prompt-engineering-guide.jsx'))
+const AiPromptEngineeringCourseKerala = lazy(() => import('./pages/ai-prompt-engineering-course-kerala.jsx'))
 const CareerOpportunitiesInAiEra = lazy(() => import('./pages/career-opportunities-in-ai-era.jsx'))
 const Dashboard = lazy(() => import('./pages/dashboard.jsx'))
 
@@ -57,15 +58,22 @@ function App() {
     };
   }, []);
 
-  const handleNavigate = (page) => {
+  const handleNavigate = useCallback((page) => {
     const newPath = page === 'home' ? '/' : `/${page}`;
     window.history.pushState({ page }, '', newPath);
     setCurrentPage(page)
     window.scrollTo({ top: 0, behavior: 'instant' })
-  }
+  }, [])
 
-  // Expose routing globally to avoid prop drilling in deeply nested footer/header elements
-  window.__navigate = handleNavigate;
+  useEffect(() => {
+    window.__navigate = handleNavigate
+
+    return () => {
+      if (window.__navigate === handleNavigate) {
+        delete window.__navigate
+      }
+    }
+  }, [handleNavigate])
 
   let pageContent;
 
@@ -97,6 +105,8 @@ function App() {
     pageContent = <AiIntegratedDigitalMarketing onNavigate={handleNavigate} />
   } else if (currentPage === 'ai-prompt-engineering-guide') {
     pageContent = <AiPromptEngineeringGuide onNavigate={handleNavigate} />
+  } else if (currentPage === 'ai-prompt-engineering-course-kerala') {
+    pageContent = <AiPromptEngineeringCourseKerala onNavigate={handleNavigate} />
   } else if (currentPage === 'career-opportunities-in-ai-era') {
     pageContent = <CareerOpportunitiesInAiEra onNavigate={handleNavigate} />
   } else if (currentPage.startsWith('custom-course-')) {

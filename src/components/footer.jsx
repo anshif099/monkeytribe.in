@@ -127,6 +127,7 @@ const Footer = () => {
             <h4 className="footer-col-heading">COURSES</h4>
             <ul className="footer-col-list">
               <li><a href="#" onClick={navigateTo('promptx')}>PromptX — AI Prompt Engineering</a></li>
+              <li><a href="#" onClick={navigateTo('ai-prompt-engineering-course-kerala')}>AI Prompt Engineering Course Kerala</a></li>
               <li><a href="#" onClick={navigateTo('growthx')}>GrowthX — AI Digital Marketing</a></li>
               <li><a href="#" onClick={navigateTo('brandx')}>BrandX — Brand Builder Pro</a></li>
               <li><a href="#" onClick={navigateTo('copycraft')}>CopyCraft — CopyCraft Mastery</a></li>

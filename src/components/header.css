@@ -512,3 +512,45 @@
   color: #000000 !important;
   transform: scale(1.03);
 }
+
+.ai-prompt-kerala-page .header:not(.header--scrolled) {
+  --foreground: 0 0% 100%;
+}
+
+.ai-prompt-kerala-page .header:not(.header--scrolled) .header-nav a {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ai-prompt-kerala-page .header:not(.header--scrolled) .header-nav a:hover,
+.ai-prompt-kerala-page .header:not(.header--scrolled) .header-nav a.active {
+  color: #ffffff !important;
+}
+
+.ai-prompt-kerala-page .header:not(.header--scrolled) .explore-btn {
+  color: #ffffff;
+}
+
+.ai-prompt-kerala-page .header:not(.header--scrolled) .explore-btn:hover {
+  color: #f8cb12;
+}
+
+.ai-prompt-kerala-page .header:not(.header--scrolled) .header-logo img {
+  filter: brightness(0) invert(1);
+}
+
+.ai-prompt-kerala-page .header:not(.header--scrolled) .download-brochure-btn {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.ai-prompt-kerala-page .header:not(.header--scrolled) .header-nav a.download-brochure-btn:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000000 !important;
+}
+
+@media (max-width: 992px) {
+  .ai-prompt-kerala-page .header:not(.header--scrolled) .hamburger-line {
+    background: #ffffff;
+  }
+}

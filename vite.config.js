@@ -1,8 +1,11 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import nodemailer from 'nodemailer'
+import process from 'node:process'
+import createRazorpayOrder from './api/create-razorpay-order.js'
+import verifyRazorpayPayment from './api/verify-razorpay-payment.js'
 
-const createSmtpMiddleware = (env) => (req, res, next) => {
+const createSmtpMiddleware = (env) => (req, res) => {
   if (req.method !== 'POST') {
     res.statusCode = 405;
     res.setHeader('Content-Type', 'application/json');
@@ -70,9 +73,18 @@ const createSmtpMiddleware = (env) => (req, res, next) => {
   });
 };
 
+const syncServerEnv = (env) => {
+  ['RAZORPAY_KEY_ID', 'RAZORPAY_KEY_SECRET', 'RAZORPAY_ALLOWED_ORIGIN'].forEach((key) => {
+    if (env[key]) {
+      process.env[key] = env[key];
+    }
+  });
+};
+
 export default defineConfig(({ mode }) => {
   // Load environment variables (including non-VITE_ prefixed ones for SMTP server config)
   const env = loadEnv(mode, process.cwd(), '');
+  syncServerEnv(env);
 
   return {
     plugins: [
@@ -81,9 +93,13 @@ export default defineConfig(({ mode }) => {
         name: 'local-smtp-email-middleware',
         configureServer(server) {
           server.middlewares.use('/api/send-backup-email.php', createSmtpMiddleware(env));
+          server.middlewares.use('/api/create-razorpay-order', createRazorpayOrder);
+          server.middlewares.use('/api/verify-razorpay-payment', verifyRazorpayPayment);
         },
         configurePreviewServer(server) {
           server.middlewares.use('/api/send-backup-email.php', createSmtpMiddleware(env));
+          server.middlewares.use('/api/create-razorpay-order', createRazorpayOrder);
+          server.middlewares.use('/api/verify-razorpay-payment', verifyRazorpayPayment);
         }
       }
     ],

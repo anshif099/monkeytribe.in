@@ -22,7 +22,7 @@ function RegisterHero() {
           Register for a Course
         </h1>
         <p className="register-hero__desc">
-          Three simple steps — choose your course, share your details, and complete payment via UPI.
+          Three simple steps — choose your course, share your details, and complete payment online.
         </p>
       </div>
 

@@ -191,7 +191,7 @@ function Dashboard({ onNavigate }) {
   
   // Calculate revenue dynamically based on registrations
   const totalRevenue = registrations.reduce((sum, item) => {
-    const price = COURSE_PRICES[item.course] || 10000;
+    const price = Number(item.amountPaid) || COURSE_PRICES[item.course] || 10000;
     return sum + price;
   }, 0);
 
@@ -238,6 +238,9 @@ function Dashboard({ onNavigate }) {
       r.email?.toLowerCase().includes(query) ||
       r.phone?.toLowerCase().includes(query) ||
       r.transactionId?.toLowerCase().includes(query) ||
+      r.razorpayPaymentId?.toLowerCase().includes(query) ||
+      r.razorpayOrderId?.toLowerCase().includes(query) ||
+      r.paymentMethod?.toLowerCase().includes(query) ||
       r.city?.toLowerCase().includes(query) ||
       r.qualification?.toLowerCase().includes(query);
 
@@ -441,7 +444,7 @@ function Dashboard({ onNavigate }) {
                       <div className="stat-icon">✓</div>
                     </div>
                     <h3 className="stat-value">{totalPaidBookings}</h3>
-                    <p className="stat-sub">UPI verified formal enrollments</p>
+                    <p className="stat-sub">Razorpay verified formal enrollments</p>
                   </div>
 
                   <div className="stat-card green">
@@ -483,7 +486,7 @@ function Dashboard({ onNavigate }) {
                                 {act.type === 'contact' 
                                   ? `Submitted a general enquiry for ${act.enquiryType}`
                                   : act.type === 'registration' 
-                                  ? `Formally registered for ${act.course} (UPI Transaction: ${act.transactionId})`
+                                  ? `Formally registered for ${act.course} (Payment ID: ${act.razorpayPaymentId || act.transactionId || 'N/A'})`
                                   : `Expressed interest in ${act.course} (landing page form)`
                                 }
                               </p>
@@ -731,7 +734,7 @@ function Dashboard({ onNavigate }) {
                     <span className="search-icon">🔍</span>
                     <input
                       type="text"
-                      placeholder="Search registrations by name, email, UPI ID, city..."
+                      placeholder="Search registrations by name, email, payment ID, city..."
                       value={registerSearch}
                       onChange={(e) => setRegisterSearch(e.target.value)}
                     />
@@ -764,7 +767,7 @@ function Dashboard({ onNavigate }) {
                         <th>Phone</th>
                         <th>Course</th>
                         <th>City</th>
-                        <th>UPI Transaction ID</th>
+                        <th>Payment ID</th>
                         <th>Status</th>
                         <th className="actions-header">Actions</th>
                       </tr>
@@ -790,7 +793,7 @@ function Dashboard({ onNavigate }) {
                             </td>
                             <td>{r.city || 'N/A'}</td>
                             <td className="table-transaction-id font-mono">
-                              <span className="tx-badge" title="Verified UPI transaction ID">{r.transactionId}</span>
+                              <span className="tx-badge" title="Verified payment ID">{r.razorpayPaymentId || r.transactionId || 'N/A'}</span>
                             </td>
                             <td>
                               <span className="table-badge-status paid">PAID</span>
@@ -929,19 +932,28 @@ function Dashboard({ onNavigate }) {
                     <div className="details-item">
                       <span className="details-label">Payment Status</span>
                       <span className="details-val text-green font-bold">
-                        💳 PAID via UPI Transaction
+                        PAID via Razorpay
                       </span>
                     </div>
 
                     <div className="details-item">
-                      <span className="details-label">UPI Transaction ID</span>
-                      <span className="details-val font-mono bg-dark tx-highlight">{selectedRecord.transactionId}</span>
+                      <span className="details-label">Payment ID</span>
+                      <span className="details-val font-mono bg-dark tx-highlight">
+                        {selectedRecord.razorpayPaymentId || selectedRecord.transactionId || 'N/A'}
+                      </span>
+                    </div>
+
+                    <div className="details-item">
+                      <span className="details-label">Razorpay Order ID</span>
+                      <span className="details-val font-mono bg-dark tx-highlight">
+                        {selectedRecord.razorpayOrderId || 'N/A'}
+                      </span>
                     </div>
 
                     <div className="details-item">
                       <span className="details-label">Registration Fee Paid</span>
                       <span className="details-val font-bold text-gold">
-                        {formatCurrency(COURSE_PRICES[selectedRecord.course] || 10000)}
+                        {formatCurrency(Number(selectedRecord.amountPaid) || COURSE_PRICES[selectedRecord.course] || 10000)}
                       </span>
                     </div>
 

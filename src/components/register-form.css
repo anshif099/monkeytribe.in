@@ -717,6 +717,83 @@
   gap: 20px;
 }
 
+.razorpay-checkout-box {
+  gap: 22px;
+}
+
+.razorpay-brand-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: #ffffff;
+  border: 1.5px solid #eef0f3;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.razorpay-brand-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #161824;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.razorpay-brand-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.razorpay-brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.razorpay-brand-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  color: #7c8ba1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.razorpay-brand-copy strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  color: #0f1115;
+  line-height: 1.2;
+}
+
+.razorpay-live-badge {
+  margin-left: auto;
+  border-radius: 4px;
+  background: rgba(16, 185, 129, 0.1);
+  color: #047857;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 5px 9px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .razorpay-brand-row {
+    align-items: flex-start;
+  }
+
+  .razorpay-live-badge {
+    margin-left: 0;
+  }
+}
+
 .payment-upi-details-row {
   display: flex;
   justify-content: space-between;
@@ -802,6 +879,10 @@
   padding-top: 20px;
 }
 
+.razorpay-summary-list {
+  border-top: 1px dashed #dcdfe6;
+}
+
 .instruction-item {
   display: flex;
   align-items: flex-start;
@@ -857,6 +938,19 @@
   background: #000000;
   transform: translateY(-2px);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+.wizard-actions__btn-back:disabled,
+.wizard-actions__btn-pay-secure:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.wizard-actions__btn-pay-secure:disabled,
+.wizard-actions__btn-pay-secure:disabled:hover {
+  background: #161824;
+  transform: none;
+  box-shadow: 0 6px 20px rgba(22, 24, 36, 0.15);
 }
 
 .btn-lock-icon {
@@ -1141,6 +1235,14 @@
   font-weight: 500;
   margin-top: 2px;
   line-height: 1.4;
+}
+
+.payment-error-text {
+  display: block;
+  background: #fff8f8;
+  border: 1px solid rgba(220, 38, 38, 0.18);
+  border-radius: 10px;
+  padding: 12px 14px;
 }
 
 /* Trust indicators footer block */

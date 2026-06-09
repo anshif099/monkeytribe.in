@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { saveRegistration } from '../lib/firebase';
 import './register-form.css';
 
+const RAZORPAY_CHECKOUT_SCRIPT = 'https://checkout.razorpay.com/v1/checkout.js';
 
 const COURSES = [
   {
@@ -58,6 +59,51 @@ const COURSES = [
   }
 ];
 
+const loadRazorpayCheckout = () => {
+  if (window.Razorpay) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve, reject) => {
+    const existingScript = document.querySelector(`script[src="${RAZORPAY_CHECKOUT_SCRIPT}"]`);
+
+    if (existingScript) {
+      existingScript.addEventListener('load', resolve, { once: true });
+      existingScript.addEventListener('error', () => reject(new Error('Unable to load Razorpay Checkout.')), { once: true });
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = RAZORPAY_CHECKOUT_SCRIPT;
+    script.async = true;
+    script.onload = resolve;
+    script.onerror = () => reject(new Error('Unable to load Razorpay Checkout.'));
+    document.body.appendChild(script);
+  });
+};
+
+const postJson = async (url, payload) => {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+  const contentType = response.headers.get('content-type') || '';
+  const data = contentType.includes('application/json') ? await response.json() : null;
+
+  if (!response.ok) {
+    throw new Error(data?.error || 'The payment server could not process this request.');
+  }
+
+  if (!data) {
+    throw new Error('The payment server returned an unexpected response.');
+  }
+
+  return data;
+};
+
 const getCourseIcon = (id) => {
   switch (id) {
     case 'promptx':
@@ -96,7 +142,6 @@ const getCourseIcon = (id) => {
 function RegisterForm() {
   const [step, setStep] = useState(1);
   const [selectedCourse, setSelectedCourse] = useState('promptx'); // Default pre-selected course
-  const [paymentTab, setPaymentTab] = useState('gpay'); // gpay, phonepe, anyupi
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -104,13 +149,13 @@ function RegisterForm() {
     phone: '',
     city: '',
     qualification: '',
-    experience: '',
-    transactionId: ''
+    experience: ''
   });
 
   const [errors, setErrors] = useState({});
   const [isSuccess, setIsSuccess] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [isPaying, setIsPaying] = useState(false);
+  const [paymentDetails, setPaymentDetails] = useState(null);
 
   const handleCourseSelect = (courseId) => {
     setSelectedCourse(courseId);
@@ -154,47 +199,131 @@ function RegisterForm() {
   };
 
   const handlePrevStep = () => {
-    if (step > 1) {
+    if (step > 1 && !isPaying) {
       setStep(step - 1);
     }
   };
 
-  const handleCopyUpi = () => {
-    navigator.clipboard.writeText('monkeytribe@upi');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   const handlePayment = async () => {
-    const newErrors = {};
-    const txId = formData.transactionId.trim();
-    if (!txId) {
-      newErrors.transactionId = 'UPI Transaction ID is required to confirm your registration';
-    } else if (!/^\d{12}$/.test(txId)) {
-      newErrors.transactionId = 'Please enter a valid 12-digit UPI Transaction ID';
-    }
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
+    if (isPaying) {
       return;
     }
 
+    setErrors({});
+    setIsPaying(true);
+
     try {
-      await saveRegistration({
-        name: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        city: formData.city || '',
-        qualification: formData.qualification || '',
-        experience: formData.experience || '',
-        transactionId: txId,
-        course: selectedCourseDetails?.badge || selectedCourse,
-        status: 'PAID'
+      await loadRazorpayCheckout();
+
+      const order = await postJson('/api/create-razorpay-order', {
+        courseId: selectedCourse,
+        student: {
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone
+        }
       });
-      setIsSuccess(true);
+
+      let paymentCompleted = false;
+      const checkout = new window.Razorpay({
+        key: order.keyId,
+        amount: order.amount,
+        currency: order.currency,
+        name: 'Monkey Tribe',
+        description: `${selectedCourseDetails?.badge} - ${selectedCourseDetails?.title}`,
+        image: '/logo.png',
+        order_id: order.orderId,
+        prefill: {
+          name: formData.fullName,
+          email: formData.email,
+          contact: formData.phone
+        },
+        notes: {
+          courseId: selectedCourse,
+          course: selectedCourseDetails?.badge || selectedCourse
+        },
+        theme: {
+          color: '#161824'
+        },
+        handler: async (response) => {
+          paymentCompleted = true;
+
+          try {
+            const verification = await postJson('/api/verify-razorpay-payment', {
+              razorpay_order_id: order.orderId,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              courseId: selectedCourse
+            });
+
+            if (!verification.verified) {
+              throw new Error('Razorpay payment could not be verified.');
+            }
+
+            const paidAmount = (verification.payment?.amount || order.amount) / 100;
+            const verifiedCourseId = verification.order?.courseId || selectedCourse;
+            const verifiedCourse = COURSES.find((course) => course.id === verifiedCourseId) || selectedCourseDetails;
+            const paymentRecord = {
+              paymentId: verification.payment?.id || response.razorpay_payment_id,
+              orderId: verification.order?.id || order.orderId,
+              method: verification.payment?.method || 'razorpay',
+              amount: paidAmount,
+              currency: verification.payment?.currency || order.currency
+            };
+
+            await saveRegistration({
+              name: formData.fullName,
+              email: formData.email,
+              phone: formData.phone,
+              city: formData.city || '',
+              qualification: formData.qualification || '',
+              experience: formData.experience || '',
+              transactionId: paymentRecord.paymentId,
+              razorpayPaymentId: paymentRecord.paymentId,
+              razorpayOrderId: paymentRecord.orderId,
+              razorpaySignature: response.razorpay_signature,
+              paymentMethod: paymentRecord.method,
+              amountPaid: paidAmount,
+              currency: paymentRecord.currency,
+              course: verifiedCourse?.badge || selectedCourse,
+              status: 'PAID'
+            });
+
+            setPaymentDetails(paymentRecord);
+            setIsSuccess(true);
+          } catch (err) {
+            console.error('Failed to verify Razorpay payment:', err);
+            setErrors({
+              payment: err.message || 'Payment was received but verification failed. Please contact support.'
+            });
+          } finally {
+            setIsPaying(false);
+          }
+        },
+        modal: {
+          ondismiss: () => {
+            if (!paymentCompleted) {
+              setErrors({ payment: 'Payment was not completed. You can try again whenever you are ready.' });
+              setIsPaying(false);
+            }
+          }
+        }
+      });
+
+      checkout.on('payment.failed', (response) => {
+        setErrors({
+          payment: response.error?.description || 'Payment failed. Please try another payment method.'
+        });
+        setIsPaying(false);
+      });
+
+      checkout.open();
     } catch (err) {
-      console.error("Failed to submit paid registration:", err);
-      alert("Something went wrong while confirming your payment. Please try again or contact support if the issue persists.");
+      console.error('Failed to start Razorpay payment:', err);
+      setErrors({
+        payment: err.message || 'Something went wrong while starting your payment. Please try again.'
+      });
+      setIsPaying(false);
     }
   };
 
@@ -287,11 +416,15 @@ function RegisterForm() {
                 </div>
                 <div className="register-box__receipt-row">
                   <span>Payment Method:</span>
-                  <strong>UPI Payment Gateway</strong>
+                  <strong>{paymentDetails?.method ? `Razorpay (${paymentDetails.method.toUpperCase()})` : 'Razorpay Checkout'}</strong>
+                </div>
+                <div className="register-box__receipt-row">
+                  <span>Payment ID:</span>
+                  <strong>{paymentDetails?.paymentId || 'Razorpay verified'}</strong>
                 </div>
                 <div className="register-box__receipt-row">
                   <span>Amount Paid:</span>
-                  <strong className="receipt-price">{formatCurrency(selectedCourseDetails?.price)}</strong>
+                  <strong className="receipt-price">{formatCurrency(paymentDetails?.amount || selectedCourseDetails?.price)}</strong>
                 </div>
                 <div className="register-box__receipt-row">
                   <span>Status:</span>
@@ -621,63 +754,24 @@ function RegisterForm() {
                   </div>
 
                   <h2 className="wizard-step__title">Complete Payment</h2>
-                  <p className="wizard-step__subtitle">Pay via UPI — secure, instant, and hassle-free.</p>
+                  <p className="wizard-step__subtitle">Pay securely through Razorpay Checkout.</p>
 
                   <div className="wizard-step__payment-gateways">
 
-                    {/* Horizontal Payment selectors */}
-                    <div className="payment-tabs">
-                      <div
-                        className={`payment-tabs__item ${paymentTab === 'gpay' ? 'active' : ''}`}
-                        onClick={() => setPaymentTab('gpay')}
-                      >
-                        <div className="payment-tabs__sphere" />
-                        <span>Google Pay</span>
-                      </div>
+                    <div className="payment-box-wrapper razorpay-checkout-box">
 
-                      <div
-                        className={`payment-tabs__item ${paymentTab === 'phonepe' ? 'active' : ''}`}
-                        onClick={() => setPaymentTab('phonepe')}
-                      >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2.5" className="payment-tabs__svg-icon">
-                          <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-                          <line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="4" />
-                        </svg>
-                        <span>PhonePe / Paytm</span>
-                      </div>
-
-                      <div
-                        className={`payment-tabs__item ${paymentTab === 'anyupi' ? 'active' : ''}`}
-                        onClick={() => setPaymentTab('anyupi')}
-                      >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" strokeWidth="2.5" className="payment-tabs__svg-icon">
-                          <rect x="2" y="5" width="20" height="14" rx="2" />
-                          <line x1="2" y1="10" x2="22" y2="10" />
-                        </svg>
-                        <span>Any UPI App</span>
-                      </div>
-                    </div>
-
-                    {/* Dynamic checkout box */}
-                    <div className="payment-box-wrapper">
-
-                      {/* UPI Copy details block */}
-                      <div className="payment-upi-details-row">
-                        <div className="payment-upi-id-block">
-                          <span className="payment-upi-id-label">UPI ID</span>
-                          <strong className="payment-upi-id-value">monkeytribe@upi</strong>
-                        </div>
-                        <button
-                          type="button"
-                          className="payment-copy-btn"
-                          onClick={handleCopyUpi}
-                        >
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="copy-btn-icon" style={{ width: '14px', height: '14px', marginRight: '6px', verticalAlign: 'middle' }}>
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                      <div className="razorpay-brand-row">
+                        <div className="razorpay-brand-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                           </svg>
-                          <span>{copied ? 'Copied!' : 'Copy'}</span>
-                        </button>
+                        </div>
+                        <div className="razorpay-brand-copy">
+                          <span className="razorpay-brand-label">Razorpay Checkout</span>
+                          <strong>UPI, cards, netbanking and wallets</strong>
+                        </div>
+                        <span className="razorpay-live-badge">Live</span>
                       </div>
 
                       {/* Amount block */}
@@ -686,75 +780,25 @@ function RegisterForm() {
                         <strong className="payment-amount-value">{formatCurrency(selectedCourseDetails?.price)}</strong>
                       </div>
 
-                      {/* Payment Instructions */}
-                      <div className="payment-instructions">
+                      <div className="payment-instructions razorpay-summary-list">
                         <div className="instruction-item">
                           <span className="instruction-number">1</span>
-                          <span className="instruction-text">
-                            Open {paymentTab === 'gpay' ? 'Google Pay' : paymentTab === 'phonepe' ? 'PhonePe or Paytm' : 'any UPI App'} on your phone
-                          </span>
+                          <span className="instruction-text">Razorpay order is created for <strong>{selectedCourseDetails?.badge}</strong></span>
                         </div>
                         <div className="instruction-item">
                           <span className="instruction-number">2</span>
-                          <span className="instruction-text">Tap "New Payment" → "UPI ID" and enter: <strong>monkeytribe@upi</strong></span>
+                          <span className="instruction-text">Payment opens in the official Razorpay checkout</span>
                         </div>
                         <div className="instruction-item">
                           <span className="instruction-number">3</span>
-                          <span className="instruction-text">Enter amount: <strong>{formatCurrency(selectedCourseDetails?.price)}</strong></span>
-                        </div>
-                        <div className="instruction-item">
-                          <span className="instruction-number">4</span>
-                          <span className="instruction-text">Add note: <strong>{selectedCourseDetails?.badge} – {formData.fullName || 'Student'}</strong></span>
-                        </div>
-                        <div className="instruction-item">
-                          <span className="instruction-number">5</span>
-                          <span className="instruction-text">Complete payment and note the Transaction ID</span>
+                          <span className="instruction-text">Registration is saved after Razorpay verification</span>
                         </div>
                       </div>
 
-                      {/* Open payment app action button */}
-                      <a
-                        href={paymentTab === 'gpay' ? 'https://pay.google.com' : 'https://www.phonepe.com'}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="payment-action-btn-blue"
-                      >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="payment-action-btn-icon" style={{ width: '16px', height: '16px', strokeWidth: '2.5px' }}>
-                          <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-                          <line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="4" />
-                        </svg>
-                        <span>Open {paymentTab === 'gpay' ? 'Google Pay' : paymentTab === 'phonepe' ? 'PhonePe' : 'UPI App'}</span>
-                        <span className="payment-action-btn-arrow">›</span>
-                      </a>
+                      {errors.payment && <span className="error-text payment-error-text">{errors.payment}</span>}
 
                     </div>
 
-                  </div>
-
-                  {/* UPI TRANSACTION ID INPUT SECTION */}
-                  <div className="upi-transaction-input-section">
-                    <label htmlFor="reg-transactionId" className="upi-transaction-label">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="upi-label-icon" style={{ width: '15px', height: '15px', marginRight: '8px', verticalAlign: 'middle' }}>
-                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                      </svg>
-                      <span>UPI TRANSACTION ID <span className="required">*</span></span>
-                    </label>
-                    <input
-                      type="text"
-                      id="reg-transactionId"
-                      name="transactionId"
-                      placeholder="e.g. 123456789012"
-                      value={formData.transactionId}
-                      onChange={handleInputChange}
-                      className={errors.transactionId ? 'error' : ''}
-                      maxLength="12"
-                    />
-                    {errors.transactionId ? (
-                      <span className="error-text">{errors.transactionId}</span>
-                    ) : (
-                      <span className="upi-helper-text">Find this in your UPI app under payment history after completing the transaction.</span>
-                    )}
                   </div>
 
                   {/* Action buttons */}
@@ -763,6 +807,7 @@ function RegisterForm() {
                       type="button"
                       className="wizard-actions__btn-back"
                       onClick={handlePrevStep}
+                      disabled={isPaying}
                     >
                       Back
                     </button>
@@ -770,12 +815,14 @@ function RegisterForm() {
                       type="button"
                       className="wizard-actions__btn-pay-secure"
                       onClick={handlePayment}
+                      disabled={isPaying}
+                      aria-busy={isPaying}
                     >
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="btn-lock-icon">
                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                         <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                       </svg>
-                      <span>Confirm Registration</span>
+                      <span>{isPaying ? 'Processing Payment...' : 'Pay & Confirm'}</span>
                     </button>
                   </div>
 
@@ -793,7 +840,7 @@ function RegisterForm() {
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                         <circle cx="12" cy="7" r="4" />
                       </svg>
-                      <span>UPI Verified</span>
+                      <span>Razorpay Verified</span>
                     </div>
                     <div className="trust-badge-item">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="trust-badge-icon" style={{ width: '14px', height: '14px', color: '#10b981' }}>

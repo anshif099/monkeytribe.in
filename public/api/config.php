@@ -19,18 +19,30 @@ function setCorsHeaders() {
     }
 }
 
-// Get environment variable with fallback to local .env/.env.local file parsing
+// Get environment variable — loads razorpay-keys.php first (cPanel/Apache compatible),
+// then falls back to PHP env vars and .env file parsing (local dev).
 function getEnvVar($name) {
+    // 1. Try loading razorpay-keys.php constants (production cPanel hosting)
+    static $keysLoaded = false;
+    if (!$keysLoaded) {
+        $keysLoaded = true;
+        $keysFile = __DIR__ . '/razorpay-keys.php';
+        if (file_exists($keysFile)) {
+            require_once $keysFile;
+        }
+    }
+    if (defined($name)) return constant($name);
+
+    // 2. PHP environment variables (set via cPanel → Software → PHP Environment Variables)
     if (isset($_ENV[$name])) return $_ENV[$name];
     if (isset($_SERVER[$name])) return $_SERVER[$name];
     $val = getenv($name);
     if ($val !== false) return $val;
-    
-    // Parse .env / .env.local file
+
+    // 3. Parse .env / .env.local file (local Vite dev fallback)
     static $parsedEnv = null;
     if ($parsedEnv === null) {
         $parsedEnv = array();
-        // Look in multiple possible directory depths relative to this file
         $paths = array(
             __DIR__ . '/.env',
             __DIR__ . '/../.env',
@@ -45,13 +57,12 @@ function getEnvVar($name) {
                 foreach ($lines as $line) {
                     $line = trim($line);
                     if (empty($line) || strpos($line, '#') === 0) continue;
-                    
-                    list($key, $value) = explode('=', $line, 2) + array(NULL, NULL);
-                    if ($key !== NULL) {
-                        $key = trim($key);
-                        $value = trim($value);
+                    $parts = explode('=', $line, 2);
+                    if (count($parts) === 2) {
+                        $key   = trim($parts[0]);
+                        $value = trim($parts[1]);
                         // Strip surrounding quotes
-                        if (preg_match('/^"?(.*?)"?$/', $value, $matches)) {
+                        if (preg_match('/^["\']?(.*?)["\']?$/', $value, $matches)) {
                             $value = $matches[1];
                         }
                         $parsedEnv[$key] = $value;

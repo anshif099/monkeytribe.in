@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Razorpay server credentials — do not commit
+public/api/razorpay-keys.php

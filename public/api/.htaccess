@@ -1,0 +1,5 @@
+# Block direct browser access to internal config/keys files
+<FilesMatch "^(config\.php|razorpay-keys\.php)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

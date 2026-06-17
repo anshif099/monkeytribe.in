@@ -94,12 +94,16 @@ export default defineConfig(({ mode }) => {
         configureServer(server) {
           server.middlewares.use('/api/send-backup-email.php', createSmtpMiddleware(env));
           server.middlewares.use('/api/create-razorpay-order', createRazorpayOrder);
+          server.middlewares.use('/api/create-razorpay-order.php', createRazorpayOrder);
           server.middlewares.use('/api/verify-razorpay-payment', verifyRazorpayPayment);
+          server.middlewares.use('/api/verify-razorpay-payment.php', verifyRazorpayPayment);
         },
         configurePreviewServer(server) {
           server.middlewares.use('/api/send-backup-email.php', createSmtpMiddleware(env));
           server.middlewares.use('/api/create-razorpay-order', createRazorpayOrder);
+          server.middlewares.use('/api/create-razorpay-order.php', createRazorpayOrder);
           server.middlewares.use('/api/verify-razorpay-payment', verifyRazorpayPayment);
+          server.middlewares.use('/api/verify-razorpay-payment.php', verifyRazorpayPayment);
         }
       }
     ],

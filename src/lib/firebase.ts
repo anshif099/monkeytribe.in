@@ -14,7 +14,7 @@ const firebaseConfig = {
   storageBucket: "flexiwallet-5b1de.firebasestorage.app",
   messagingSenderId: "514558692621",
   appId: "1:514558692621:web:2790ab2167b02eb1b3b444",
-  measurementId: "G-GP7H2VV2PY"
+  measurementId: "G-3QYBWZECTW"
 };
 
 // Initialize Firebase

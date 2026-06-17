@@ -215,7 +215,7 @@ function RegisterForm() {
     try {
       await loadRazorpayCheckout();
 
-      const order = await postJson('/api/create-razorpay-order', {
+      const order = await postJson('/api/create-razorpay-order.php', {
         courseId: selectedCourse,
         student: {
           name: formData.fullName,
@@ -249,7 +249,7 @@ function RegisterForm() {
           paymentCompleted = true;
 
           try {
-            const verification = await postJson('/api/verify-razorpay-payment', {
+            const verification = await postJson('/api/verify-razorpay-payment.php', {
               razorpay_order_id: order.orderId,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,

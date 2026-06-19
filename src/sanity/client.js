@@ -1,0 +1,8 @@
+import { createClient } from '@sanity/client'
+
+export const client = createClient({
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
+  dataset: import.meta.env.VITE_SANITY_DATASET || 'production',
+  apiVersion: import.meta.env.VITE_SANITY_API_VERSION || '2026-06-19',
+  useCdn: true, // `false` if you want to ensure fresh data
+})

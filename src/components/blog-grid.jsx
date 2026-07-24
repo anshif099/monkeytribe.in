@@ -9,6 +9,28 @@ function BlogGrid({ onNavigate }) {
 
   const articles = [
     {
+      id: 5,
+      category: 'Career & Future of Work',
+      categoryLabel: 'CAREER & FUTURE OF WORK',
+      title: 'Top Career Opportunities After Learning Prompt Engineering',
+      excerpt: 'Discover the top 8 career paths after mastering prompt engineering in 2026, from AI Content Specialist to Freelance Consultant...',
+      date: 'July 24, 2026',
+      readTime: '7 min read',
+      author: 'Monkey Tribe',
+      tags: ['#AI careers', '#prompt engineering', '#upskilling', '#AI']
+    },
+    {
+      id: 4,
+      category: 'Career & Future of Work',
+      categoryLabel: 'CAREER & FUTURE OF WORK',
+      title: 'Is Prompt Engineering a Good Career Choice in 2026?',
+      excerpt: 'In 2026, AI has reshaped how businesses operate. Discover why Prompt Engineering is a strategic opportunity with high demand and strong salaries...',
+      date: 'July 24, 2026',
+      readTime: '6 min read',
+      author: 'Monkey Tribe',
+      tags: ['#AI careers', '#prompt engineering', '#ChatGPT', '#AI']
+    },
+    {
       id: 1,
       category: 'Digital Marketing',
       categoryLabel: 'DIGITAL MARKETING',
@@ -48,6 +70,8 @@ function BlogGrid({ onNavigate }) {
     1: 'ai-integrated-digital-marketing',
     2: 'ai-prompt-engineering-guide',
     3: 'career-opportunities-in-ai-era',
+    4: 'is-prompt-engineering-a-good-career-choice-in-2026',
+    5: 'top-career-opportunities-after-learning-prompt-engineering',
   };
   // Filtering Logic
   const filteredArticles = articles.filter((article) => {

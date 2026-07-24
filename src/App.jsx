@@ -21,6 +21,8 @@ const AiIntegratedDigitalMarketing = lazy(() => import('./pages/ai-integrated-di
 const AiPromptEngineeringGuide = lazy(() => import('./pages/ai-prompt-engineering-guide.jsx'))
 const AiPromptEngineeringCourseKerala = lazy(() => import('./pages/ai-prompt-engineering-course-kerala.jsx'))
 const CareerOpportunitiesInAiEra = lazy(() => import('./pages/career-opportunities-in-ai-era.jsx'))
+const IsPromptEngineeringAGoodCareerChoiceIn2026 = lazy(() => import('./pages/is-prompt-engineering-a-good-career-choice-in-2026.jsx'))
+const TopCareerOpportunitiesAfterLearningPromptEngineering = lazy(() => import('./pages/top-career-opportunities-after-learning-prompt-engineering.jsx'))
 const Dashboard = lazy(() => import('./pages/dashboard.jsx'))
 
 // Derive the initial page from the current URL pathname
@@ -109,6 +111,10 @@ function App() {
     pageContent = <AiPromptEngineeringCourseKerala onNavigate={handleNavigate} />
   } else if (currentPage === 'career-opportunities-in-ai-era') {
     pageContent = <CareerOpportunitiesInAiEra onNavigate={handleNavigate} />
+  } else if (currentPage === 'is-prompt-engineering-a-good-career-choice-in-2026') {
+    pageContent = <IsPromptEngineeringAGoodCareerChoiceIn2026 onNavigate={handleNavigate} />
+  } else if (currentPage === 'top-career-opportunities-after-learning-prompt-engineering') {
+    pageContent = <TopCareerOpportunitiesAfterLearningPromptEngineering onNavigate={handleNavigate} />
   } else if (currentPage.startsWith('custom-course-')) {
     // Dynamic custom courses created via CMS
     const customCourses = (() => {

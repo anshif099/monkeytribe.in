@@ -554,3 +554,42 @@
     background: #ffffff;
   }
 }
+
+/* The homepage header sits over the dark carousel until the page is scrolled. */
+.home-page .header:not(.header--scrolled) {
+  --foreground: 0 0% 100%;
+}
+
+.home-page .header:not(.header--scrolled) .header-nav a {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.home-page .header:not(.header--scrolled) .header-nav a:hover,
+.home-page .header:not(.header--scrolled) .header-nav a.active {
+  color: #ffffff !important;
+}
+
+.home-page .header:not(.header--scrolled) .header-logo img {
+  filter: brightness(0) invert(1);
+}
+
+.home-page .header:not(.header--scrolled) .explore-btn {
+  color: #ffffff;
+}
+
+.home-page .header:not(.header--scrolled) .download-brochure-btn {
+  border-color: rgba(255, 255, 255, 0.65);
+  color: #ffffff !important;
+}
+
+.home-page .header:not(.header--scrolled) .header-nav a.download-brochure-btn:hover {
+  border-color: #ffffff;
+  color: #000000 !important;
+  background: #ffffff;
+}
+
+@media (max-width: 992px) {
+  .home-page .header:not(.header--scrolled) .hamburger-line {
+    background: #ffffff;
+  }
+}

@@ -244,7 +244,7 @@ function Hero({ onNavigate }) {
   const visibleStaticTracks = STATIC_TRACKS.filter(t => !isStaticHidden(t))
 
   return (
-    <section className="hero-section" id="home">
+    <section className="hero-section" id="home-intro">
       {/* LCP image */}
       <img
         className="hero-section__face"

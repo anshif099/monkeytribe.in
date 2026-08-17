@@ -18,7 +18,7 @@ function HomeCarousel() {
 
     const intervalId = window.setInterval(() => {
       setActiveSlide((current) => (current + 1) % SLIDES.length)
-    }, 5000)
+    }, 4000)
 
     return () => window.clearInterval(intervalId)
   }, [])

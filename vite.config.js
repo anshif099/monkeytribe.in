@@ -5,6 +5,26 @@ import process from 'node:process'
 import createRazorpayOrder from './api/create-razorpay-order.js'
 import verifyRazorpayPayment from './api/verify-razorpay-payment.js'
 
+// The global stylesheet is small once compressed, but a separate request blocks the
+// first paint. Inline only the entry CSS; route-level styles remain code-split.
+const inlineEntryCss = () => ({
+  name: 'inline-entry-css',
+  transformIndexHtml: {
+    order: 'post',
+    handler(html, context) {
+      if (!context.bundle) return html;
+
+      return html.replace(
+        /<link rel="stylesheet" crossorigin href="\/(assets\/[^"?]+\.css)">/g,
+        (tag, fileName) => {
+          const asset = context.bundle[fileName];
+          return asset?.type === 'asset' ? `<style data-entry-css>${asset.source}</style>` : tag;
+        },
+      );
+    },
+  },
+})
+
 const createSmtpMiddleware = (env) => (req, res) => {
   if (req.method !== 'POST') {
     res.statusCode = 405;
@@ -89,6 +109,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       react(),
+      inlineEntryCss(),
       {
         name: 'local-smtp-email-middleware',
         configureServer(server) {

@@ -5,6 +5,14 @@ import fs from 'fs';
 const publicDir = './public';
 
 const tasks = [
+  // Carousel: responsive sizes avoid serving 1672px images to mobile devices.
+  ...[1, 2, 3, 4].map((number) => ({
+    input: path.join(publicDir, `carosal-${number}.webp`),
+    outputs: [
+      { file: path.join(publicDir, `carosal-${number}-mobile.webp`), width: 768, quality: 72 },
+      { file: path.join(publicDir, `carosal-${number}-desktop.webp`), width: 1440, quality: 78 },
+    ],
+  })),
   // header-logo.png: convert to WebP, displayed at ~115px wide (2x = 230px)
   {
     input: path.join(publicDir, 'header-logo.png'),

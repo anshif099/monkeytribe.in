@@ -10,6 +10,7 @@ const SLIDES = [
 
 function HomeCarousel() {
   const [activeSlide, setActiveSlide] = useState(0)
+  const [loadRemainingSlides, setLoadRemainingSlides] = useState(false)
   const touchStartX = useRef(null)
 
   useEffect(() => {
@@ -62,15 +63,22 @@ function HomeCarousel() {
             aria-hidden={index !== activeSlide}
             key={slide.src}
           >
-            <img
-              src={slide.src}
-              alt={slide.alt}
-              width="1672"
-              height="941"
-              loading={index === 0 ? 'eager' : 'lazy'}
-              fetchPriority={index === 0 ? 'high' : 'auto'}
-              decoding="async"
-            />
+            {(index === 0 || loadRemainingSlides) && (
+              <picture>
+                <source media="(max-width: 768px)" srcSet={slide.src.replace('.webp', '-mobile.webp')} />
+                <source media="(max-width: 1440px)" srcSet={slide.src.replace('.webp', '-desktop.webp')} />
+                <img
+                  src={slide.src}
+                  alt={slide.alt}
+                  width="1672"
+                  height="941"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fetchPriority={index === 0 ? 'high' : 'auto'}
+                  decoding="async"
+                  onLoad={index === 0 ? () => setLoadRemainingSlides(true) : undefined}
+                />
+              </picture>
+            )}
           </div>
         ))}
       </div>

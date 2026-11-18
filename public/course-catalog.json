@@ -1,0 +1,70 @@
+[
+  {
+    "id": "promptx",
+    "badge": "PromptX",
+    "popular": true,
+    "title": "AI Prompt Engineering Mastery",
+    "duration": "30 Hours",
+    "modules": "10 Modules",
+    "features": [
+      "Prompt design frameworks",
+      "AI workflow automation",
+      "Real-world projects"
+    ],
+    "price": 12500,
+    "originalPrice": 15000,
+    "color": "#3127b2",
+    "accent": "indigo"
+  },
+  {
+    "id": "growthx",
+    "badge": "GrowthX",
+    "popular": false,
+    "title": "AI Digital Marketing Mastery",
+    "duration": "30 Hours",
+    "modules": "10 Modules",
+    "features": [
+      "AI content strategy",
+      "Campaign automation",
+      "Performance analytics"
+    ],
+    "price": 12500,
+    "originalPrice": 15000,
+    "color": "#035a41",
+    "accent": "green"
+  },
+  {
+    "id": "brandx",
+    "badge": "BrandX",
+    "popular": false,
+    "title": "Brand Builder Pro",
+    "duration": "8 Weeks",
+    "modules": "10 Modules",
+    "features": [
+      "Brand positioning",
+      "Visual identity",
+      "Audience storytelling"
+    ],
+    "price": 9999,
+    "originalPrice": 14999,
+    "color": "#ff6b00",
+    "accent": "orange"
+  },
+  {
+    "id": "copycraft",
+    "badge": "CopyCraft",
+    "popular": false,
+    "title": "CopyCraft Mastery",
+    "duration": "6 Weeks",
+    "modules": "10 Modules",
+    "features": [
+      "Persuasive copywriting",
+      "Consumer psychology",
+      "Campaign creation"
+    ],
+    "price": 11999,
+    "originalPrice": 17999,
+    "color": "#7c3aed",
+    "accent": "purple"
+  }
+]

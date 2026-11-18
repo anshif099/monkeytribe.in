@@ -1,30 +1,11 @@
+import { readFileSync } from 'node:fs';
+const COURSES = Object.fromEntries(JSON.parse(readFileSync(new URL('../public/course-catalog.json', import.meta.url), 'utf8')).map(c => [c.id, c]));
 import { Buffer } from 'node:buffer';
 import process from 'node:process';
 
 const RAZORPAY_API_BASE = 'https://api.razorpay.com/v1';
 
-const COURSES = {
-  promptx: {
-    badge: 'PromptX',
-    title: 'AI Prompt Engineering Mastery',
-    price: 12500
-  },
-  growthx: {
-    badge: 'GrowthX',
-    title: 'AI Digital Marketing Mastery',
-    price: 12500
-  },
-  brandx: {
-    badge: 'BrandX',
-    title: 'Brand Builder Pro',
-    price: 9999
-  },
-  copycraft: {
-    badge: 'CopyCraft',
-    title: 'CopyCraft Mastery',
-    price: 11999
-  }
-};
+
 
 const sendJson = (res, status, payload) => {
   res.statusCode = status;
@@ -94,7 +75,7 @@ export default async function handler(req, res) {
 
     const student = payload.student || {};
     const orderPayload = {
-      amount: course.price * 100,
+      amount: Math.round(course.price * 100),
       currency: 'INR',
       receipt: buildReceipt(courseId),
       notes: {

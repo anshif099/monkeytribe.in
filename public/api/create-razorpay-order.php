@@ -40,7 +40,7 @@ try {
     $studentPhone = isset($student['phone']) ? substr(trim($student['phone']), 0, 120) : '';
     
     $orderPayload = array(
-        "amount" => $course['price'] * 100,
+        "amount" => (int) round($course['price'] * 100),
         "currency" => "INR",
         "receipt" => $receipt,
         "notes" => array(

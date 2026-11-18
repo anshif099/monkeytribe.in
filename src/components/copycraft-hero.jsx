@@ -1,6 +1,6 @@
 import './copycraft-hero.css'
 
-function CopyCraftHero() {
+function CopyCraftHero({ course, onEnrol } = {}) {
   return (
     <section className="copycraft-hero">
       <div className="copycraft-hero__container">
@@ -10,16 +10,16 @@ function CopyCraftHero() {
               <path d="M12 20h9" />
               <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
             </svg>
-            <span>COPYCRAFT</span>
+            <span>{course?.label || 'COPYCRAFT'}</span>
           </div>
 
           <h1>
-            <span>CopyCraft</span>
-            <span className="accent">Mastery.</span>
+            <span>{course?.title || course?.label || 'CopyCraft'}</span>
+            {!course && <span className="accent">Mastery.</span>}
           </h1>
 
           <p className="copycraft-hero__description">
-            Not just a writing course. A complete creative communication program.
+            {course?.description || 'Not just a writing course. A complete creative communication program.'}
           </p>
 
           <p className="copycraft-hero__sub-description">
@@ -32,7 +32,7 @@ function CopyCraftHero() {
             <button
               className="copycraft-hero__btn-enrol"
               onClick={() => {
-                // Future scroll to enrol section
+                if (onEnrol) { onEnrol(); return; }
                 document.getElementById('enrol-section')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
@@ -59,7 +59,7 @@ function CopyCraftHero() {
               </svg>
             </div>
             <div className="copycraft-hero__meta-text">
-              <strong>10 Weeks</strong>
+              <strong>{course?.duration || '10 Weeks'}</strong>
               <span>Duration</span>
             </div>
           </div>

@@ -75,28 +75,13 @@ function getEnvVar($name) {
 }
 
 // Course pricing catalog
-$COURSES = array(
-    'promptx' => array(
-        'badge' => 'PromptX',
-        'title' => 'AI Prompt Engineering Mastery',
-        'price' => 12500
-    ),
-    'growthx' => array(
-        'badge' => 'GrowthX',
-        'title' => 'AI Digital Marketing Mastery',
-        'price' => 12500
-    ),
-    'brandx' => array(
-        'badge' => 'BrandX',
-        'title' => 'Brand Builder Pro',
-        'price' => 9999
-    ),
-    'copycraft' => array(
-        'badge' => 'CopyCraft',
-        'title' => 'CopyCraft Mastery',
-        'price' => 11999
-    )
-);
+$catalog = json_decode(file_get_contents(__DIR__ . '/../course-catalog.json'), true);
+$COURSES = array();
+foreach ($catalog as $course) {
+    if (isset($course['id'], $course['price']) && is_numeric($course['price']) && $course['price'] > 0) {
+        $COURSES[$course['id']] = $course;
+    }
+}
 
 // Fetch an entity from Razorpay API
 function fetchRazorpayEntity($path, $keyId, $keySecret) {

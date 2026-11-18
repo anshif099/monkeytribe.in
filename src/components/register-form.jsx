@@ -1,63 +1,11 @@
+import { getPublishedCourses } from '../lib/course-catalog';
 import { useState } from 'react';
 import { saveRegistration } from '../lib/firebase';
 import './register-form.css';
 
 const RAZORPAY_CHECKOUT_SCRIPT = 'https://checkout.razorpay.com/v1/checkout.js';
 
-const COURSES = [
-  {
-    id: 'promptx',
-    badge: 'PromptX',
-    popular: true,
-    title: 'AI Prompt Engineering Mastery',
-    duration: '30 Hours',
-    modules: '10 Modules',
-    features: ['Prompt design frameworks', 'AI workflow automation', 'Real-world projects'],
-    price: 12500,
-    originalPrice: 15000,
-    color: '#3127b2',
-    accent: 'indigo'
-  },
-  {
-    id: 'growthx',
-    badge: 'GrowthX',
-    popular: false,
-    title: 'AI Digital Marketing Mastery',
-    duration: '30 Hours',
-    modules: '10 Modules',
-    features: ['AI content strategy', 'Campaign automation', 'Performance analytics'],
-    price: 12500,
-    originalPrice: 15000,
-    color: '#035a41',
-    accent: 'green'
-  },
-  {
-    id: 'brandx',
-    badge: 'BrandX',
-    popular: false,
-    title: 'Brand Builder Pro',
-    duration: '8 Weeks',
-    modules: '10 Modules',
-    features: ['Brand positioning', 'Visual identity', 'Audience storytelling'],
-    price: 9999,
-    originalPrice: 14999,
-    color: '#ff6b00',
-    accent: 'orange'
-  },
-  {
-    id: 'copycraft',
-    badge: 'CopyCraft',
-    popular: false,
-    title: 'CopyCraft Mastery',
-    duration: '6 Weeks',
-    modules: '10 Modules',
-    features: ['Persuasive copywriting', 'Consumer psychology', 'Campaign creation'],
-    price: 11999,
-    originalPrice: 17999,
-    color: '#7c3aed',
-    accent: 'purple'
-  }
-];
+
 
 const loadRazorpayCheckout = () => {
   if (window.Razorpay) {
@@ -140,8 +88,10 @@ const getCourseIcon = (id) => {
 };
 
 function RegisterForm() {
+  const COURSES = getPublishedCourses();
+  const requestedCourse = new URLSearchParams(window.location.search).get('course');
   const [step, setStep] = useState(1);
-  const [selectedCourse, setSelectedCourse] = useState('promptx'); // Default pre-selected course
+  const [selectedCourse, setSelectedCourse] = useState(() => COURSES.some(c => c.id === requestedCourse) ? requestedCourse : requestedCourse ? '' : 'promptx'); // Default pre-selected course
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -171,7 +121,7 @@ function RegisterForm() {
 
   const handleNextStep = () => {
     if (step === 1) {
-      if (!selectedCourse) {
+      if (!COURSES.some(c => c.id === selectedCourse)) {
         setErrors({ course: 'Please select a course to continue.' });
         return;
       }
@@ -285,7 +235,9 @@ function RegisterForm() {
               paymentMethod: paymentRecord.method,
               amountPaid: paidAmount,
               currency: paymentRecord.currency,
-              course: verifiedCourse?.badge || selectedCourse,
+              courseId: verifiedCourseId,
+              courseTitle: verification.order?.title || verifiedCourse?.title,
+              course: verification.order?.course || verifiedCourse?.badge || selectedCourse,
               status: 'PAID'
             });
 
@@ -433,7 +385,7 @@ function RegisterForm() {
               </div>
 
               <p className="register-box__success-footer">
-                A confirmation email along with access credentials and the onboarding guide has been sent to <strong>{formData.email}</strong>.
+                Your registration has been recorded. Our team will send onboarding information to <strong>{formData.email}</strong>.
               </p>
             </div>
           ) : (
@@ -443,6 +395,7 @@ function RegisterForm() {
               {step === 1 && (
                 <div className="wizard-step">
                   <h2 className="wizard-step__title">Select your course</h2>
+                  {requestedCourse && !COURSES.some(c => c.id === requestedCourse) && <p role="alert">This course is not published for registration yet. Please choose an available course or contact us.</p>}
                   <p className="wizard-step__subtitle">All courses include lifetime access, certificate, and community support.</p>
 
                   <div className="wizard-step__courses-list">

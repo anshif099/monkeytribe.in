@@ -1,3 +1,4 @@
+import { getCustomCourses, exportCourseCatalog } from '../lib/course-catalog';
 import { useState, useEffect } from 'react'
 import './hero.css'
 
@@ -65,7 +66,7 @@ const LS_CUSTOM   = 'mt_custom_courses'
 const LS_STATIC   = 'mt_static_track_overrides'   // { [id]: { label?, hidden? } }
 
 function loadCustomCourses() {
-  try { return JSON.parse(localStorage.getItem(LS_CUSTOM) || '[]') } catch { return [] }
+  return getCustomCourses()
 }
 function saveCustomCourses(list) {
   localStorage.setItem(LS_CUSTOM, JSON.stringify(list))
@@ -185,7 +186,7 @@ function Hero({ onNavigate }) {
   // ── Custom course helpers ──────────────────────────────────────────────────
   const handleCustomEdit = (e, course) => {
     e.preventDefault(); e.stopPropagation()
-    setModal({ type: 'edit-custom', id: course.id, value: course.label })
+    setModal({ type: 'edit-custom', id: course.id, value: course.label, title: course.title || course.label, price: course.price || 11999, duration: course.duration || '6 Weeks', description: course.description || '' })
   }
 
   const handleCustomDelete = (e, courseId) => {
@@ -198,23 +199,25 @@ function Hero({ onNavigate }) {
       const cms = JSON.parse(localStorage.getItem('mt_cms_data') || '{}')
       delete cms[courseId]
       localStorage.setItem('mt_cms_data', JSON.stringify(cms))
-    } catch {}
+    } catch { /* No saved page overrides to remove. */ }
   }
 
   // ── Add new course ─────────────────────────────────────────────────────────
   const handleAddCourse = () => {
-    setModal({ type: 'add', value: 'New Course' })
+    setModal({ type: 'add', value: 'New Course', title: 'New Course', price: 11999, duration: '6 Weeks', description: '' })
   }
 
   // ── Modal confirm ──────────────────────────────────────────────────────────
   const handleModalConfirm = () => {
     const label = modal.value.trim()
     if (!label) return
+    if (modal.type !== 'edit-static' && (!modal.title?.trim() || !Number.isFinite(Number(modal.price)) || Number(modal.price) <= 0)) return
+    const details = { title: modal.title?.trim(), price: Number(modal.price), duration: modal.duration, description: modal.description }
 
     if (modal.type === 'add') {
       const id = `custom-course-${Date.now()}`
       const colorIndex = customCourses.length % PALETTE.length
-      const newCourse = { id, label, color: PALETTE[colorIndex] }
+      const newCourse = { id, label, ...details, color: PALETTE[colorIndex] }
       const updated = [...customCourses, newCourse]
       saveCustomCourses(updated)
       setCustomCourses(updated)
@@ -228,7 +231,7 @@ function Hero({ onNavigate }) {
       setModal(null)
 
     } else if (modal.type === 'edit-custom') {
-      const updated = customCourses.map(c => c.id === modal.id ? { ...c, label } : c)
+      const updated = customCourses.map(c => c.id === modal.id ? { ...c, label, ...details } : c)
       saveCustomCourses(updated)
       setCustomCourses(updated)
       setModal(null)
@@ -407,6 +410,14 @@ function Hero({ onNavigate }) {
               placeholder="Course name..."
               autoFocus
             />
+            {modal.type !== 'edit-static' && <>
+              <label>Course title<input className="hero-course-modal__input" value={modal.title} onChange={e => setModal({ ...modal, title: e.target.value })} /></label>
+              <label>Price (INR)<input className="hero-course-modal__input" type="number" min="1" step="0.01" value={modal.price} onChange={e => setModal({ ...modal, price: e.target.value })} /></label>
+              <label>Duration<input className="hero-course-modal__input" value={modal.duration} onChange={e => setModal({ ...modal, duration: e.target.value })} /></label>
+              <label>Details<textarea className="hero-course-modal__input" value={modal.description} onChange={e => setModal({ ...modal, description: e.target.value })} /></label>
+              <p>Changes are browser drafts. Export the catalog and deploy it to publish registration and prices.</p>
+              <button onClick={() => exportCourseCatalog()}>Export saved course catalog</button>
+            </>}
             <div className="hero-course-modal__actions">
               <button className="hero-course-modal__btn hero-course-modal__btn--cancel" onClick={() => setModal(null)}>
                 Cancel

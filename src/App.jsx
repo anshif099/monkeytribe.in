@@ -1,3 +1,4 @@
+import { getCustomCourses } from './lib/course-catalog';
 import { useState, lazy, Suspense, useEffect, useCallback } from 'react'
 import Home from './pages/home.jsx'
 
@@ -118,7 +119,7 @@ function App() {
   } else if (currentPage.startsWith('custom-course-')) {
     // Dynamic custom courses created via CMS
     const customCourses = (() => {
-      try { return JSON.parse(localStorage.getItem('mt_custom_courses') || '[]'); } catch { return []; }
+      return getCustomCourses();
     })();
     const course = customCourses.find(c => c.id === currentPage);
     pageContent = (

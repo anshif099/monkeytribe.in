@@ -273,7 +273,7 @@
   }
 
   .courses-list-card__col--learn {
-    padding: 0;
+    padding: 32px 0 0;
     border-right: none;
   }
 

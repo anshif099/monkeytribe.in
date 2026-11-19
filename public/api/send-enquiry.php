@@ -10,22 +10,24 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') respondEnquiry(405, array('error' => 
 $input = file_get_contents('php://input', false, null, 0, 20001);
 if (strlen($input) > 20000) respondEnquiry(413, array('error' => 'Request too large.'));
 $payload = json_decode($input, true);
-if (!is_array($payload) || !isset($payload['type']) || !in_array($payload['type'], array('contact', 'course'), true)) {
+if (!is_array($payload) || !isset($payload['type']) || !in_array($payload['type'], array('contact', 'course', 'programme', 'webinar'), true)) {
     respondEnquiry(400, array('error' => 'Invalid enquiry type.'));
 }
-$limits = array('name'=>150, 'email'=>254, 'phone'=>50, 'course'=>200, 'enquiryType'=>100, 'message'=>5000, 'profession'=>200, 'goals'=>5000);
+$limits = array('name'=>150, 'email'=>254, 'phone'=>50, 'course'=>200, 'enquiryType'=>100, 'message'=>5000, 'profession'=>200, 'goals'=>5000, 'programme'=>200, 'topics'=>1000);
 $data = array();
 foreach ($limits as $key => $limit) {
     $value = $key === 'name' ? ($payload['fullName'] ?? $payload['name'] ?? '') : ($payload[$key] ?? '');
     if (!is_string($value) || strlen($value) > $limit) respondEnquiry(400, array('error'=>'Invalid form fields.'));
     $data[$key] = trim($value);
 }
-if (!$data['name'] || !filter_var($data['email'], FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $data['name'] . $data['email'] . $data['course'])) {
+if (!$data['name'] || !filter_var($data['email'], FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $data['name'] . $data['email'] . $data['course'] . $data['programme'])) {
     respondEnquiry(400, array('error'=>'Valid name and email are required.'));
 }
 if ($payload['type'] === 'contact' && (!$data['message'] || !$data['enquiryType'])) respondEnquiry(400, array('error'=>'Message and enquiry type are required.'));
 if ($payload['type'] === 'course' && !$data['course']) respondEnquiry(400, array('error'=>'Course is required.'));
-$subject = $payload['type'] === 'course' ? 'Course enquiry: ' . $data['course'] : 'Monkey Tribe contact enquiry';
+if ($payload['type'] === 'programme' && !$data['programme']) respondEnquiry(400, array('error'=>'Programme is required.'));
+$subjects = array('contact'=>'Monkey Tribe contact enquiry', 'course'=>'Course enquiry: ' . $data['course'], 'programme'=>'Programme waitlist: ' . $data['programme'], 'webinar'=>'Webinar notification request');
+$subject = $subjects[$payload['type']];
 $lines = array();
 foreach ($data as $key => $value) {
     if ($value !== '') $lines[] = $key . ': ' . $value;

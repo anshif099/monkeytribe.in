@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { saveWebinarInterest } from '../lib/enquiries';
+import { useState } from 'react';
 import './webinars-notify.css';
 
 function WebinarsNotify() {
@@ -16,6 +17,7 @@ function WebinarsNotify() {
     }
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
@@ -37,8 +39,9 @@ function WebinarsNotify() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setError('');
 
     if (!formData.name.trim()) {
@@ -57,8 +60,15 @@ function WebinarsNotify() {
       return;
     }
 
-    // Success state
-    setSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      await saveWebinarInterest(formData);
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || 'Unable to send your request. Please email hello@monkeytribe.in.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -283,12 +293,12 @@ function WebinarsNotify() {
               </div>
 
               {/* Submit Button */}
-              <button type="submit" className="webinars-notify__submit-btn">
+              <button type="submit" className="webinars-notify__submit-btn" disabled={isSubmitting} aria-busy={isSubmitting}>
                 <svg className="webinars-notify__submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
                   <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                 </svg>
-                Notify Me When Live
+                {isSubmitting ? 'Sending�' : 'Notify Me When Live'}
                 <svg className="webinars-notify__submit-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />

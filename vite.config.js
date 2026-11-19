@@ -1,3 +1,4 @@
+import { createEnquiryHandler } from './api/send-enquiry.js'
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import nodemailer from 'nodemailer'
@@ -114,6 +115,7 @@ export default defineConfig(({ mode }) => {
         name: 'local-smtp-email-middleware',
         configureServer(server) {
           server.middlewares.use('/api/send-backup-email.php', createSmtpMiddleware(env));
+          server.middlewares.use('/api/send-enquiry.php', createEnquiryHandler(env));
           server.middlewares.use('/api/create-razorpay-order', createRazorpayOrder);
           server.middlewares.use('/api/create-razorpay-order.php', createRazorpayOrder);
           server.middlewares.use('/api/verify-razorpay-payment', verifyRazorpayPayment);
@@ -121,6 +123,7 @@ export default defineConfig(({ mode }) => {
         },
         configurePreviewServer(server) {
           server.middlewares.use('/api/send-backup-email.php', createSmtpMiddleware(env));
+          server.middlewares.use('/api/send-enquiry.php', createEnquiryHandler(env));
           server.middlewares.use('/api/create-razorpay-order', createRazorpayOrder);
           server.middlewares.use('/api/create-razorpay-order.php', createRazorpayOrder);
           server.middlewares.use('/api/verify-razorpay-payment', verifyRazorpayPayment);

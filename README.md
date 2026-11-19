@@ -24,3 +24,11 @@ Replace `public/course-catalog.json` with the exported file, then run `npm run b
 Copied course Enrol/Register buttons open `/register?course=COURSE_ID`. Registration preselects published courses and records the course ID and title with verified payment details. Unpublished courses show an availability message instead of silently selecting a different course.
 
 Razorpay keys must be configured on the server as before. Test checkout with Razorpay test credentials before accepting live payments.
+
+## Contact and course enquiry emails
+
+Contact, PromptX, GrowthX, BrandX, and CopyCraft enquiry forms send directly to `hello@monkeytribe.in` through `/api/send-enquiry.php`. They do not use Firebase. Paid registration and the existing dashboard still use Firebase.
+
+For local development, configure `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, and `SMTP_PASS` in the server-only `.env` file and restart Vite. Use the mailbox password for SMTP authentication. The mailbox analytics ID is not used by this integration. Never put SMTP credentials in `VITE_` variables or browser code.
+
+For cPanel, upload the rebuilt `dist` contents, including `api/send-enquiry.php`. The PHP endpoint uses the hosting server's `mail()` service and fixes the recipient to `hello@monkeytribe.in`; visitors cannot choose another recipient. Success means the mail server accepted the request. Confirm final receipt in the mailbox and check cPanel Track Delivery if it is missing.

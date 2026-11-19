@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { saveEnrollment } from '../lib/firebase'
+import { saveEnrollment } from '../lib/enquiries'
 import './brandx-enrol.css'
 
 function BrandXEnrol() {
@@ -11,6 +11,8 @@ function BrandXEnrol() {
     profession: '',
     goals: '',
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submissionError, setSubmissionError] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const sectionRef = useRef(null)
 
@@ -37,7 +39,10 @@ function BrandXEnrol() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (isSubmitting) return
+    setSubmissionError('')
     if (!formData.name || !formData.email || !formData.profession) return
+    setIsSubmitting(true)
     try {
       await saveEnrollment({
         name: formData.name,
@@ -51,7 +56,9 @@ function BrandXEnrol() {
       setSubmitted(true)
     } catch (err) {
       console.error("Failed to submit brandx lead: ", err)
-      alert("There was an issue submitting your request. Please try again.")
+      setSubmissionError(err.message || 'Unable to send enquiry. Please email hello@monkeytribe.in.')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -182,7 +189,8 @@ function BrandXEnrol() {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="brandx-enrol__submit-btn">
+                <p role="status" aria-live="polite">{isSubmitting ? 'Sending�' : submissionError}</p>
+                <button disabled={isSubmitting} aria-busy={isSubmitting} type="submit" className="brandx-enrol__submit-btn">
                   <span>Enrol in BrandX</span>
                   <svg className="brandx-enrol__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>

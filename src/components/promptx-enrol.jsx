@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import { saveEnrollment } from '../lib/firebase'
+import { saveEnrollment } from '../lib/enquiries'
 import './promptx-enrol.css'
 
 function PromptxEnrol() {
   const [isVisible, setIsVisible] = useState(false)
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submissionError, setSubmissionError] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const sectionRef = useRef(null)
 
@@ -31,7 +33,10 @@ function PromptxEnrol() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (isSubmitting) return
+    setSubmissionError('')
     if (!formData.name || !formData.email) return
+    setIsSubmitting(true)
     try {
       await saveEnrollment({
         name: formData.name,
@@ -43,7 +48,9 @@ function PromptxEnrol() {
       setSubmitted(true)
     } catch (err) {
       console.error("Failed to submit promptx lead: ", err)
-      alert("There was an issue submitting your request. Please try again.")
+      setSubmissionError(err.message || 'Unable to send enquiry. Please email hello@monkeytribe.in.')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -113,7 +120,8 @@ function PromptxEnrol() {
                   />
                 </div>
 
-                <button type="submit" className="promptx-enrol__submit-btn">
+                <p role="status" aria-live="polite">{isSubmitting ? 'Sending�' : submissionError}</p>
+                <button disabled={isSubmitting} aria-busy={isSubmitting} type="submit" className="promptx-enrol__submit-btn">
                   Submit Enrolment Request
                 </button>
 

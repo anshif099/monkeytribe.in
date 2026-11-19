@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Header from '../components/header.jsx'
 import Footer from '../components/footer.jsx'
-import { saveContact } from '../lib/firebase'
+import { saveContact } from '../lib/enquiries'
 import './contact.css'
 
 function Contact({ onNavigate }) {
@@ -15,6 +15,7 @@ function Contact({ onNavigate }) {
   const [errors, setErrors] = useState({})
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submissionError, setSubmissionError] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -26,6 +27,8 @@ function Contact({ onNavigate }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (isSubmitting) return
+    setSubmissionError('')
     const newErrors = {}
     if (!formData.fullName.trim()) newErrors.fullName = 'Full Name is required'
     if (!formData.email.trim()) {
@@ -54,7 +57,7 @@ function Contact({ onNavigate }) {
       })
     } catch (err) {
       console.error("Failed to submit form: ", err)
-      alert("There was an issue submitting your enquiry. Please check your internet connection and try again.")
+      setSubmissionError(err.message || 'Unable to send your enquiry. Please try again or email hello@monkeytribe.in.')
     } finally {
       setIsSubmitting(false)
     }
@@ -370,8 +373,9 @@ function Contact({ onNavigate }) {
                   {errors.message && <span className="error-text">{errors.message}</span>}
                 </div>
 
-                <button type="submit" className="contact-form__submit-btn">
-                  <span>Send Message</span>
+                {submissionError && <p className="contact-form__submission-error" role="alert">{submissionError}</p>}
+                <button type="submit" className="contact-form__submit-btn" disabled={isSubmitting} aria-busy={isSubmitting}>
+                  <span>{isSubmitting ? 'Sending…' : 'Send Message'}</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="contact-form__send-icon">
                     <line x1="22" y1="2" x2="11" y2="13" />
                     <polygon points="22 2 15 22 11 13 2 9 22 2" />
